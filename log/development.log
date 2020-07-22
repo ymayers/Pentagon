@@ -1338,3 +1338,263 @@ Processing by UsersController#create as */*
 Completed 201 Created in 543ms (Views: 1.6ms | ActiveRecord: 51.1ms | Allocations: 10366)
 
 
+Started GET "/qrcode" for ::1 at 2020-07-22 16:16:10 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/qrcode"):
+  
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/tickets" for ::1 at 2020-07-22 16:16:16 -0400
+Processing by TicketsController#index as HTML
+  [1m[36mTicket Load (12.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets"[0m
+  ↳ app/controllers/tickets_controller.rb:12:in `index'
+Completed 200 OK in 88ms (Views: 41.8ms | ActiveRecord: 28.6ms | Allocations: 6927)
+
+
+Started GET "/qrcode/4" for ::1 at 2020-07-22 16:16:32 -0400
+Processing by TicketsController#showqr as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mTicket Load (1.0ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:61:in `set_ticket'
+Completed 200 OK in 119ms (Views: 0.3ms | ActiveRecord: 9.8ms | Allocations: 24902)
+
+
+Started GET "/qrcode/2" for ::1 at 2020-07-22 16:16:36 -0400
+Processing by TicketsController#showqr as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTicket Load (2.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:61:in `set_ticket'
+Completed 200 OK in 129ms (Views: 0.1ms | ActiveRecord: 2.2ms | Allocations: 25000)
+
+
+Started GET "/qrcode/1" for ::1 at 2020-07-22 16:16:41 -0400
+Processing by TicketsController#showqr as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTicket Load (2.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:61:in `set_ticket'
+Completed 200 OK in 80ms (Views: 0.2ms | ActiveRecord: 2.2ms | Allocations: 24996)
+
+
+Started GET "/users" for ::1 at 2020-07-22 16:16:58 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7:in `index'
+Completed 200 OK in 7ms (Views: 4.0ms | ActiveRecord: 2.3ms | Allocations: 1290)
+
+
+Started GET "/users" for ::1 at 2020-07-22 16:30:32 -0400
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"first_name"=>"Stefon", "last_name"=>"Simmons", "age"=>"29", "email"=>"test1@test.com", "mobile_phone"=>"2222222222", "profile_imgURL"=>"https://thesource.com/wp-content/uploads/2018/12/Morales.jpg", "id_imgURL"=>"vhttps://www.al.com/resizer/ingDutJaBIgpVBqOGbmDrgopjJY=/450x0/smart/arc-anglerfish-arc2-prod-advancelocal.s3.amazonaws.com/public/EUPR7DDYLNCPRMY2GKUARXJTJE.jpg", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7:in `index'
+Completed 200 OK in 54ms (Views: 51.5ms | ActiveRecord: 1.8ms | Allocations: 8355)
+
+
+Started POST "/users" for ::1 at 2020-07-22 16:31:36 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"first_name"=>"Stefon", "last_name"=>"Simmons", "email"=>"test1@test.com", "mobile_phone"=>"2222222222", "password"=>"[FILTERED]"}}
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:19:in `create'
+  [1m[36mUser Create (2.7ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "mobile_phone", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Stefon"], ["last_name", "Simmons"], ["email", "test1@test.com"], ["mobile_phone", "2222222222"], ["password_digest", "$2a$12$tBBsRZEVZVBtgaM0Ss7cCOG79DWmUNUCcoQF8OW3lAEvALgiwPyMq"], ["created_at", "2020-07-22 20:31:37.749232"], ["updated_at", "2020-07-22 20:31:37.749232"]]
+  ↳ app/controllers/users_controller.rb:19:in `create'
+  [1m[35m (10.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:19:in `create'
+Completed 500 Internal Server Error in 881ms (ActiveRecord: 14.3ms | Allocations: 3066)
+
+
+  
+NoMethodError (undefined method `id' for nil:NilClass):
+  
+app/controllers/users_controller.rb:20:in `create'
+Started POST "/users" for ::1 at 2020-07-22 16:33:22 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"first_name"=>"Stefon", "last_name"=>"Simmons", "email"=>"test1@test.com", "mobile_phone"=>"2222222222", "password"=>"[FILTERED]"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:19:in `create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "mobile_phone", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Stefon"], ["last_name", "Simmons"], ["email", "test1@test.com"], ["mobile_phone", "2222222222"], ["password_digest", "$2a$12$tRbvGUfg2O5hjqaKm3L6nu5mP4uxO7cFMtRSCi.CkDLa3DbnhuHQi"], ["created_at", "2020-07-22 20:33:24.573374"], ["updated_at", "2020-07-22 20:33:24.573374"]]
+  ↳ app/controllers/users_controller.rb:19:in `create'
+  [1m[35m (2.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:19:in `create'
+Completed 500 Internal Server Error in 1082ms (ActiveRecord: 178.2ms | Allocations: 11508)
+
+
+  
+NameError (uninitialized constant ApplicationController::JWT):
+  
+app/controllers/application_controller.rb:7:in `encode'
+app/controllers/users_controller.rb:20:in `create'
+Started POST "/users" for ::1 at 2020-07-22 16:36:20 -0400
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"first_name"=>"Stefon", "last_name"=>"Simmons", "email"=>"test1@test.com", "mobile_phone"=>"2222222222", "password"=>"[FILTERED]"}}
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:19:in `create'
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "mobile_phone", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Stefon"], ["last_name", "Simmons"], ["email", "test1@test.com"], ["mobile_phone", "2222222222"], ["password_digest", "$2a$12$7xpSREvAdB9lmWQM4q.uluGD95zNYkv0ogbqkkwwMtwWnXFZD14yu"], ["created_at", "2020-07-22 20:36:21.558946"], ["updated_at", "2020-07-22 20:36:21.558946"]]
+  ↳ app/controllers/users_controller.rb:19:in `create'
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:19:in `create'
+Completed 201 Created in 694ms (Views: 2.6ms | ActiveRecord: 16.3ms | Allocations: 11198)
+
+
+Started GET "/users" for ::1 at 2020-07-22 16:36:40 -0400
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"first_name"=>"Stefon", "last_name"=>"Simmons", "email"=>"test1@test.com", "mobile_phone"=>"2222222222", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (116.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7:in `index'
+Completed 200 OK in 122ms (Views: 5.0ms | ActiveRecord: 116.3ms | Allocations: 1894)
+
+
+Started DELETE "/users/4" for ::1 at 2020-07-22 16:38:08 -0400
+Processing by UsersController#destroy as */*
+  Parameters: {"user"=>{"first_name"=>"Stefon", "last_name"=>"Simmons", "email"=>"test1@test.com", "mobile_phone"=>"2222222222", "password"=>"[FILTERED]"}, "id"=>"4"}
+  [1m[36mUser Load (11.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:44:in `set_user'
+  [1m[35m (59.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:38:in `destroy'
+  [1m[36mUser Destroy (14.1ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 4]]
+  ↳ app/controllers/users_controller.rb:38:in `destroy'
+  [1m[35m (3.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:38:in `destroy'
+Completed 204 No Content in 168ms (ActiveRecord: 111.4ms | Allocations: 4179)
+
+
+Started DELETE "/users/3" for ::1 at 2020-07-22 16:38:14 -0400
+Processing by UsersController#destroy as */*
+  Parameters: {"user"=>{"first_name"=>"Stefon", "last_name"=>"Simmons", "email"=>"test1@test.com", "mobile_phone"=>"2222222222", "password"=>"[FILTERED]"}, "id"=>"3"}
+  [1m[36mUser Load (44.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:44:in `set_user'
+  [1m[35m (6.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:38:in `destroy'
+  [1m[36mUser Destroy (6.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 3]]
+  ↳ app/controllers/users_controller.rb:38:in `destroy'
+  [1m[35m (31.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:38:in `destroy'
+Completed 204 No Content in 99ms (ActiveRecord: 89.3ms | Allocations: 2537)
+
+
+Started DELETE "/users/5" for ::1 at 2020-07-22 16:38:19 -0400
+Processing by UsersController#destroy as */*
+  Parameters: {"user"=>{"first_name"=>"Stefon", "last_name"=>"Simmons", "email"=>"test1@test.com", "mobile_phone"=>"2222222222", "password"=>"[FILTERED]"}, "id"=>"5"}
+  [1m[36mUser Load (44.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:44:in `set_user'
+  [1m[35m (31.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:38:in `destroy'
+  [1m[36mUser Destroy (57.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 5]]
+  ↳ app/controllers/users_controller.rb:38:in `destroy'
+  [1m[35m (48.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:38:in `destroy'
+Completed 204 No Content in 193ms (ActiveRecord: 181.7ms | Allocations: 2517)
+
+
+Started GET "/users/" for ::1 at 2020-07-22 16:38:23 -0400
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"first_name"=>"Stefon", "last_name"=>"Simmons", "email"=>"test1@test.com", "mobile_phone"=>"2222222222", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (154.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7:in `index'
+Completed 200 OK in 159ms (Views: 4.3ms | ActiveRecord: 154.0ms | Allocations: 1256)
+
+
+Started POST "/users/" for ::1 at 2020-07-22 16:39:46 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"first_name"=>"LuLu", "last_name"=>"Leche", "email"=>"leche@test.com", "mobile_phone"=>"N/A", "password"=>"[FILTERED]"}}
+  [1m[35m (39.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:19:in `create'
+  [1m[36mUser Create (10.2ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "mobile_phone", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "LuLu"], ["last_name", "Leche"], ["email", "leche@test.com"], ["mobile_phone", "N/A"], ["password_digest", "$2a$12$rfmOO/HiEA8lIAvjhKHgtOsUOw8sZ35wMNFFJ1aZ7uPr9qyiSuT3m"], ["created_at", "2020-07-22 20:39:47.576807"], ["updated_at", "2020-07-22 20:39:47.576807"]]
+  ↳ app/controllers/users_controller.rb:19:in `create'
+  [1m[35m (47.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:19:in `create'
+Completed 201 Created in 1060ms (Views: 0.7ms | ActiveRecord: 96.5ms | Allocations: 2904)
+
+
+Started GET "/auth/verify" for ::1 at 2020-07-22 16:41:46 -0400
+  
+ActionController::RoutingError (uninitialized constant AuthenticationController
+Did you mean?  AuthenticationsController):
+  
+actionpack (6.0.3.2) lib/action_dispatch/http/request.rb:92:in `rescue in controller_class_for'
+actionpack (6.0.3.2) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (6.0.3.2) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:44:in `controller'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (6.0.3.2) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/auth/verify" for ::1 at 2020-07-22 16:42:22 -0400
+Processing by AuthenticationsController#verify as */*
+  Parameters: {"user"=>{"first_name"=>"LuLu", "last_name"=>"Leche", "email"=>"leche@test.com", "mobile_phone"=>"N/A", "password"=>"[FILTERED]"}, "authentication"=>{"user"=>{"first_name"=>"LuLu", "last_name"=>"Leche", "email"=>"leche@test.com", "mobile_phone"=>"N/A", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (5.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `authorize_request'
+Completed 200 OK in 171ms (Views: 0.4ms | ActiveRecord: 56.8ms | Allocations: 8861)
+
+
+Started POST "/auth/login" for ::1 at 2020-07-22 16:43:09 -0400
+Processing by AuthenticationsController#login as */*
+  Parameters: {"user"=>{"email"=>"leche@test.com", "password"=>"[FILTERED]"}, "authentication"=>{"user"=>{"email"=>"leche@test.com", "password"=>"[FILTERED]"}}}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 142)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: auth):
+  
+app/controllers/authentications_controller.rb:26:in `login_params'
+app/controllers/authentications_controller.rb:7:in `login'
+Started POST "/auth/login" for ::1 at 2020-07-22 16:43:24 -0400
+Processing by AuthenticationsController#login as */*
+  Parameters: {"auth"=>{"email"=>"leche@test.com", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"email"=>"leche@test.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "leche@test.com"], ["LIMIT", 1]]
+  ↳ app/controllers/authentications_controller.rb:7:in `login'
+Completed 200 OK in 1053ms (Views: 0.6ms | ActiveRecord: 1.3ms | Allocations: 1286)
+
+
