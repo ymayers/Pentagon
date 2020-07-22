@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  get '/qrcode/:id', to: 'tickets#showqr'
+
   resources :credit_cards
   resources :tickets
   resources :events

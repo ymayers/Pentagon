@@ -1,5 +1,9 @@
+require 'rqrcode'
+require 'rubygems'
+
 class TicketsController < ApplicationController
-  before_action :set_ticket, only: [:show, :update, :destroy]
+
+  before_action :set_ticket, only: [:showqr, :show, :update, :destroy]
 
   # GET /tickets
   def index
@@ -9,19 +13,32 @@ class TicketsController < ApplicationController
   end
 
   # GET /tickets/1
-  def show
-    render json: @ticket
+  # def show
+  #   render json: @ticket
+  # end
+
+  # QRCode /qrcode/1
+  def showqr
+    @code = @ticket.code
+    @qrcode = RQRCode::QRCode.new(@code, :size => 4, :level => :h)
+    @svg = @qrcode.as_svg(
+      offset: 0,
+      color: '000',
+      shape_rendering: 'crispEdges',
+      module_size: 6,
+      standalone: true
+    )
+    render xml: @svg
   end
 
   # POST /tickets
   def create
-    @ticket = Ticket.new(ticket_params)
-
-    if @ticket.save
+    @ticket = Ticket.create(ticket_params)
+    # if @ticket.save
       render json: @ticket, status: :created, location: @ticket
-    else
-      render json: @ticket.errors, status: :unprocessable_entity
-    end
+    # else
+    #   render json: @ticket.errors, status: :unprocessable_entity
+    # end
   end
 
   # PATCH/PUT /tickets/1

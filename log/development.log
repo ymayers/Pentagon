@@ -352,3 +352,753 @@ FOREIGN KEY ("user_id")
   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
   [1m[36mCreditCard Create (1.4ms)[0m  [1m[32mINSERT INTO "credit_cards" ("full_name", "cc_number", "expiration_date", "cvc", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["full_name", "Yolea Mayers"], ["cc_number", "555333322221"], ["expiration_date", "03/23"], ["cvc", "445"], ["user_id", 1], ["created_at", "2020-07-22 16:48:38.889525"], ["updated_at", "2020-07-22 16:48:38.889525"]]
   [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for ::1 at 2020-07-22 12:51:56 -0400
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/stefonsimmons/.rbenv/versions/2.6.4/lib/ruby/gems/2.6.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/stefonsimmons/.rbenv/versions/2.6.4/lib/ruby/gems/2.6.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 20.6ms | Allocations: 482)
+Completed 200 OK in 67ms (Views: 47.4ms | ActiveRecord: 0.0ms | Allocations: 2713)
+
+
+Started GET "/favicon.ico" for ::1 at 2020-07-22 12:51:57 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/users" for ::1 at 2020-07-22 12:52:00 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (8.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7:in `index'
+Completed 200 OK in 87ms (Views: 47.6ms | ActiveRecord: 28.2ms | Allocations: 9612)
+
+
+Started GET "/tickets" for ::1 at 2020-07-22 12:52:56 -0400
+Processing by TicketsController#index as HTML
+  [1m[36mTicket Load (1.0ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets"[0m
+  ↳ app/controllers/tickets_controller.rb:8:in `index'
+Completed 200 OK in 39ms (Views: 17.0ms | ActiveRecord: 7.3ms | Allocations: 6926)
+
+
+Started GET "/tickets/qrcodes" for ::1 at 2020-07-22 13:05:13 -0400
+Processing by TicketsController#showQR as HTML
+  [1m[36mTicket Load (0.8ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:18:in `showQR'
+Completed 500 Internal Server Error in 366ms (ActiveRecord: 1.1ms | Allocations: 98049)
+
+
+  
+NameError (undefined local variable or method `qrcode' for #<TicketsController:0x00007f9deb2dcbf8>
+Did you mean?  @qrcode
+               @code):
+  
+app/controllers/tickets_controller.rb:23:in `showQR'
+Started GET "/tickets/qrcodes" for ::1 at 2020-07-22 13:13:39 -0400
+Processing by TicketsController#showQR as HTML
+  [1m[36mTicket Load (0.8ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:21:in `showQR'
+Completed 500 Internal Server Error in 379ms (ActiveRecord: 1.7ms | Allocations: 97886)
+
+
+  
+NameError (undefined local variable or method `qrcode' for #<TicketsController:0x00007f9deba9a340>
+Did you mean?  @qrcode
+               @code):
+  
+app/controllers/tickets_controller.rb:26:in `showQR'
+Started GET "/tickets/qrcodes" for ::1 at 2020-07-22 13:14:00 -0400
+Processing by TicketsController#showQR as HTML
+  [1m[36mTicket Load (0.6ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:21:in `showQR'
+Completed 204 No Content in 103ms (ActiveRecord: 9.0ms | Allocations: 30681)
+
+
+Started GET "/tickets/qrcodes" for ::1 at 2020-07-22 13:14:07 -0400
+Processing by TicketsController#showQR as HTML
+  [1m[36mTicket Load (2.9ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:21:in `showQR'
+Completed 204 No Content in 87ms (ActiveRecord: 2.9ms | Allocations: 25101)
+
+
+Started GET "/tickets/qrcode" for ::1 at 2020-07-22 13:14:12 -0400
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"qrcode"}
+  [1m[36mTicket Load (0.7ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:72:in `set_ticket'
+Completed 404 Not Found in 25ms (ActiveRecord: 0.7ms | Allocations: 2226)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Ticket with 'id'=qrcode):
+  
+app/controllers/tickets_controller.rb:72:in `set_ticket'
+Started GET "/tickets/qrcodes" for ::1 at 2020-07-22 13:14:15 -0400
+Processing by TicketsController#showQR as HTML
+  [1m[36mTicket Load (9.6ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:21:in `showQR'
+Completed 204 No Content in 99ms (ActiveRecord: 9.6ms | Allocations: 25100)
+
+
+Started GET "/tickets/qrcodes" for ::1 at 2020-07-22 13:14:20 -0400
+Processing by TicketsController#showQR as HTML
+  [1m[36mTicket Load (2.3ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:21:in `showQR'
+Completed 204 No Content in 93ms (ActiveRecord: 2.3ms | Allocations: 25101)
+
+
+Started GET "/tickets/qrcodes" for ::1 at 2020-07-22 13:15:01 -0400
+Processing by TicketsController#showQR as HTML
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:21:in `showQR'
+Completed 204 No Content in 85ms (ActiveRecord: 0.4ms | Allocations: 25105)
+
+
+Started GET "/tickets/qrcode" for ::1 at 2020-07-22 13:15:24 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/tickets/qrcode"):
+  
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/tickets/qrcodes" for ::1 at 2020-07-22 13:15:26 -0400
+Processing by TicketsController#showQR as HTML
+  [1m[36mTicket Load (11.3ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:21:in `showQR'
+Completed 204 No Content in 250ms (ActiveRecord: 37.2ms | Allocations: 30659)
+
+
+Started GET "/tickets/qrcodes" for ::1 at 2020-07-22 13:15:32 -0400
+Processing by TicketsController#showQR as HTML
+  [1m[36mTicket Load (1.3ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:21:in `showQR'
+Completed 204 No Content in 95ms (ActiveRecord: 1.3ms | Allocations: 25103)
+
+
+Started GET "/tickets1" for ::1 at 2020-07-22 13:16:20 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/tickets1"):
+  
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/tickets/1" for ::1 at 2020-07-22 13:16:22 -0400
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTicket Load (0.9ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:72:in `set_ticket'
+Completed 200 OK in 31ms (Views: 0.5ms | ActiveRecord: 12.4ms | Allocations: 6423)
+
+
+Started GET "/tickets" for ::1 at 2020-07-22 13:17:12 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/tickets"):
+  
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/tickets" for ::1 at 2020-07-22 13:17:40 -0400
+Processing by TicketsController#index as HTML
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets"[0m
+  ↳ app/controllers/tickets_controller.rb:11:in `index'
+Completed 200 OK in 54ms (Views: 40.7ms | ActiveRecord: 9.8ms | Allocations: 6543)
+
+
+Started GET "/tickets/1" for ::1 at 2020-07-22 13:18:14 -0400
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTicket Load (3.8ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:72:in `set_ticket'
+Completed 200 OK in 10ms (Views: 1.2ms | ActiveRecord: 3.8ms | Allocations: 916)
+
+
+Started GET "/tickets/1" for ::1 at 2020-07-22 13:18:54 -0400
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:72:in `set_ticket'
+Completed 200 OK in 30ms (Views: 0.4ms | ActiveRecord: 7.2ms | Allocations: 6389)
+
+
+Started GET "/tickets/1/qrcodes" for ::1 at 2020-07-22 13:19:00 -0400
+Processing by TicketsController#showQR as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTicket Load (0.6ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:21:in `showQR'
+Completed 204 No Content in 110ms (ActiveRecord: 0.6ms | Allocations: 25132)
+
+
+Started GET "/tickets/1" for ::1 at 2020-07-22 13:21:08 -0400
+Processing by TicketsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTicket Load (0.9ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:72:in `set_ticket'
+Completed 200 OK in 36ms (Views: 2.0ms | ActiveRecord: 7.4ms | Allocations: 6483)
+
+
+Started GET "/tickets/1/qrcode" for ::1 at 2020-07-22 13:21:32 -0400
+Processing by TicketsController#qr as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTicket Load (0.3ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:21:in `qr'
+Completed 204 No Content in 84ms (ActiveRecord: 9.5ms | Allocations: 30631)
+
+
+  [1m[36mTicket Load (0.8ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTicket Load (4.5ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTicket Load (0.5ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTicket Load (1.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTicket Load (0.5ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTicket Load (0.6ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTicket Load (0.6ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Started GET "/tickets/1" for ::1 at 2020-07-22 14:07:52 -0400
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for TicketsController):
+  
+actionpack (6.0.3.2) lib/abstract_controller/base.rb:131:in `process'
+actionpack (6.0.3.2) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.2) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (6.0.3.2) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/tickets/:id/qrcode" for ::1 at 2020-07-22 14:08:13 -0400
+Processing by TicketsController#qr as HTML
+  Parameters: {"id"=>":id"}
+  [1m[36mTicket Load (1.0ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:22:in `qr'
+Completed 204 No Content in 128ms (ActiveRecord: 1.7ms | Allocations: 30494)
+
+
+Started GET "/tickets" for ::1 at 2020-07-22 14:11:07 -0400
+Processing by TicketsController#index as */*
+  [1m[36mTicket Load (0.5ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets"[0m
+  ↳ app/controllers/tickets_controller.rb:12:in `index'
+Completed 200 OK in 45ms (Views: 17.8ms | ActiveRecord: 20.2ms | Allocations: 6543)
+
+
+Started GET "/tickets/1" for ::1 at 2020-07-22 14:11:20 -0400
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for TicketsController):
+  
+actionpack (6.0.3.2) lib/abstract_controller/base.rb:131:in `process'
+actionpack (6.0.3.2) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.2) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (6.0.3.2) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/qrcode" for ::1 at 2020-07-22 14:13:05 -0400
+Processing by TicketsController#qr as */*
+  [1m[36mTicket Load (0.3ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:22:in `qr'
+Completed 204 No Content in 84ms (ActiveRecord: 3.8ms | Allocations: 30630)
+
+
+Started GET "/qrcode/" for ::1 at 2020-07-22 14:13:13 -0400
+Processing by TicketsController#qr as */*
+  [1m[36mTicket Load (1.9ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:22:in `qr'
+Completed 204 No Content in 103ms (ActiveRecord: 1.9ms | Allocations: 25103)
+
+
+Started GET "/qrcode" for ::1 at 2020-07-22 14:13:31 -0400
+Processing by TicketsController#qr as HTML
+  [1m[36mTicket Load (0.6ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:22:in `qr'
+Completed 204 No Content in 66ms (ActiveRecord: 0.6ms | Allocations: 25103)
+
+
+Started GET "/qrcode" for ::1 at 2020-07-22 14:13:38 -0400
+Processing by TicketsController#qr as HTML
+  [1m[36mTicket Load (0.5ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:22:in `qr'
+Completed 204 No Content in 72ms (ActiveRecord: 0.5ms | Allocations: 25101)
+
+
+Started GET "/" for ::1 at 2020-07-22 14:13:45 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/stefonsimmons/.rbenv/versions/2.6.4/lib/ruby/gems/2.6.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/stefonsimmons/.rbenv/versions/2.6.4/lib/ruby/gems/2.6.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 15.3ms | Allocations: 189)
+Completed 200 OK in 19ms (Views: 17.0ms | ActiveRecord: 0.0ms | Allocations: 756)
+
+
+Started GET "/qrcode" for ::1 at 2020-07-22 14:13:51 -0400
+Processing by TicketsController#qr as HTML
+  [1m[36mTicket Load (0.5ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:22:in `qr'
+Completed 204 No Content in 54ms (ActiveRecord: 0.5ms | Allocations: 25101)
+
+
+Started GET "/qr" for ::1 at 2020-07-22 14:14:25 -0400
+Processing by TicketsController#qr as HTML
+  [1m[36mTicket Load (0.3ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:22:in `qr'
+Completed 204 No Content in 57ms (ActiveRecord: 3.8ms | Allocations: 30629)
+
+
+Started GET "/" for ::1 at 2020-07-22 14:15:03 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/stefonsimmons/.rbenv/versions/2.6.4/lib/ruby/gems/2.6.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/stefonsimmons/.rbenv/versions/2.6.4/lib/ruby/gems/2.6.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.2ms | Allocations: 7)
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.0ms | Allocations: 425)
+
+
+Started GET "/qrcode" for ::1 at 2020-07-22 14:15:09 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/qrcode"):
+  
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/qrcode" for ::1 at 2020-07-22 14:15:25 -0400
+Processing by TicketsController#qr as HTML
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:22:in `qr'
+Completed 200 OK in 88ms (Views: 0.1ms | ActiveRecord: 5.9ms | Allocations: 30676)
+
+
+Started GET "/" for ::1 at 2020-07-22 14:15:41 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/stefonsimmons/.rbenv/versions/2.6.4/lib/ruby/gems/2.6.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/stefonsimmons/.rbenv/versions/2.6.4/lib/ruby/gems/2.6.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.2ms | Allocations: 7)
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.0ms | Allocations: 263)
+
+
+Started GET "/qrcode" for ::1 at 2020-07-22 14:15:48 -0400
+Processing by TicketsController#qr as HTML
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:22:in `qr'
+Completed 200 OK in 45ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 25128)
+
+
+Started GET "/qrcode" for ::1 at 2020-07-22 14:16:01 -0400
+Processing by TicketsController#qr as HTML
+  [1m[36mTicket Load (0.5ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:22:in `qr'
+Completed 200 OK in 59ms (Views: 0.2ms | ActiveRecord: 5.6ms | Allocations: 30678)
+
+
+Started GET "/qrcode" for ::1 at 2020-07-22 14:20:13 -0400
+Processing by TicketsController#qr as HTML
+  [1m[36mTicket Load (1.3ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:22:in `qr'
+Completed 200 OK in 71ms (Views: 0.1ms | ActiveRecord: 7.5ms | Allocations: 30679)
+
+
+Started GET "/qrcode" for ::1 at 2020-07-22 14:20:15 -0400
+Processing by TicketsController#qr as HTML
+  [1m[36mTicket Load (0.6ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:22:in `qr'
+Completed 200 OK in 46ms (Views: 0.1ms | ActiveRecord: 0.6ms | Allocations: 25141)
+
+
+Started GET "/qrcode" for ::1 at 2020-07-22 14:20:17 -0400
+Processing by TicketsController#qr as HTML
+  [1m[36mTicket Load (0.8ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:22:in `qr'
+Completed 200 OK in 61ms (Views: 0.1ms | ActiveRecord: 0.8ms | Allocations: 25144)
+
+
+Started GET "/qrcode" for ::1 at 2020-07-22 14:20:25 -0400
+Processing by TicketsController#qr as HTML
+  [1m[36mTicket Load (0.3ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:22:in `qr'
+Completed 200 OK in 69ms (Views: 0.2ms | ActiveRecord: 4.0ms | Allocations: 30665)
+
+
+Started GET "/qrcode" for ::1 at 2020-07-22 14:20:33 -0400
+Processing by TicketsController#qr as HTML
+  [1m[36mTicket Load (0.5ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:22:in `qr'
+Completed 200 OK in 66ms (Views: 0.2ms | ActiveRecord: 4.0ms | Allocations: 30678)
+
+
+Started GET "/qrcode" for ::1 at 2020-07-22 14:22:13 -0400
+Processing by TicketsController#qr as HTML
+  [1m[36mTicket Load (0.3ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:22:in `qr'
+Completed 200 OK in 70ms (Views: 0.1ms | ActiveRecord: 6.0ms | Allocations: 30678)
+
+
+Started GET "/qrcode" for ::1 at 2020-07-22 14:22:14 -0400
+Processing by TicketsController#qr as HTML
+  [1m[36mTicket Load (0.5ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:22:in `qr'
+Completed 200 OK in 97ms (Views: 0.1ms | ActiveRecord: 0.5ms | Allocations: 25141)
+
+
+Started GET "/" for ::1 at 2020-07-22 14:22:17 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/stefonsimmons/.rbenv/versions/2.6.4/lib/ruby/gems/2.6.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/stefonsimmons/.rbenv/versions/2.6.4/lib/ruby/gems/2.6.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.1ms | Allocations: 7)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 263)
+
+
+Started GET "/qrcode" for ::1 at 2020-07-22 14:22:20 -0400
+Processing by TicketsController#qr as HTML
+  [1m[36mTicket Load (0.6ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:22:in `qr'
+Completed 200 OK in 82ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 25144)
+
+
+Started GET "/qrcode" for ::1 at 2020-07-22 14:22:26 -0400
+Processing by TicketsController#qr as HTML
+  [1m[36mTicket Load (0.6ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:22:in `qr'
+Completed 200 OK in 52ms (Views: 0.1ms | ActiveRecord: 0.6ms | Allocations: 25141)
+
+
+Started GET "/tickets" for ::1 at 2020-07-22 14:22:40 -0400
+Processing by TicketsController#index as HTML
+  [1m[36mTicket Load (0.5ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets"[0m
+  ↳ app/controllers/tickets_controller.rb:12:in `index'
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.5ms | Allocations: 1009)
+
+
+Started GET "/qrcode" for ::1 at 2020-07-22 14:22:45 -0400
+Processing by TicketsController#qr as HTML
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:22:in `qr'
+Completed 200 OK in 54ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 25141)
+
+
+Started GET "/qrcode" for ::1 at 2020-07-22 14:24:32 -0400
+Processing by TicketsController#showqr as HTML
+  [1m[36mTicket Load (0.3ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:22:in `showqr'
+Completed 200 OK in 73ms (Views: 0.1ms | ActiveRecord: 5.9ms | Allocations: 30694)
+
+
+Started GET "/qrcode" for ::1 at 2020-07-22 14:24:42 -0400
+Processing by TicketsController#showqr as HTML
+  [1m[36mTicket Load (0.5ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:22:in `showqr'
+Completed 200 OK in 102ms (Views: 0.1ms | ActiveRecord: 0.5ms | Allocations: 25144)
+
+
+Started GET "/qrcode" for ::1 at 2020-07-22 14:24:46 -0400
+Processing by TicketsController#showqr as HTML
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:22:in `showqr'
+Completed 200 OK in 47ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 25141)
+
+
+Started GET "/qrcode" for ::1 at 2020-07-22 14:24:48 -0400
+Processing by TicketsController#showqr as HTML
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:22:in `showqr'
+Completed 200 OK in 49ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 25141)
+
+
+Started GET "/qrcode" for ::1 at 2020-07-22 14:25:00 -0400
+Processing by TicketsController#showqr as HTML
+  [1m[36mTicket Load (1.0ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:22:in `showqr'
+Completed 200 OK in 64ms (Views: 0.1ms | ActiveRecord: 5.6ms | Allocations: 30678)
+
+
+Started GET "/qrcode" for ::1 at 2020-07-22 14:25:09 -0400
+Processing by TicketsController#showqr as HTML
+  [1m[36mTicket Load (0.6ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:22:in `showqr'
+Completed 200 OK in 65ms (Views: 0.1ms | ActiveRecord: 0.6ms | Allocations: 25141)
+
+
+Started GET "/qrcode" for ::1 at 2020-07-22 14:25:30 -0400
+Processing by TicketsController#showqr as HTML
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:22:in `showqr'
+Completed 200 OK in 73ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 25144)
+
+
+Started GET "/qrcode" for ::1 at 2020-07-22 14:27:30 -0400
+Processing by TicketsController#showqr as */*
+  [1m[36mTicket Load (0.6ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:22:in `showqr'
+Completed 200 OK in 95ms (Views: 0.2ms | ActiveRecord: 8.2ms | Allocations: 30680)
+
+
+Started GET "/tickets" for ::1 at 2020-07-22 14:27:52 -0400
+Processing by TicketsController#index as */*
+  [1m[36mTicket Load (52.1ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets"[0m
+  ↳ app/controllers/tickets_controller.rb:12:in `index'
+Completed 200 OK in 72ms (Views: 19.3ms | ActiveRecord: 52.1ms | Allocations: 1011)
+
+
+Started POST "/tickets" for ::1 at 2020-07-22 14:32:46 -0400
+Processing by TicketsController#create as */*
+  Parameters: {"ticket"=>{"code"=>"jifafanfaffojiojewoewr4i989", "time_slot"=>"2000-01-01T05:30:00.000Z", "event_id"=>2, "user_id"=>1}}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 773)
+
+
+  
+NoMethodError (undefined method `permitt' for #<ActionController::Parameters:0x00007f9dee859d30>
+Did you mean?  permit
+               permit!):
+  
+app/controllers/tickets_controller.rb:67:in `ticket_params'
+app/controllers/tickets_controller.rb:37:in `create'
+Started POST "/tickets" for ::1 at 2020-07-22 14:33:36 -0400
+Processing by TicketsController#create as */*
+  Parameters: {"ticket"=>{"code"=>"jifafanfaffojiojewoewr4i989", "time_slot"=>"2000-01-01T05:30:00.000Z", "event_id"=>2, "user_id"=>1}}
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tickets_controller.rb:37:in `create'
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:37:in `create'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:37:in `create'
+  [1m[36mTicket Create (6.0ms)[0m  [1m[32mINSERT INTO "tickets" ("code", "time_slot", "event_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["code", "jifafanfaffojiojewoewr4i989"], ["time_slot", "05:30:00"], ["event_id", 2], ["user_id", 1], ["created_at", "2020-07-22 18:33:36.378230"], ["updated_at", "2020-07-22 18:33:36.378230"]]
+  ↳ app/controllers/tickets_controller.rb:37:in `create'
+  [1m[36mTicket Update (0.6ms)[0m  [1m[33mUPDATE "tickets" SET "code" = $1, "updated_at" = $2 WHERE "tickets"."id" = $3[0m  [["code", "5154a59f4ab83d4eba032440a2eeddc8"], ["updated_at", "2020-07-22 18:33:36.390026"], ["id", 2]]
+  ↳ app/models/ticket.rb:11:in `generate_code'
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tickets_controller.rb:37:in `create'
+Completed 201 Created in 118ms (Views: 0.9ms | ActiveRecord: 30.6ms | Allocations: 28037)
+
+
+Started GET "/tickets" for ::1 at 2020-07-22 14:33:49 -0400
+Processing by TicketsController#index as */*
+  Parameters: {"ticket"=>{"code"=>"jifafanfaffojiojewoewr4i989", "time_slot"=>"2000-01-01T05:30:00.000Z", "event_id"=>2, "user_id"=>1}}
+  [1m[36mTicket Load (3.7ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets"[0m
+  ↳ app/controllers/tickets_controller.rb:12:in `index'
+Completed 200 OK in 7ms (Views: 3.0ms | ActiveRecord: 3.7ms | Allocations: 1172)
+
+
+Started GET "/qrcode" for ::1 at 2020-07-22 14:33:58 -0400
+Processing by TicketsController#showqr as */*
+  Parameters: {"ticket"=>{"code"=>"jifafanfaffojiojewoewr4i989", "time_slot"=>"2000-01-01T05:30:00.000Z", "event_id"=>2, "user_id"=>1}}
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:22:in `showqr'
+Completed 200 OK in 107ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 25178)
+
+
+Started GET "/qrcode" for ::1 at 2020-07-22 14:34:12 -0400
+Processing by TicketsController#showqr as HTML
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" ORDER BY "tickets"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:22:in `showqr'
+Completed 200 OK in 52ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 25142)
+
+
+Started GET "/qrcode" for ::1 at 2020-07-22 14:36:01 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/qrcode"):
+  
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/qrcode/1" for ::1 at 2020-07-22 14:36:04 -0400
+Processing by TicketsController#showqr as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 523)
+
+
+  
+NoMethodError (undefined method `code' for nil:NilClass):
+  
+app/controllers/tickets_controller.rb:23:in `showqr'
+Started GET "/qrcode/1" for ::1 at 2020-07-22 14:36:44 -0400
+  
+SyntaxError (/Users/stefonsimmons/Pentagon/app/controllers/tickets_controller.rb:6: syntax error, unexpected ',', expecting ']'
+...re_action :set_ticket, only: [,:showqr, :show, :update, :des...
+...                              ^):
+  
+app/controllers/tickets_controller.rb:6: syntax error, unexpected ',', expecting ']'
+app/controllers/tickets_controller.rb:6: syntax error, unexpected ',', expecting ']'
+Started GET "/qrcode/1" for ::1 at 2020-07-22 14:36:55 -0400
+Processing by TicketsController#showqr as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTicket Load (0.3ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:62:in `set_ticket'
+Completed 200 OK in 79ms (Views: 0.1ms | ActiveRecord: 4.5ms | Allocations: 30632)
+
+
+Started GET "/qrcode/2" for ::1 at 2020-07-22 14:36:58 -0400
+Processing by TicketsController#showqr as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTicket Load (0.5ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:62:in `set_ticket'
+Completed 200 OK in 52ms (Views: 0.1ms | ActiveRecord: 0.5ms | Allocations: 24997)
+
+
