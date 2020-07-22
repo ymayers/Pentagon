@@ -4,9 +4,13 @@ Rails.application.routes.draw do
   # get '/users_events_tickets', to: 'users#users_events_tickets'
 
   resources :credit_cards
-  resources :tickets
+  resources :users do
+    resources :tickets
+
+  end
+  
   resources :events
-  resources :users
+  
 
   post '/auth/login', to: 'authentications#login'
   get '/auth/verify', to: 'authentications#verify'
