@@ -34,11 +34,11 @@ class TicketsController < ApplicationController
   # POST /tickets
   def create
     @ticket = Ticket.create(ticket_params)
-    # if @ticket.save
+    if @ticket.save
       render json: @ticket, status: :created, location: @ticket
-    # else
-    #   render json: @ticket.errors, status: :unprocessable_entity
-    # end
+    else
+      render json: @ticket.errors, status: :unprocessable_entity
+    end
   end
 
   # PATCH/PUT /tickets/1

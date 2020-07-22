@@ -1102,3 +1102,239 @@ Processing by TicketsController#showqr as HTML
 Completed 200 OK in 52ms (Views: 0.1ms | ActiveRecord: 0.5ms | Allocations: 24997)
 
 
+Started GET "/tickets" for ::1 at 2020-07-22 14:53:39 -0400
+Processing by TicketsController#index as */*
+  Parameters: {"ticket"=>{"code"=>"jifafanfaffojiojewoewr4i989", "time_slot"=>"2000-01-01T05:30:00.000Z", "event_id"=>2, "user_id"=>1}}
+  [1m[36mTicket Load (2.1ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets"[0m
+  ↳ app/controllers/tickets_controller.rb:12:in `index'
+Completed 200 OK in 18ms (Views: 14.3ms | ActiveRecord: 2.1ms | Allocations: 5724)
+
+
+Started POST "/tickets" for ::1 at 2020-07-22 14:54:18 -0400
+Processing by TicketsController#create as */*
+  Parameters: {"ticket"=>{"code"=>"", "time_slot"=>"2000-01-01T05:00:00.000Z", "event_id"=>2, "user_id"=>1}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tickets_controller.rb:36:in `create'
+  [1m[36mEvent Load (23.7ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:36:in `create'
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:36:in `create'
+  [1m[36mTicket Create (1.2ms)[0m  [1m[32mINSERT INTO "tickets" ("code", "time_slot", "event_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["code", ""], ["time_slot", "05:00:00"], ["event_id", 2], ["user_id", 1], ["created_at", "2020-07-22 18:54:18.237093"], ["updated_at", "2020-07-22 18:54:18.237093"]]
+  ↳ app/controllers/tickets_controller.rb:36:in `create'
+  [1m[36mTicket Update (0.6ms)[0m  [1m[33mUPDATE "tickets" SET "code" = $1, "updated_at" = $2 WHERE "tickets"."id" = $3[0m  [["code", "1ec909ec7a84070eff15d37e5eefb2c9"], ["updated_at", "2020-07-22 18:54:18.246928"], ["id", 3]]
+  ↳ app/models/ticket.rb:11:in `generate_code'
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tickets_controller.rb:36:in `create'
+Completed 201 Created in 138ms (Views: 0.7ms | ActiveRecord: 70.0ms | Allocations: 22834)
+
+
+Started POST "/tickets" for ::1 at 2020-07-22 14:57:07 -0400
+Processing by TicketsController#create as */*
+  Parameters: {"ticket"=>{"code"=>"", "time_slot"=>"2000-01-01T02:00:00.000Z", "event_id"=>1, "user_id"=>1}}
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tickets_controller.rb:36:in `create'
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:36:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:36:in `create'
+  [1m[36mTicket Create (0.6ms)[0m  [1m[32mINSERT INTO "tickets" ("code", "time_slot", "event_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["code", ""], ["time_slot", "02:00:00"], ["event_id", 1], ["user_id", 1], ["created_at", "2020-07-22 18:57:07.476862"], ["updated_at", "2020-07-22 18:57:07.476862"]]
+  ↳ app/controllers/tickets_controller.rb:36:in `create'
+  [1m[36mTicket Update (2.5ms)[0m  [1m[33mUPDATE "tickets" SET "code" = $1, "updated_at" = $2 WHERE "tickets"."id" = $3[0m  [["code", "ebf3f2fcaafa87751b450fb1331aa136"], ["updated_at", "2020-07-22 18:57:07.479940"], ["id", 4]]
+  ↳ app/models/ticket.rb:11:in `generate_code'
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tickets_controller.rb:36:in `create'
+Completed 201 Created in 94ms (Views: 0.8ms | ActiveRecord: 20.4ms | Allocations: 26430)
+
+
+Started GET "/qrcode/4" for ::1 at 2020-07-22 14:57:22 -0400
+Processing by TicketsController#showqr as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mTicket Load (0.9ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:61:in `set_ticket'
+Completed 200 OK in 57ms (Views: 0.1ms | ActiveRecord: 0.9ms | Allocations: 24889)
+
+
+Started GET "/qrcode/3" for ::1 at 2020-07-22 14:57:25 -0400
+Processing by TicketsController#showqr as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mTicket Load (0.5ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:61:in `set_ticket'
+Completed 200 OK in 57ms (Views: 0.1ms | ActiveRecord: 0.5ms | Allocations: 24817)
+
+
+Started GET "/qrcode" for ::1 at 2020-07-22 14:57:27 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/qrcode"):
+  
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/tickets" for ::1 at 2020-07-22 14:57:36 -0400
+Processing by TicketsController#index as HTML
+  [1m[36mTicket Load (3.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets"[0m
+  ↳ app/controllers/tickets_controller.rb:12:in `index'
+Completed 200 OK in 8ms (Views: 4.2ms | ActiveRecord: 3.4ms | Allocations: 1460)
+
+
+Started POST "/tickets" for ::1 at 2020-07-22 14:58:55 -0400
+  
+SyntaxError (/Users/stefonsimmons/Pentagon/app/controllers/tickets_controller.rb:12: syntax error, unexpected '\n', expecting =>
+/Users/stefonsimmons/Pentagon/app/controllers/tickets_controller.rb:68: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/tickets_controller.rb:12: syntax error, unexpected '\n', expecting =>
+app/controllers/tickets_controller.rb:68: syntax error, unexpected end-of-input, expecting end
+app/controllers/tickets_controller.rb:12: syntax error, unexpected '\n', expecting =>
+app/controllers/tickets_controller.rb:68: syntax error, unexpected end-of-input, expecting end
+Started GET "/tickets" for ::1 at 2020-07-22 14:59:09 -0400
+  
+SyntaxError (/Users/stefonsimmons/Pentagon/app/controllers/tickets_controller.rb:12: syntax error, unexpected '\n', expecting =>
+/Users/stefonsimmons/Pentagon/app/controllers/tickets_controller.rb:68: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/tickets_controller.rb:12: syntax error, unexpected '\n', expecting =>
+app/controllers/tickets_controller.rb:68: syntax error, unexpected end-of-input, expecting end
+app/controllers/tickets_controller.rb:12: syntax error, unexpected '\n', expecting =>
+app/controllers/tickets_controller.rb:68: syntax error, unexpected end-of-input, expecting end
+Started GET "/qrcode" for ::1 at 2020-07-22 15:01:52 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/qrcode"):
+  
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/qrcode/2" for ::1 at 2020-07-22 15:01:54 -0400
+  
+SyntaxError (/Users/stefonsimmons/Pentagon/app/controllers/tickets_controller.rb:12: syntax error, unexpected '\n', expecting =>
+/Users/stefonsimmons/Pentagon/app/controllers/tickets_controller.rb:31: syntax error, unexpected tLABEL
+    render json: xml: @svg
+                 ^~~~
+/Users/stefonsimmons/Pentagon/app/controllers/tickets_controller.rb:68: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/tickets_controller.rb:12: syntax error, unexpected '\n', expecting =>
+app/controllers/tickets_controller.rb:31: syntax error, unexpected tLABEL
+app/controllers/tickets_controller.rb:68: syntax error, unexpected end-of-input, expecting end
+app/controllers/tickets_controller.rb:12: syntax error, unexpected '\n', expecting =>
+app/controllers/tickets_controller.rb:31: syntax error, unexpected tLABEL
+app/controllers/tickets_controller.rb:68: syntax error, unexpected end-of-input, expecting end
+Started GET "/qrcode/2" for ::1 at 2020-07-22 15:02:05 -0400
+  
+SyntaxError (/Users/stefonsimmons/Pentagon/app/controllers/tickets_controller.rb:31: syntax error, unexpected tLABEL
+    render json: xml: @svg
+                 ^~~~):
+  
+app/controllers/tickets_controller.rb:31: syntax error, unexpected tLABEL
+app/controllers/tickets_controller.rb:31: syntax error, unexpected tLABEL
+Started GET "/qrcode/2" for ::1 at 2020-07-22 15:02:20 -0400
+Processing by TicketsController#showqr as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTicket Load (0.3ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:61:in `set_ticket'
+Completed 200 OK in 75ms (Views: 0.2ms | ActiveRecord: 3.9ms | Allocations: 30609)
+
+
+Started GET "/users" for ::1 at 2020-07-22 15:08:32 -0400
+Processing by UsersController#index as */*
+  Parameters: {"ticket"=>{"code"=>"", "time_slot"=>"2000-01-01T02:00:00.000Z", "event_id"=>1, "user_id"=>1}, "user"=>{}}
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7:in `index'
+Completed 200 OK in 57ms (Views: 48.8ms | ActiveRecord: 12.5ms | Allocations: 7716)
+
+
+Started GET "/users/1" for ::1 at 2020-07-22 15:08:41 -0400
+Processing by UsersController#show as */*
+  Parameters: {"ticket"=>{"code"=>"", "time_slot"=>"2000-01-01T02:00:00.000Z", "event_id"=>1, "user_id"=>1}, "id"=>"1", "user"=>{}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:43:in `set_user'
+Completed 200 OK in 5ms (Views: 0.6ms | ActiveRecord: 1.2ms | Allocations: 1026)
+
+
+Started POST "/users/" for ::1 at 2020-07-22 15:11:54 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"first_name"=>"Stefon", "last_name"=>"Simmons", "age"=>"29", "email"=>"test1@test.com", "mobile_phone"=>"2222222222", "profile_imgURL"=>"https://thesource.com/wp-content/uploads/2018/12/Morales.jpg", "id_imgURL"=>"vhttps://www.al.com/resizer/ingDutJaBIgpVBqOGbmDrgopjJY=/450x0/smart/arc-anglerfish-arc2-prod-advancelocal.s3.amazonaws.com/public/EUPR7DDYLNCPRMY2GKUARXJTJE.jpg", "password_digest"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:19:in `create'
+  [1m[36mUser Create (4.9ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "age", "email", "mobile_phone", "profile_imgURL", "id_imgURL", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["first_name", "Stefon"], ["last_name", "Simmons"], ["age", "29"], ["email", "test1@test.com"], ["mobile_phone", "2222222222"], ["profile_imgURL", "https://thesource.com/wp-content/uploads/2018/12/Morales.jpg"], ["id_imgURL", "vhttps://www.al.com/resizer/ingDutJaBIgpVBqOGbmDrgopjJY=/450x0/smart/arc-anglerfish-arc2-prod-advancelocal.s3.amazonaws.com/public/EUPR7DDYLNCPRMY2GKUARXJTJE.jpg"], ["password_digest", "okay123"], ["created_at", "2020-07-22 19:11:54.576526"], ["updated_at", "2020-07-22 19:11:54.576526"]]
+  ↳ app/controllers/users_controller.rb:19:in `create'
+  [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:19:in `create'
+Completed 201 Created in 15ms (Views: 0.8ms | ActiveRecord: 8.0ms | Allocations: 2975)
+
+
+Started GET "/users/" for ::1 at 2020-07-22 15:12:01 -0400
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"first_name"=>"Stefon", "last_name"=>"Simmons", "age"=>"29", "email"=>"test1@test.com", "mobile_phone"=>"2222222222", "profile_imgURL"=>"https://thesource.com/wp-content/uploads/2018/12/Morales.jpg", "id_imgURL"=>"vhttps://www.al.com/resizer/ingDutJaBIgpVBqOGbmDrgopjJY=/450x0/smart/arc-anglerfish-arc2-prod-advancelocal.s3.amazonaws.com/public/EUPR7DDYLNCPRMY2GKUARXJTJE.jpg", "password_digest"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.4ms | Allocations: 1277)
+
+
+Started DELETE "/users/2" for ::1 at 2020-07-22 15:12:19 -0400
+Processing by UsersController#destroy as */*
+  Parameters: {"user"=>{"first_name"=>"Stefon", "last_name"=>"Simmons", "age"=>"29", "email"=>"test1@test.com", "mobile_phone"=>"2222222222", "profile_imgURL"=>"https://thesource.com/wp-content/uploads/2018/12/Morales.jpg", "id_imgURL"=>"vhttps://www.al.com/resizer/ingDutJaBIgpVBqOGbmDrgopjJY=/450x0/smart/arc-anglerfish-arc2-prod-advancelocal.s3.amazonaws.com/public/EUPR7DDYLNCPRMY2GKUARXJTJE.jpg", "password_digest"=>"[FILTERED]"}, "id"=>"2"}
+  [1m[36mUser Load (9.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:43:in `set_user'
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:37:in `destroy'
+  [1m[36mUser Destroy (3.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/users_controller.rb:37:in `destroy'
+  [1m[35m (5.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:37:in `destroy'
+Completed 204 No Content in 27ms (ActiveRecord: 18.4ms | Allocations: 2539)
+
+
+Started POST "/users" for ::1 at 2020-07-22 15:12:32 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"first_name"=>"Stefon", "last_name"=>"Simmons", "age"=>"29", "email"=>"test1@test.com", "mobile_phone"=>"2222222222", "profile_imgURL"=>"https://thesource.com/wp-content/uploads/2018/12/Morales.jpg", "id_imgURL"=>"vhttps://www.al.com/resizer/ingDutJaBIgpVBqOGbmDrgopjJY=/450x0/smart/arc-anglerfish-arc2-prod-advancelocal.s3.amazonaws.com/public/EUPR7DDYLNCPRMY2GKUARXJTJE.jpg", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :password[0m
+Completed 422 Unprocessable Entity in 38ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 3707)
+
+
+Started POST "/users" for ::1 at 2020-07-22 15:13:03 -0400
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"first_name"=>"Stefon", "last_name"=>"Simmons", "age"=>"29", "email"=>"test1@test.com", "mobile_phone"=>"2222222222", "profile_imgURL"=>"https://thesource.com/wp-content/uploads/2018/12/Morales.jpg", "id_imgURL"=>"vhttps://www.al.com/resizer/ingDutJaBIgpVBqOGbmDrgopjJY=/450x0/smart/arc-anglerfish-arc2-prod-advancelocal.s3.amazonaws.com/public/EUPR7DDYLNCPRMY2GKUARXJTJE.jpg", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:19:in `create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "age", "email", "mobile_phone", "profile_imgURL", "id_imgURL", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["first_name", "Stefon"], ["last_name", "Simmons"], ["age", "29"], ["email", "test1@test.com"], ["mobile_phone", "2222222222"], ["profile_imgURL", "https://thesource.com/wp-content/uploads/2018/12/Morales.jpg"], ["id_imgURL", "vhttps://www.al.com/resizer/ingDutJaBIgpVBqOGbmDrgopjJY=/450x0/smart/arc-anglerfish-arc2-prod-advancelocal.s3.amazonaws.com/public/EUPR7DDYLNCPRMY2GKUARXJTJE.jpg"], ["password_digest", "$2a$12$EDP3VIi4ly8IoEDHXH.3euEinusyi.ZJ7m7cMlBzXg5339st0KF.2"], ["created_at", "2020-07-22 19:13:04.395885"], ["updated_at", "2020-07-22 19:13:04.395885"]]
+  ↳ app/controllers/users_controller.rb:19:in `create'
+  [1m[35m (41.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:19:in `create'
+Completed 201 Created in 543ms (Views: 1.6ms | ActiveRecord: 51.1ms | Allocations: 10366)
+
+
