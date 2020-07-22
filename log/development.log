@@ -72,3 +72,283 @@ FOREIGN KEY ("user_id")
   [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(7829529462994003800)[0m
   [1m[35m (3.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7829529462994003800)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddFieldsToEvents (20200722161805)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (45.1ms)[0m  [1m[35mALTER TABLE "events" ADD "date" date[0m
+  [1m[36mprimary::SchemaMigration Create (2.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200722161805"]]
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (39.9ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(7829529462994003800)[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (3.8ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "age", "email", "mobile_phone", "profile_imgURL", "id_imgURL", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["first_name", "Yolea"], ["last_name", "Mayers"], ["age", "32"], ["email", "test@test.com"], ["mobile_phone", "555555555"], ["profile_imgURL", "https://imgur.com/GIoOhdj.png"], ["id_imgURL", "https://imgur.com/itwx0Ty.png"], ["password_digest", "$2a$12$TC7ZxKyKEV8Mt0YN8dap0OhghydQw6SFHQYE3Eryy8321M/T8NjHW"], ["created_at", "2020-07-22 16:40:18.504907"], ["updated_at", "2020-07-22 16:40:18.504907"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (50.9ms)[0m  [1m[32mINSERT INTO "events" ("event_name", "imgURL", "capacity", "ticket_cost", "gateway", "start_time", "end_time", "created_at", "updated_at", "date") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["event_name", "Afropunk"], ["imgURL", "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQjnL-DcV7xyNUHeZuLvBcdNuUkm1mSLL6q1g&usqp=CAU.png"], ["capacity", 1000], ["ticket_cost", "$55"], ["gateway", "gate1, gate2"], ["start_time", "08:00:00"], ["end_time", "11:00:00"], ["created_at", "2020-07-22 16:40:18.550024"], ["updated_at", "2020-07-22 16:40:18.550024"], ["date", "2021-08-26"]]
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (0.4ms)[0m  [1m[32mINSERT INTO "events" ("event_name", "imgURL", "capacity", "ticket_cost", "gateway", "start_time", "end_time", "created_at", "updated_at", "date") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["event_name", "Coachella"], ["imgURL", "https://imgur.com/TjdWMqI.png"], ["capacity", 1000], ["ticket_cost", "$650"], ["gateway", "gate1, gate2, gate3, gate4, gate5"], ["start_time", "06:00:00"], ["end_time", "23:00:00"], ["created_at", "2020-07-22 16:40:18.622217"], ["updated_at", "2020-07-22 16:40:18.622217"], ["date", "2021-03-12"]]
+  [1m[35m (3.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTicket Create (52.1ms)[0m  [1m[32mINSERT INTO "tickets" ("code", "time_slot", "event_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["code", "jifafanfaffojiojewoewr4i989"], ["time_slot", "05:30:00"], ["event_id", 1], ["user_id", 1], ["created_at", "2020-07-22 16:40:18.698136"], ["updated_at", "2020-07-22 16:40:18.698136"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCreditCard Create (1.4ms)[0m  [1m[32mINSERT INTO "credit_cards" ("full_name", "cc_number", "expiration_date", "cvc", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["full_name", "#<User:0x00007ffa9158b630>"], ["cc_number", "555333322221"], ["expiration_date", "03/23"], ["cvc", "445"], ["user_id", 1], ["created_at", "2020-07-22 16:40:18.793194"], ["updated_at", "2020-07-22 16:40:18.793194"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (8684.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "Pentagon_development"[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (179.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "Pentagon_development"[0m
+  [1m[35m (134.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "Pentagon_test"[0m
+  [1m[35m (417.7ms)[0m  [1m[35mCREATE DATABASE "Pentagon_development" ENCODING = 'unicode'[0m
+  [1m[35m (212.3ms)[0m  [1m[35mCREATE DATABASE "Pentagon_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (11.2ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (3.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "credit_cards" CASCADE[0m
+  [1m[35m (20.7ms)[0m  [1m[35mCREATE TABLE "credit_cards" ("id" bigserial primary key, "full_name" character varying, "cc_number" character varying, "expiration_date" character varying, "cvc" character varying, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE  INDEX  "index_credit_cards_on_user_id" ON "credit_cards"  ("user_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "events" CASCADE[0m
+  [1m[35m (28.5ms)[0m  [1m[35mCREATE TABLE "events" ("id" bigserial primary key, "event_name" character varying, "imgURL" character varying, "capacity" integer, "ticket_cost" character varying, "gateway" character varying, "start_time" time, "end_time" time, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "date" date)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "tickets" CASCADE[0m
+  [1m[35m (10.5ms)[0m  [1m[35mCREATE TABLE "tickets" ("id" bigserial primary key, "code" character varying, "time_slot" time, "event_id" bigint NOT NULL, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE  INDEX  "index_tickets_on_event_id" ON "tickets"  ("event_id")[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE  INDEX  "index_tickets_on_user_id" ON "tickets"  ("user_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (13.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "age" character varying, "email" character varying, "mobile_phone" character varying, "profile_imgURL" character varying, "id_imgURL" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (6.6ms)[0m  [1m[35mALTER TABLE "credit_cards" ADD CONSTRAINT "fk_rails_069bf994f3"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (4.3ms)[0m  [1m[35mALTER TABLE "tickets" ADD CONSTRAINT "fk_rails_4def87ea62"
+FOREIGN KEY ("event_id")
+  REFERENCES "events" ("id")
+[0m
+  [1m[35m (3.1ms)[0m  [1m[35mALTER TABLE "tickets" ADD CONSTRAINT "fk_rails_538a036fb9"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (10.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (9.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200722161805)[0m
+  [1m[35m (2.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200722152123),
+(20200722152835),
+(20200722153714),
+(20200722153918);
+
+[0m
+  [1m[35m (11.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-07-22 16:47:16.137651"], ["updated_at", "2020-07-22 16:47:16.137651"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "ec714f0a69ac025b010d36530c3ea5b4fe73cbcf"], ["created_at", "2020-07-22 16:47:16.158381"], ["updated_at", "2020-07-22 16:47:16.158381"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "credit_cards" CASCADE[0m
+  [1m[35m (18.7ms)[0m  [1m[35mCREATE TABLE "credit_cards" ("id" bigserial primary key, "full_name" character varying, "cc_number" character varying, "expiration_date" character varying, "cvc" character varying, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE  INDEX  "index_credit_cards_on_user_id" ON "credit_cards"  ("user_id")[0m
+  [1m[35m (42.7ms)[0m  [1m[35mDROP TABLE IF EXISTS "events" CASCADE[0m
+  [1m[35m (11.3ms)[0m  [1m[35mCREATE TABLE "events" ("id" bigserial primary key, "event_name" character varying, "imgURL" character varying, "capacity" integer, "ticket_cost" character varying, "gateway" character varying, "start_time" time, "end_time" time, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "date" date)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "tickets" CASCADE[0m
+  [1m[35m (15.0ms)[0m  [1m[35mCREATE TABLE "tickets" ("id" bigserial primary key, "code" character varying, "time_slot" time, "event_id" bigint NOT NULL, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE  INDEX  "index_tickets_on_event_id" ON "tickets"  ("event_id")[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE  INDEX  "index_tickets_on_user_id" ON "tickets"  ("user_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (18.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "age" character varying, "email" character varying, "mobile_phone" character varying, "profile_imgURL" character varying, "id_imgURL" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (6.6ms)[0m  [1m[35mALTER TABLE "credit_cards" ADD CONSTRAINT "fk_rails_069bf994f3"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (3.8ms)[0m  [1m[35mALTER TABLE "tickets" ADD CONSTRAINT "fk_rails_4def87ea62"
+FOREIGN KEY ("event_id")
+  REFERENCES "events" ("id")
+[0m
+  [1m[35m (6.1ms)[0m  [1m[35mALTER TABLE "tickets" ADD CONSTRAINT "fk_rails_538a036fb9"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (8.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (3.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200722161805)[0m
+  [1m[35m (2.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200722152123),
+(20200722152835),
+(20200722153714),
+(20200722153918);
+
+[0m
+  [1m[35m (13.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-07-22 16:47:16.478167"], ["updated_at", "2020-07-22 16:47:16.478167"]]
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (2.6ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2020-07-22 16:47:16.492018"], ["key", "environment"]]
+  [1m[35m (4.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "ec714f0a69ac025b010d36530c3ea5b4fe73cbcf"], ["created_at", "2020-07-22 16:47:16.511735"], ["updated_at", "2020-07-22 16:47:16.511735"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (3.5ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "age", "email", "mobile_phone", "profile_imgURL", "id_imgURL", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["first_name", "Yolea"], ["last_name", "Mayers"], ["age", "32"], ["email", "test@test.com"], ["mobile_phone", "555555555"], ["profile_imgURL", "https://imgur.com/GIoOhdj.png"], ["id_imgURL", "https://imgur.com/itwx0Ty.png"], ["password_digest", "$2a$12$qWwQrt1Kdp4lnD8d.5DP4OJXFzO.dgbw.4art.CQ1bt5SDaz9k0xm"], ["created_at", "2020-07-22 16:47:17.007318"], ["updated_at", "2020-07-22 16:47:17.007318"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (1.0ms)[0m  [1m[32mINSERT INTO "events" ("event_name", "imgURL", "capacity", "ticket_cost", "gateway", "start_time", "end_time", "created_at", "updated_at", "date") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["event_name", "Afropunk"], ["imgURL", "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQjnL-DcV7xyNUHeZuLvBcdNuUkm1mSLL6q1g&usqp=CAU.png"], ["capacity", 1000], ["ticket_cost", "$55"], ["gateway", "gate1, gate2"], ["start_time", "08:00:00"], ["end_time", "11:00:00"], ["created_at", "2020-07-22 16:47:17.045526"], ["updated_at", "2020-07-22 16:47:17.045526"], ["date", "2021-08-26"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (0.6ms)[0m  [1m[32mINSERT INTO "events" ("event_name", "imgURL", "capacity", "ticket_cost", "gateway", "start_time", "end_time", "created_at", "updated_at", "date") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["event_name", "Coachella"], ["imgURL", "https://imgur.com/TjdWMqI.png"], ["capacity", 1000], ["ticket_cost", "$650"], ["gateway", "gate1, gate2, gate3, gate4, gate5"], ["start_time", "06:00:00"], ["end_time", "23:00:00"], ["created_at", "2020-07-22 16:47:17.054415"], ["updated_at", "2020-07-22 16:47:17.054415"], ["date", "2021-03-12"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTicket Create (1.7ms)[0m  [1m[32mINSERT INTO "tickets" ("code", "time_slot", "event_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["code", "jifafanfaffojiojewoewr4i989"], ["time_slot", "05:30:00"], ["event_id", 1], ["user_id", 1], ["created_at", "2020-07-22 16:47:17.130082"], ["updated_at", "2020-07-22 16:47:17.130082"]]
+  [1m[35m (41.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCreditCard Create (2.5ms)[0m  [1m[32mINSERT INTO "credit_cards" ("full_name", "cc_number", "expiration_date", "cvc", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["full_name", "f"], ["cc_number", "555333322221"], ["expiration_date", "03/23"], ["cvc", "445"], ["user_id", 1], ["created_at", "2020-07-22 16:47:17.213009"], ["updated_at", "2020-07-22 16:47:17.213009"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (166.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "Pentagon_development"[0m
+  [1m[35m (113.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "Pentagon_test"[0m
+  [1m[35m (435.0ms)[0m  [1m[35mCREATE DATABASE "Pentagon_development" ENCODING = 'unicode'[0m
+  [1m[35m (169.5ms)[0m  [1m[35mCREATE DATABASE "Pentagon_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "credit_cards" CASCADE[0m
+  [1m[35m (22.6ms)[0m  [1m[35mCREATE TABLE "credit_cards" ("id" bigserial primary key, "full_name" character varying, "cc_number" character varying, "expiration_date" character varying, "cvc" character varying, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE  INDEX  "index_credit_cards_on_user_id" ON "credit_cards"  ("user_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "events" CASCADE[0m
+  [1m[35m (10.0ms)[0m  [1m[35mCREATE TABLE "events" ("id" bigserial primary key, "event_name" character varying, "imgURL" character varying, "capacity" integer, "ticket_cost" character varying, "gateway" character varying, "start_time" time, "end_time" time, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "date" date)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "tickets" CASCADE[0m
+  [1m[35m (18.7ms)[0m  [1m[35mCREATE TABLE "tickets" ("id" bigserial primary key, "code" character varying, "time_slot" time, "event_id" bigint NOT NULL, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE  INDEX  "index_tickets_on_event_id" ON "tickets"  ("event_id")[0m
+  [1m[35m (6.4ms)[0m  [1m[35mCREATE  INDEX  "index_tickets_on_user_id" ON "tickets"  ("user_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (20.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "age" character varying, "email" character varying, "mobile_phone" character varying, "profile_imgURL" character varying, "id_imgURL" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (5.9ms)[0m  [1m[35mALTER TABLE "credit_cards" ADD CONSTRAINT "fk_rails_069bf994f3"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (51.0ms)[0m  [1m[35mALTER TABLE "tickets" ADD CONSTRAINT "fk_rails_4def87ea62"
+FOREIGN KEY ("event_id")
+  REFERENCES "events" ("id")
+[0m
+  [1m[35m (4.3ms)[0m  [1m[35mALTER TABLE "tickets" ADD CONSTRAINT "fk_rails_538a036fb9"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (9.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (8.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200722161805)[0m
+  [1m[35m (4.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200722152123),
+(20200722152835),
+(20200722153714),
+(20200722153918);
+
+[0m
+  [1m[35m (11.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-07-22 16:48:37.879468"], ["updated_at", "2020-07-22 16:48:37.879468"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "ec714f0a69ac025b010d36530c3ea5b4fe73cbcf"], ["created_at", "2020-07-22 16:48:37.895423"], ["updated_at", "2020-07-22 16:48:37.895423"]]
+  [1m[35m (40.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "credit_cards" CASCADE[0m
+  [1m[35m (16.0ms)[0m  [1m[35mCREATE TABLE "credit_cards" ("id" bigserial primary key, "full_name" character varying, "cc_number" character varying, "expiration_date" character varying, "cvc" character varying, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (7.3ms)[0m  [1m[35mCREATE  INDEX  "index_credit_cards_on_user_id" ON "credit_cards"  ("user_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "events" CASCADE[0m
+  [1m[35m (13.3ms)[0m  [1m[35mCREATE TABLE "events" ("id" bigserial primary key, "event_name" character varying, "imgURL" character varying, "capacity" integer, "ticket_cost" character varying, "gateway" character varying, "start_time" time, "end_time" time, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "date" date)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "tickets" CASCADE[0m
+  [1m[35m (11.5ms)[0m  [1m[35mCREATE TABLE "tickets" ("id" bigserial primary key, "code" character varying, "time_slot" time, "event_id" bigint NOT NULL, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (10.9ms)[0m  [1m[35mCREATE  INDEX  "index_tickets_on_event_id" ON "tickets"  ("event_id")[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE  INDEX  "index_tickets_on_user_id" ON "tickets"  ("user_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (6.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "age" character varying, "email" character varying, "mobile_phone" character varying, "profile_imgURL" character varying, "id_imgURL" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (11.7ms)[0m  [1m[35mALTER TABLE "credit_cards" ADD CONSTRAINT "fk_rails_069bf994f3"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (3.7ms)[0m  [1m[35mALTER TABLE "tickets" ADD CONSTRAINT "fk_rails_4def87ea62"
+FOREIGN KEY ("event_id")
+  REFERENCES "events" ("id")
+[0m
+  [1m[35m (3.0ms)[0m  [1m[35mALTER TABLE "tickets" ADD CONSTRAINT "fk_rails_538a036fb9"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (8.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200722161805)[0m
+  [1m[35m (3.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200722152123),
+(20200722152835),
+(20200722153714),
+(20200722153918);
+
+[0m
+  [1m[35m (11.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-07-22 16:48:38.209250"], ["updated_at", "2020-07-22 16:48:38.209250"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.5ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2020-07-22 16:48:38.219633"], ["key", "environment"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "ec714f0a69ac025b010d36530c3ea5b4fe73cbcf"], ["created_at", "2020-07-22 16:48:38.233637"], ["updated_at", "2020-07-22 16:48:38.233637"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (1.2ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "age", "email", "mobile_phone", "profile_imgURL", "id_imgURL", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["first_name", "Yolea"], ["last_name", "Mayers"], ["age", "32"], ["email", "test@test.com"], ["mobile_phone", "555555555"], ["profile_imgURL", "https://imgur.com/GIoOhdj.png"], ["id_imgURL", "https://imgur.com/itwx0Ty.png"], ["password_digest", "$2a$12$TB6HkMBvorKJ/.mscQacseqMoXi9OsJgoCNB7PrW/TCIJWPdJnPLK"], ["created_at", "2020-07-22 16:48:38.700972"], ["updated_at", "2020-07-22 16:48:38.700972"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (1.3ms)[0m  [1m[32mINSERT INTO "events" ("event_name", "imgURL", "capacity", "ticket_cost", "gateway", "start_time", "end_time", "created_at", "updated_at", "date") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["event_name", "Afropunk"], ["imgURL", "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQjnL-DcV7xyNUHeZuLvBcdNuUkm1mSLL6q1g&usqp=CAU.png"], ["capacity", 1000], ["ticket_cost", "$55"], ["gateway", "gate1, gate2"], ["start_time", "08:00:00"], ["end_time", "11:00:00"], ["created_at", "2020-07-22 16:48:38.733999"], ["updated_at", "2020-07-22 16:48:38.733999"], ["date", "2021-08-26"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Create (0.8ms)[0m  [1m[32mINSERT INTO "events" ("event_name", "imgURL", "capacity", "ticket_cost", "gateway", "start_time", "end_time", "created_at", "updated_at", "date") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["event_name", "Coachella"], ["imgURL", "https://imgur.com/TjdWMqI.png"], ["capacity", 1000], ["ticket_cost", "$650"], ["gateway", "gate1, gate2, gate3, gate4, gate5"], ["start_time", "06:00:00"], ["end_time", "23:00:00"], ["created_at", "2020-07-22 16:48:38.743311"], ["updated_at", "2020-07-22 16:48:38.743311"], ["date", "2021-03-12"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTicket Create (1.8ms)[0m  [1m[32mINSERT INTO "tickets" ("code", "time_slot", "event_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["code", "jifafanfaffojiojewoewr4i989"], ["time_slot", "05:30:00"], ["event_id", 1], ["user_id", 1], ["created_at", "2020-07-22 16:48:38.818105"], ["updated_at", "2020-07-22 16:48:38.818105"]]
+  [1m[35m (41.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCreditCard Create (1.4ms)[0m  [1m[32mINSERT INTO "credit_cards" ("full_name", "cc_number", "expiration_date", "cvc", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["full_name", "Yolea Mayers"], ["cc_number", "555333322221"], ["expiration_date", "03/23"], ["cvc", "445"], ["user_id", 1], ["created_at", "2020-07-22 16:48:38.889525"], ["updated_at", "2020-07-22 16:48:38.889525"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
