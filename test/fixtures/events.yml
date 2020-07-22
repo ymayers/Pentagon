@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event_name: MyString
+  imgURL: MyString
+  capacity: 1
+  ticket_cost: MyString
+  gateway: MyString
+  start_time: 2020-07-22 11:28:35
+  end_time: 2020-07-22 11:28:35
+
+two:
+  event_name: MyString
+  imgURL: MyString
+  capacity: 1
+  ticket_cost: MyString
+  gateway: MyString
+  start_time: 2020-07-22 11:28:35
+  end_time: 2020-07-22 11:28:35

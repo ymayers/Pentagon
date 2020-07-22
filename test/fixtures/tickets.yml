@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: MyString
+  time_slot: 2020-07-22 11:37:14
+  event: one
+  user: one
+
+two:
+  code: MyString
+  time_slot: 2020-07-22 11:37:14
+  event: two
+  user: two
