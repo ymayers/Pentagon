@@ -58,9 +58,10 @@ class App extends Component {
   //***************************************************************
 
   handleProfileImgUpdate = async (id, profileImgURL) => {
-    const changeUserImg = await updateProfileImg(id, profileImgURL);
-    // const user = this.statecurrentUser.map(post => post.id === id ? updatedPost : post)
-    // this.setState({current})
+    const updatedUserObj = await updateProfileImg(id, profileImgURL);
+    this.setState({
+      currentUser: updatedUserObj
+    })
   }
 
   //***************************************************************
@@ -98,7 +99,10 @@ class App extends Component {
           <Route
             path="/profile_setup"
             render={(props) => (
-              <ProfileIDSetUp {...props} currentUser={this.state.currentUser}/>
+              <ProfileIDSetUp {...props}
+                currentUser={this.state.currentUser}
+                handleProfileImgUpdate={this.handleProfileImgUpdate}
+              />
             )}
           />
           

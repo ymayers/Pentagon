@@ -125,10 +125,10 @@ export default class ID extends Component {
           <Main>
             {console.log('-->', this.state)}
   
-            <TabContainer class="w3-bar">
-              <Tab class="w3-bar-item w3-button" style={frontTab ? { boxShadow: 'none', color: '#6D6D6D' } : null} onClick={() => { this.openTab('frontTab') }}>1. FRONT</Tab>
-              <Tab class="w3-bar-item w3-button" style={backTab ? { boxShadow: 'none', color: '#6D6D6D' } : null} onClick={() => { this.openTab('backTab') }}>2. BACK</Tab>
-              <Tab class="w3-bar-item w3-button" style={selfieTab ? { boxShadow: 'none', color: '#6D6D6D' } : null} onClick={() => { this.openTab('selfieTab') }}>3. SELFIE</Tab>
+            <TabContainer className="w3-bar">
+              <Tab className="w3-bar-item w3-button" style={frontTab ? { boxShadow: 'none', color: '#6D6D6D' } : null} onClick={() => { this.openTab('frontTab') }}>1. FRONT</Tab>
+              <Tab className="w3-bar-item w3-button" style={backTab ? { boxShadow: 'none', color: '#6D6D6D' } : null} onClick={() => { this.openTab('backTab') }}>2. BACK</Tab>
+              <Tab className="w3-bar-item w3-button" style={selfieTab ? { boxShadow: 'none', color: '#6D6D6D' } : null} onClick={() => { this.openTab('selfieTab') }}>3. SELFIE</Tab>
             </TabContainer>
 
             <TabBox style={frontTab ? { display: 'flex' } : { display: 'none' }}>
