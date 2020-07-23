@@ -33,6 +33,7 @@ export default class ProfileIDSetUp extends Component {
           />
           :
           <ID
+            currentUser={this.props.currentUser}
           />
         }
 

@@ -73,29 +73,34 @@ class App extends Component {
     return (
       <>
         <Switch>
-          <Route exact path="/">
+          <Route exact path="/"> 
             <Welcome />
           </Route>
 
           <Route
             path="/signup"
             render={(props) => (
-              <SignUp {...props} handleRegister={this.handleRegister} />)}
+              <SignUp {...props} handleRegister={this.handleRegister} />
+            )}
           />
 
           <Route
             path="/login"
             render={(props) => (
-              <LogIn {...props} handleLogin={this.handleLogin} />)}
+              <LogIn {...props} handleLogin={this.handleLogin} />
+            )}
           />
 
           <Route path="/home">
             <Home />
           </Route>
 
-          <Route path="/profile_setup">
-            <ProfileIDSetUp/>
-          </Route>
+          <Route
+            path="/profile_setup"
+            render={(props) => (
+              <ProfileIDSetUp {...props} currentUser={this.state.currentUser}/>
+            )}
+          />
           
         </Switch>
       </>
