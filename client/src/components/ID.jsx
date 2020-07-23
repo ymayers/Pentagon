@@ -3,7 +3,26 @@ import styled from 'styled-components'
 
 const Main = styled.main`
   margin-top: 20px;
-  background: #EDF3F5
+  background: #EDF3F5;
+  border-radius: 15px 0px 0px 0px;
+`
+const TabContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  border-radius: 15px 0px 0px 0px;
+`
+const Button = styled.button`
+  background: #EDF3F5;
+  border: 1px solid #EDF3F5;
+  padding: 10px 30px;
+  font-family: Lato;
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 2px;
+  color: #C6D1D6;  
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 15px 0px 0px 0px;
 `
 
 
@@ -37,11 +56,11 @@ export default class ID extends Component {
       <>
         <Main>
           {console.log('-->', this.state)}
-          <div class="w3-bar w3-#EDF3F5">
-            <button class="w3-bar-item w3-button" onClick={() => { this.openTab('frontTab') }}>1. Front</button>
-            <button class="w3-bar-item w3-button" onClick={() => { this.openTab('backTab') }}>2. Back</button>
-            <button class="w3-bar-item w3-button" onClick={() => { this.openTab('selfieTab') }}>3. Selfie</button>
-          </div>
+          <TabContainer class="w3-bar">
+            <Button class="w3-bar-item w3-button" style={frontTab ? { boxShadow: 'none', color: '#6D6D6D'} : null} onClick={() => { this.openTab('frontTab') }}>FRONT</Button>
+            <Button class="w3-bar-item w3-button" style={backTab ? { boxShadow: 'none', color: '#6D6D6D'} : null} onClick={() => { this.openTab('backTab') }}>BACK</Button>
+            <Button class="w3-bar-item w3-button" style={selfieTab ? { boxShadow: 'none', color: '#6D6D6D'} : null} onClick={() => { this.openTab('selfieTab') }}>SELFIE</Button>
+          </TabContainer>
 
           <div style={frontTab ? { display: 'block' } : { display: 'none' }}>
             <h2>Front</h2>
