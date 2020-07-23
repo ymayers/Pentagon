@@ -6,7 +6,7 @@ const ImageContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 50px;
+  margin-top: 20px;
 `
 const ImgInput = styled.input`
   margin-top: 10px;

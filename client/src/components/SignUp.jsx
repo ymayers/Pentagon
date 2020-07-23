@@ -136,7 +136,7 @@ class SignUp extends Component {
           <Form onSubmit={(e) => {
             e.preventDefault();
             this.props.handleRegister(this.state);
-            this.props.history.push('/profile');
+            this.props.history.push('/profile_setup');
           }}>
             <div>
               <Input

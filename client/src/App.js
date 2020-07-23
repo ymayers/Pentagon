@@ -93,9 +93,10 @@ class App extends Component {
             <Home />
           </Route>
 
-          <Route path="/profile">
+          <Route path="/profile_setup">
             <ProfileIDSetUp/>
           </Route>
+          
         </Switch>
       </>
     );
