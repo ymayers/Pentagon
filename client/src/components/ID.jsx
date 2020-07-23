@@ -20,14 +20,19 @@ export default class ID extends Component {
   }
 
   openTab = (tab) => {
-    this.setState(prevState=>({
+    this.setState({
+      frontTab: false,
+      backTab: false,
+      selfieTab: false
+    })
+    this.setState(prevState => ({
       [tab]: !prevState[tab]
     }))
   }
 
   render() {
     const { frontTab, backTab, selfieTab } = this.state
-    
+
     return (
       <>
         <Main>
