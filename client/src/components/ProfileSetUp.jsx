@@ -5,7 +5,6 @@ const Divider = styled.hr`
   border: 1px solid #FFFFFF;
   width: 80%;
   margin-top: 20px
-
 `
 const Main = styled.main`
   display: flex;

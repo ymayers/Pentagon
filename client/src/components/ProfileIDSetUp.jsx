@@ -11,7 +11,7 @@ export default class ProfileIDSetUp extends Component {
     super(props)
 
     this.state = {
-      profile: true
+      profile: false
     }
   }
 
