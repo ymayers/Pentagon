@@ -10,7 +10,11 @@ const WelcomeWrapper = styled.div`
   height: 100vh;
 `;
 
-const Image = styled.img``;
+const Image = styled.img`
+height: 250px;
+width: 300px;
+margin: 180px 0;
+`;
 
 const ButtonLinkContainer = styled.div`
   text-align: center;
@@ -19,6 +23,7 @@ const ButtonLinkContainer = styled.div`
 const Button = styled.button`
   height: 55px;
   width: 149px;
+  margin-bottom: 20px;
   border-radius: 50px;
   background-color: #737677;
   border: 1px solid #737677;
@@ -32,6 +37,7 @@ const PromptText = styled.p`
   font-size: 15px;
   font-weight: 500;
   color: #ffffff;
+  
 `;
 
 const LogInLink = styled(Link)`
@@ -39,7 +45,6 @@ const LogInLink = styled(Link)`
   text-decoration: none;
   border-bottom: 1px solid #ffffff;
   font-weight: 500;
- 
 `;
 
 function Welcome() {
@@ -47,10 +52,12 @@ function Welcome() {
     <WelcomeWrapper>
       <Image src="https://imgur.com/LexBRXb.png" alt="logo" />
       <ButtonLinkContainer>
-        <Button>Get Started</Button>
+        <Link to="/signup">
+          <Button>Get Started</Button>
+        </Link>
 
         <PromptText>
-          Already have an account? <LogInLink to="">Log in</LogInLink>
+          Already have an account? <LogInLink to="/login">Log in</LogInLink>
         </PromptText>
       </ButtonLinkContainer>
     </WelcomeWrapper>
@@ -58,3 +65,4 @@ function Welcome() {
 }
 
 export default Welcome;
+
