@@ -27,6 +27,21 @@ const Button = styled.button`
   font-weight: 700;
 `;
 
+const PromptText = styled.p`
+  letter-spacing: 2px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #ffffff;
+`;
+
+const LogInLink = styled(Link)`
+  color: #ffffff;
+  text-decoration: none;
+  border-bottom: 1px solid #ffffff;
+  font-weight: 500;
+ 
+`;
+
 function Welcome() {
   return (
     <WelcomeWrapper>
@@ -34,9 +49,9 @@ function Welcome() {
       <ButtonLinkContainer>
         <Button>Get Started</Button>
 
-        <p>
-          Already have an account? <Link to="">Log in</Link>
-        </p>
+        <PromptText>
+          Already have an account? <LogInLink to="">Log in</LogInLink>
+        </PromptText>
       </ButtonLinkContainer>
     </WelcomeWrapper>
   );
