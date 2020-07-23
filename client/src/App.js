@@ -1,12 +1,17 @@
-import React from 'react';
+import React from "react";
+import Welcome from "./components/Welcome";
+import { Route, Switch } from "react-router-dom";
 
 
 function App() {
   return (
     <>
-      Hello WOrld
-    
-     </>
+      <Switch>
+        <Route exact path="/">
+          <Welcome />
+        </Route>
+      </Switch>
+    </>
   );
 }
 
