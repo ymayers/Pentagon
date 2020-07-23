@@ -1,11 +1,26 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
+const SignUpTitles = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Lato;
+  font-weight: 500;
+  line-height: 42px;
+  color: #FFFFFF;
+  letter-spacing: 2px
+`
+const SignUpTitle = styled.h1`
+  font-size: 35px;
+`
+const SignUpSocial = styled.h2`
+  font-size: 15px;
+`
 const SocialContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: yellow
 `
 const SocialIcons = styled.div`
   display: flex;
@@ -14,7 +29,7 @@ const SocialIcons = styled.div`
   justify-content: center;
   align-items: center;
   padding: 10px 12px;
-  margin: 15px
+  margin: 0 15px 0 15px
 `
 const Or = styled.p`
   font-weight: 500;
@@ -22,7 +37,11 @@ const Or = styled.p`
   line-height: 18px;
   color: #ffffff;
 `
-
+const Divider = styled.hr`
+  border: 1px solid #FFFFFF;
+  width: 80%;
+  margin-top: 40px
+`
 class SignUp extends Component {
   constructor(props) {
     super(props)
@@ -36,6 +55,11 @@ class SignUp extends Component {
   render() {
     return (
       <>
+        <SignUpTitles>
+          <SignUpTitle>SIGN UP</SignUpTitle>
+          <SignUpSocial>SIGN UP WITH 1-CLICK</SignUpSocial>
+        </SignUpTitles>
+
         <SocialContainer>
           <SocialIcons>
             <svg width="28" height="29" viewBox="0 0 17 34" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -45,15 +69,12 @@ class SignUp extends Component {
           <Or>OR</Or>
           <SocialIcons>
             <svg width="28" height="29" viewBox="0 0 28 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M27.465 11.7812H14.0892V17.2188H21.9363C21.2229 21.025 17.8344 23.5625 14.0892 23.3812C9.45223 23.2 5.88535 19.575 5.70701 14.8625C5.52866 9.96875 9.27389 5.8 14.0892 5.61875C16.051 5.61875 18.0127 6.34375 19.6178 7.79375L23.7197 3.80625C21.2229 1.26875 17.6561 0 14.2675 0C6.42038 0 0 6.525 0 14.5C0 22.475 6.42038 29 14.2675 29C22.4713 29 28 23.2 28 14.8625C27.8217 13.775 27.8217 12.8687 27.465 11.7812Z" fill="white" />
+              <path fillRule="evenodd" clipRule="evenodd" d="M27.465 11.7812H14.0892V17.2188H21.9363C21.2229 21.025 17.8344 23.5625 14.0892 23.3812C9.45223 23.2 5.88535 19.575 5.70701 14.8625C5.52866 9.96875 9.27389 5.8 14.0892 5.61875C16.051 5.61875 18.0127 6.34375 19.6178 7.79375L23.7197 3.80625C21.2229 1.26875 17.6561 0 14.2675 0C6.42038 0 0 6.525 0 14.5C0 22.475 6.42038 29 14.2675 29C22.4713 29 28 23.2 28 14.8625C27.8217 13.775 27.8217 12.8687 27.465 11.7812Z" fill="white" />
             </svg>
           </SocialIcons>
 
         </SocialContainer>
-        <h1>SIGN UP</h1>
-        <h3>SIGN UP WITH 1-CLICK</h3>
-
-
+        <Divider/>
       </>
     )
   }
