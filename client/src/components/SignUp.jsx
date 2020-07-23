@@ -5,17 +5,22 @@ const SignUpTitles = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: Lato;
-  font-weight: 500;
-  line-height: 42px;
-  color: #FFFFFF;
-  letter-spacing: 2px
 `
 const SignUpTitle = styled.h1`
   font-size: 35px;
+  color: #FFFFFF;
+  font-family: Lato;
+  font-weight: 500;
+  line-height: 42px;
+  letter-spacing: 2px
 `
-const SignUpSocial = styled.h2`
+const HeaderTwo = styled.h2`
   font-size: 15px;
+  color: #FFFFFF;
+  font-family: Lato;
+  font-weight: 500;
+  line-height: 42px;
+  letter-spacing: 2px
 `
 const SocialContainer = styled.div`
   display: flex;
@@ -42,6 +47,23 @@ const Divider = styled.hr`
   width: 80%;
   margin-top: 40px
 `
+const FormContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center
+`
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+`
+const Input = styled.input`
+  margin: 5px;
+  border-radius: 14px;
+  border: 2px solid #FFFFFF;
+  height: 55px;
+  background: rgb(190,197,200)
+`  
+
 class SignUp extends Component {
   constructor(props) {
     super(props)
@@ -57,7 +79,7 @@ class SignUp extends Component {
       <>
         <SignUpTitles>
           <SignUpTitle>SIGN UP</SignUpTitle>
-          <SignUpSocial>SIGN UP WITH 1-CLICK</SignUpSocial>
+          <HeaderTwo>SIGN UP WITH 1-CLICK</HeaderTwo>
         </SignUpTitles>
 
         <SocialContainer>
@@ -74,7 +96,21 @@ class SignUp extends Component {
           </SocialIcons>
 
         </SocialContainer>
-        <Divider/>
+        <Divider />
+        <FormContainer>
+          <HeaderTwo>SIGN UP WITH YOUR EMAIL</HeaderTwo>
+          <Form>
+            <div>
+              <Input type="text" />
+              <Input type="text" />
+            </div>
+            <Input type="text" />
+            <Input type="text" />
+            <Input type="text" />
+            <Input type="text" />
+            <button type="submit">Submit</button>
+          </Form>
+        </FormContainer>
       </>
     )
   }
