@@ -5,6 +5,7 @@ import Welcome from "./components/Welcome";
 import SignUp from "./components/SignUp";
 import LogIn from "./components/LogIn";
 import Home from "./components/Home";
+import ProfileIDSetUp from "./components/ProfileIDSetUp";
 
 import {
   loginUser,
@@ -79,6 +80,9 @@ class App extends Component {
             <Home />
           </Route>
 
+          <Route path="/profile">
+            <ProfileIDSetUp/>
+          </Route>
         </Switch>
       </>
     );
