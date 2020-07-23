@@ -73,7 +73,7 @@ export default class ProfileIdHeader extends Component {
             onChange={this.handleChange}
 
           />
-          <Button>ADD IMAGE</Button>
+          <Button onSubmit={''}>ADD IMAGE</Button>
         </ImageContainer>
 
 

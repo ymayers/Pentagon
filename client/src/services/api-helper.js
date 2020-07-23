@@ -40,6 +40,15 @@ export const removeToken = () => {
   api.defaults.headers.common.authorization = null;
 };
 
+/*******USER EDIT************/
+
+export const updateUser = async (id ,userParams) => {
+  const resp = await api.put(`/posts/${id}`, { user: userParams })
+  const updatedPost = resp.data
+
+  return updatedPost
+}
+
 /*******EVENTS************/
 
 export const getAllEvents = async () => {
