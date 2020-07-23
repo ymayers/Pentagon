@@ -67,6 +67,8 @@ const Input = styled.input`
   font-style: italic;
   font-weight: 500;
   font-size: 15px;
+  color: #ffffff;
+  letter-spacing: 2px;
 
   &::placeholder{
     color: #ffffff
@@ -90,10 +92,21 @@ class SignUp extends Component {
     super(props)
 
     this.state = {
-
+      first_name: '',
+      last_name: '',
+      email: '',
+      mobile_phone: '',
+      password: ''
     }
   }
 
+  handleChange = (e) => {
+    const { name, value } = e.target;
+
+    this.setState({
+      [name]: value
+    });
+  }
 
   render() {
     return (
@@ -120,51 +133,55 @@ class SignUp extends Component {
         <Divider />
         <FormContainer>
           <HeaderTwo>SIGN UP WITH YOUR EMAIL</HeaderTwo>
-          <Form>
+          <Form onSubmit={(e) => {
+            e.preventDefault();
+            this.props.handleRegister(this.state);
+            this.props.history.push('/home');
+          }}>
             <div>
               <Input
                 type="text"
-                name=''
-                value={``}
+                name='first_name'
+                value={this.state.first_name}
                 placeholder='first name'
-                onChange={`lastname`}
+                onChange={this.handleChange}
               />
               <Input
                 type="text"
-                name=''
-                value={``}
+                name='last_name'
+                value={this.state.last_name}
                 placeholder='last name'
-                onChange={``}
+                onChange={this.handleChange}
               />
             </div>
             <Input
               type="text"
-              name=''
-              value={``}
+              name='mobile_phone'
+              value={this.state.mobile_phone}
               placeholder='mobile number'
-              onChange={``}
+              onChange={this.handleChange}
             />
             <Input
               type="text"
-              name=''
-              value={``}
+              name='email'
+              value={this.state.email}
               placeholder='email address'
-              onChange={``}
+              onChange={this.handleChange}
             />
             <Input
-              type="text"
-              name=''
-              value={``}
+              type="password"
+              name='password'
+              value={this.state.password}
               placeholder='password'
-              onChange={``}
+              onChange={this.handleChange}
             />
-            <Input
+            {/* <Input
               type="text"
               name=''
               value={``}
               placeholder='confirm password'
-              onChange={``}
-            />
+              // onChange={this.handleChange}
+            /> */}
             <Button type="submit">Submit</Button>
           </Form>
         </FormContainer>

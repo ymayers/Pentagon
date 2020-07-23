@@ -39,7 +39,7 @@ class App extends Component {
   };
 
   confirmUser = async () => {
-    const currentUser = await verifyUser(); //where did verifyUser comefrom?
+    const currentUser = await verifyUser();
     this.setState({ currentUser });
   };
 
@@ -63,19 +63,21 @@ class App extends Component {
             <Welcome />
           </Route>
 
-          <Route path="/signup">
-            <SignUp />
-          </Route>
+          <Route
+            path="/signup"
+            render={(props) => (
+              <SignUp {...props} handleRegister={this.handleRegister} />)}
+          />
 
           <Route
             path="/login"
-            render={(props) => (  
-            <LogIn {...props} handleLogin={this.handleLogin} /> )}
+            render={(props) => (
+              <LogIn {...props} handleLogin={this.handleLogin} />)}
           />
 
           <Route path="/home">
-            <Home/>
-            </Route>
+            <Home />
+          </Route>
 
         </Switch>
       </>
