@@ -61,9 +61,30 @@ const Input = styled.input`
   border-radius: 14px;
   border: 2px solid #FFFFFF;
   height: 55px;
-  background: rgb(190,197,200)
-`  
+  background: rgb(190,197,200);
+  text-align: center;
+  font-family: Lato;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 15px;
 
+  &::placeholder{
+    color: #ffffff
+  }
+`
+const Button = styled.button`
+  height: 55px;
+  width: 149px;
+  margin-top: 30px;
+  border-radius: 50px;
+  background-color: #737677;
+  border: 1px solid #737677;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 22px;
+  align-self: center
+`
 class SignUp extends Component {
   constructor(props) {
     super(props)
@@ -101,14 +122,50 @@ class SignUp extends Component {
           <HeaderTwo>SIGN UP WITH YOUR EMAIL</HeaderTwo>
           <Form>
             <div>
-              <Input type="text" />
-              <Input type="text" />
+              <Input
+                type="text"
+                name=''
+                value={``}
+                placeholder='first name'
+                onChange={`lastname`}
+              />
+              <Input
+                type="text"
+                name=''
+                value={``}
+                placeholder='last name'
+                onChange={``}
+              />
             </div>
-            <Input type="text" />
-            <Input type="text" />
-            <Input type="text" />
-            <Input type="text" />
-            <button type="submit">Submit</button>
+            <Input
+              type="text"
+              name=''
+              value={``}
+              placeholder='mobile number'
+              onChange={``}
+            />
+            <Input
+              type="text"
+              name=''
+              value={``}
+              placeholder='email address'
+              onChange={``}
+            />
+            <Input
+              type="text"
+              name=''
+              value={``}
+              placeholder='password'
+              onChange={``}
+            />
+            <Input
+              type="text"
+              name=''
+              value={``}
+              placeholder='confirm password'
+              onChange={``}
+            />
+            <Button type="submit">Submit</Button>
           </Form>
         </FormContainer>
       </>
