@@ -1,23 +1,60 @@
 import React, { Component } from 'react'
+import styled from 'styled-components'
 
+const SocialContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: yellow
+`
+const SocialIcons = styled.div`
+  display: flex;
+  border: 2px solid #FFFFFF;
+  border-radius: 15px;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 12px;
+  margin: 15px
+`
+const Or = styled.p`
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 18px;
+  color: #ffffff;
+`
 
 class SignUp extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      
+
     }
   }
+
 
   render() {
     return (
       <>
+        <SocialContainer>
+          <SocialIcons>
+            <svg width="28" height="29" viewBox="0 0 17 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4.33971 34V18.0462H0V12.3021H4.33971V7.39585C4.33971 3.54049 6.90319 0 12.81 0C15.2016 0 16.97 0.22287 16.97 0.22287L16.8307 5.58691C16.8307 5.58691 15.0271 5.56985 13.059 5.56985C10.9289 5.56985 10.5877 6.52406 10.5877 8.10781V12.3021H17L16.721 18.0462H10.5877V34H4.33971Z" fill="white" />
+            </svg>
+          </SocialIcons>
+          <Or>OR</Or>
+          <SocialIcons>
+            <svg width="28" height="29" viewBox="0 0 28 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M27.465 11.7812H14.0892V17.2188H21.9363C21.2229 21.025 17.8344 23.5625 14.0892 23.3812C9.45223 23.2 5.88535 19.575 5.70701 14.8625C5.52866 9.96875 9.27389 5.8 14.0892 5.61875C16.051 5.61875 18.0127 6.34375 19.6178 7.79375L23.7197 3.80625C21.2229 1.26875 17.6561 0 14.2675 0C6.42038 0 0 6.525 0 14.5C0 22.475 6.42038 29 14.2675 29C22.4713 29 28 23.2 28 14.8625C27.8217 13.775 27.8217 12.8687 27.465 11.7812Z" fill="white" />
+            </svg>
+          </SocialIcons>
+
+        </SocialContainer>
         <h1>SIGN UP</h1>
         <h3>SIGN UP WITH 1-CLICK</h3>
 
-        
-        </>
+
+      </>
     )
   }
 }
