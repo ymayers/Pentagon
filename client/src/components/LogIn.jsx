@@ -1,5 +1,11 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+
+
+
 import styled from "styled-components";
+
+
 
 const LogInWrapper = styled.div`
   display: flex;
@@ -7,7 +13,7 @@ const LogInWrapper = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
-`
+`;
 
 const Image = styled.img`
   height: 150px;
@@ -23,38 +29,40 @@ const LogInFormWrapper = styled.div`
   border-radius: 50px 0px 0px 0px;
 `;
 
-
-const LogInForm = styled.form`
- 
-`;
+const LogInForm = styled.form``;
 
 const EmailInput = styled.input`
   width: 80%;
   padding: 1.5em;
   margin: 20px 0;
-  background-color: #EDF3F5;
-  border: 2px solid #EDF3F5;
+  background-color: #edf3f5;
+  border: 2px solid #edf3f5;
   border-radius: 15px;
-
-`
+`;
 
 const PasswordInput = styled.input`
   width: 80%;
   padding: 1.5em;
-  background-color: #EDF3F5;
-  border: 2px solid #EDF3F5;
+  background-color: #edf3f5;
+  border: 2px solid #edf3f5;
   border-radius: 15px;
   margin-bottom: 10px;
-`
+`;
 
-const ForgotPassword = styled.p`
-  text-align: right;
+const ForgotPasswordHolder = styled.div`
+  display: flex;
+  flex-direction: row-reverse;
+  margin: 10px 0;
+`;
+
+const ForgotPasswordLink = styled(Link)`
   margin-right: 15px;
+  text-decoration: none;
   font-weight: 500;
   font-size: 15px;
   line-height: 18px;
   letter-spacing: 0.1em;
-  color: #6D6D6D;
+  color: #6d6d6d;
 `;
 
 const LogInButton = styled.button`
@@ -68,45 +76,89 @@ const LogInButton = styled.button`
   font-size: 18px;
   font-weight: 700;
   line-height: 22px;
-
 `;
 
-
-
+const AltLogIn = styled.p``;
 
 class LogIn extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      email: "",
+      password: ""
+    };
+  }
+
+  handleChange = (e) => {
+    const { name, value } = e.target;
+
+    this.setState({
+      [name]: value
+    });
   }
 
   render() {
-    return <LogInWrapper>
-      <Image src="https://imgur.com/LexBRXb.png" alt="logo" />
-      <LogInFormWrapper>
-        <h2>Welcome</h2>
-        <LogInForm>
-          <EmailInput
-            id="email"
-            type="text"
-            name="email"
-            placeholder="EMAIL"
-          />
+    return (
+      <LogInWrapper>
 
-         <br></br>
-          <PasswordInput
-            id="password"
-            type="text"
-            name="password"
-            placeholder="PASSWORD"
-          
-          />
-          <ForgotPassword>forgot your password?</ForgotPassword>
-          <LogInButton>LOG IN</LogInButton>
-        </LogInForm>
-      </LogInFormWrapper>
-    </LogInWrapper>;
+        <Image
+          src="https://imgur.com/LexBRXb.png"
+          alt="logo"
+        />
+
+        <LogInFormWrapper>
+
+          <h2>Welcome</h2>
+
+          <LogInForm
+            onSubmit={(e) => {
+            e.preventDefault();
+            this.props.handleLogin(this.state);
+            this.props.history.push('/home');
+          }}
+          >
+
+            <EmailInput
+              id="email"
+              type="text"
+              name="email"
+              placeholder="EMAIL"
+              value={this.state.email}
+              onChange={this.handleChange}
+            />
+
+            <br></br>
+
+            <PasswordInput
+              id="password"
+              type="text"
+              name="password"
+              placeholder="PASSWORD"
+              value={this.state.password}
+              onChange={this.handleChange}
+            />
+
+            <ForgotPasswordHolder>
+
+              <ForgotPasswordLink>
+                forgot your password?
+              </ForgotPasswordLink>
+
+            </ForgotPasswordHolder>
+
+            <LogInButton
+              type="submit"
+            >
+              LOG IN
+              </LogInButton>
+            
+          </LogInForm>
+
+        </LogInFormWrapper>
+
+      </LogInWrapper>
+    );
   }
 }
 
