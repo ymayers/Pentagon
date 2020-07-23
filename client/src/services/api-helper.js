@@ -42,11 +42,11 @@ export const removeToken = () => {
 
 /*******USER EDIT************/
 
-export const updateUser = async (id ,userParams) => {
-  const resp = await api.put(`/posts/${id}`, { user: userParams })
-  const updatedPost = resp.data
+export const updateProfileImg = async (id ,userImgParams) => {
+  const resp = await api.put(`/users/${id}`, { user: userImgParams })
+  const updatedImg = resp.data
 
-  return updatedPost
+  return updatedImg
 }
 
 /*******EVENTS************/

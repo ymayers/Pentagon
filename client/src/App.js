@@ -12,6 +12,7 @@ import {
   verifyUser,
   removeToken,
   registerUser,
+  updateProfileImg
 } from "./services/api-helper";
 
 class App extends Component {
@@ -53,8 +54,20 @@ class App extends Component {
   };
 
   //***************************************************************
+  //*******************************USER IMAGE**************************
+  //***************************************************************
+
+  handleProfileImgUpdate = async (id, profileImgURL) => {
+    const changeUserImg = await updateProfileImg(id, profileImgURL);
+    // const user = this.statecurrentUser.map(post => post.id === id ? updatedPost : post)
+    // this.setState({current})
+  }
+
+  //***************************************************************
   //*******************************EVENTS**************************
   //***************************************************************
+
+
 
   render() {
     return (
