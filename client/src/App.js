@@ -8,6 +8,7 @@ import Home from "./components/Home";
 import ProfileIDSetUp from "./components/ProfileIDSetUp";
 import Ticket from "./components/Ticket";
 import MyTickets from "./components/MyTickets";
+import EventDetail from "./components/EventDetail";
 
 import {
   loginUser,
@@ -113,7 +114,7 @@ class App extends Component {
           />
 
           <Route
-            path="/events"
+            exact path="/events"
             render={(props) => (
               <Home {...props} events={this.state.events} />
             )}
@@ -137,8 +138,8 @@ class App extends Component {
             path="/mytickets"
             render={(props) => (
               <MyTickets {...props}
-              currentUser={this.state.currentUser}
-              allTickets={this.state.tickets}
+                currentUser={this.state.currentUser}
+                allTickets={this.state.tickets}
               />
             )}
           />
@@ -149,6 +150,15 @@ class App extends Component {
               <Ticket {...props}
                 currentUser={this.state.currentUser}
                 allTickets={this.state.tickets}
+              />
+            )}
+          />
+
+          <Route
+            exact path="/events/:id"
+            render={(props) => (
+              <EventDetail {...props}
+
               />
             )}
           />
