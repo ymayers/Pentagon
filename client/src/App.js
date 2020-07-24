@@ -12,6 +12,7 @@ import {
   verifyUser,
   removeToken,
   registerUser,
+  getAllEvents,
   updateProfileImg
 } from "./services/api-helper";
 
@@ -24,6 +25,7 @@ class App extends Component {
 
   componentDidMount() {
     this.confirmUser();
+    this.readAllEvents();
   }
 
   //***************************************************************
@@ -68,7 +70,10 @@ class App extends Component {
   //*******************************EVENTS**************************
   //***************************************************************
 
-
+  readAllEvents = async () => {
+    const events = await getAllEvents();
+    this.setState({ events });
+  };
 
   render() {
     return (
@@ -90,6 +95,11 @@ class App extends Component {
             render={(props) => (
               <LogIn {...props} handleLogin={this.handleLogin} />
             )}
+          />
+
+          <Route
+            path="/events"
+            render={(props) => <Home {...props} events={this.state.events} />}
           />
 
           <Route path="/home">

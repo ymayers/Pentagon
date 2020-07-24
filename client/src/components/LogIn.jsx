@@ -115,7 +115,7 @@ class LogIn extends Component {
             onSubmit={(e) => {
             e.preventDefault();
             this.props.handleLogin(this.state);
-            this.props.history.push('/home');
+            this.props.history.push('/events');
           }}
           >
 
@@ -141,7 +141,7 @@ class LogIn extends Component {
 
             <ForgotPasswordHolder>
 
-              <ForgotPasswordLink>
+              <ForgotPasswordLink to="">
                 forgot your password?
               </ForgotPasswordLink>
 
