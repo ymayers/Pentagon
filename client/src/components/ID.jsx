@@ -170,7 +170,7 @@ export default class ID extends Component {
                   </svg>
                 </WhiteSpace>
               </Images>
-              <BigButton>SUBMIT</BigButton>
+              <BigButton onClick={this.props.showCongratsModal}>SUBMIT</BigButton>
               <Paragraph>RETAKE</Paragraph>
             </TabBox>
 

@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import ProfileIDHeader from './ProfileIDHeader'
 import ProfileSetUp from './ProfileSetUp'
 import ID from './ID'
+import CongratsModal from "./CongratsModal";
 
 
 
@@ -11,13 +12,20 @@ export default class ProfileIDSetUp extends Component {
     super(props)
 
     this.state = {
-      profile: false
+      profile: false,
+      congrats: false
     }
   }
 
   toggleProfile = () => {
     this.setState(prevState => ({
       profile: !prevState.profile
+    }))
+  }
+
+  toggleCongratsModal = () => {
+    this.setState(prevState => ({
+      congrats: !prevState.congrats
     }))
   }
 
@@ -36,8 +44,15 @@ export default class ProfileIDSetUp extends Component {
           :
           <ID
             currentUser={this.props.currentUser}
+            showCongratsModal={this.toggleCongratsModal}
           />
         }
+
+        <CongratsModal
+          congrats={this.state.congrats}
+          hideCongratsModal={this.toggleCongratsModal}
+
+        />
 
       </div>
     )
