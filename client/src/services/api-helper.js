@@ -93,6 +93,13 @@ export const deleteUserTicket = async (id) => {
   return resp;
 };
 
+export const getQR = async (ticketId) => {
+  const resp = await api.get(`/qrcode/${ticketId}`);
+  console.log('QRRR-->',qr);
+  const qr = resp.data;
+  return qr;
+};
+
 /**********CARDS************/
 
 export const postUserCard = async (cardParams) => {

@@ -13,7 +13,8 @@ import {
   removeToken,
   registerUser,
   getAllEvents,
-  updateProfileImg
+  updateProfileImg,
+  getQR
 } from "./services/api-helper";
 
 class App extends Component {
@@ -21,6 +22,7 @@ class App extends Component {
     currentUser: null,
     events: [],
     tickets: [],
+    qr: null
   };
 
   componentDidMount() {
@@ -74,6 +76,15 @@ class App extends Component {
     const events = await getAllEvents();
     this.setState({ events });
   };
+
+  //***************************************************************
+  //*******************************EVENTS**************************
+  //***************************************************************
+
+  readQR = async () => {
+    const qr = await getQR()
+    this.setState({qr})
+  }
 
   render() {
     return (
