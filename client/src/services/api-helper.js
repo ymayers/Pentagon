@@ -42,7 +42,7 @@ export const removeToken = () => {
 
 /*******USER EDIT************/
 
-export const updateProfileImg = async (id ,userImgParams) => {
+export const updateProfileImg = async (id, userImgParams) => {
   const resp = await api.put(`/users/${id}`, { user: userImgParams })
   const updatedImg = resp.data
 
@@ -95,8 +95,8 @@ export const deleteUserTicket = async (id) => {
 
 export const getQR = async (ticketId) => {
   const resp = await api.get(`/qrcode/${ticketId}`);
-  console.log('QRRR-->',qr);
   const qr = resp.data;
+  // console.log('QRRR-->',qr);
   return qr;
 };
 

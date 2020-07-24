@@ -29,6 +29,7 @@ class App extends Component {
   componentDidMount() {
     this.confirmUser();
     this.readAllEvents();
+    this.readQR(4)
   }
 
   //***************************************************************
@@ -82,16 +83,17 @@ class App extends Component {
   //*******************************EVENTS**************************
   //***************************************************************
 
-  readQR = async () => {
-    const qr = await getQR()
-    this.setState({qr})
+  readQR = async (ticketId) => {
+    const qr = await getQR(ticketId)
+    this.setState({ qr })
   }
 
   render() {
     return (
       <>
+
         <Switch>
-          <Route exact path="/"> 
+          <Route exact path="/">
             <Welcome />
           </Route>
 
@@ -128,10 +130,15 @@ class App extends Component {
             )}
           />
 
-          <Route path="/ticket">
-            <Ticket/>
-          </Route>
-          
+          <Route
+            path="/ticket"
+            render={(props) => (
+              <Ticket {...props}
+              qr={this.state.qr}
+              />
+            )}
+          />
+
         </Switch>
 
 

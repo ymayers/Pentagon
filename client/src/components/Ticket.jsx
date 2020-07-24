@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
+import { renderToStaticMarkup } from 'react-dom/server';
 
 const Main = styled.main`
   display: flex;
@@ -51,11 +52,22 @@ const Button = styled.button`
   font-weight: 500;
   letter-spacing: 2px
 `
-export default function Ticket() {
+const QRCode = styled.div`
+  width: 300px;
+  height: 300px;
+  background-size: cover;  
+  // background-image: url("https://i.imgur.com/chpYvXn.png")
+`
+
+export default function Ticket({ qr }) {
+
+
   return (
     <>
       <Main>
         <Header>GENERAL ADMISSION</Header>
+        <QRCode style={{ backgroundImage: `url(data:image/svg+xml;base64,${btoa(qr)})`}}>
+        </QRCode>
         <Divider />
         <Wrapper>
           <Label>Where:</Label>
