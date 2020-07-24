@@ -45,7 +45,7 @@ const Or = styled.p`
 const Divider = styled.hr`
   border: 1px solid #FFFFFF;
   width: 80%;
-  margin-top: 40px
+  margin: 40px auto 0 auto
 `
 const FormContainer = styled.div`
   display: flex;
@@ -130,7 +130,7 @@ class SignUp extends Component {
           </SocialIcons>
 
         </SocialContainer>
-        <Divider />
+        <Divider/>
         <FormContainer>
           <HeaderTwo>SIGN UP WITH YOUR EMAIL</HeaderTwo>
           <Form onSubmit={(e) => {
