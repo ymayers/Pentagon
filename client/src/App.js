@@ -7,7 +7,7 @@ import LogIn from "./components/LogIn";
 import Home from "./components/Home";
 import ProfileIDSetUp from "./components/ProfileIDSetUp";
 import Ticket from "./components/Ticket";
-import PreCheckIn from "./components/PreCheckIn";
+import MyTickets from "./components/MyTickets";
 
 import {
   loginUser,
@@ -134,9 +134,9 @@ class App extends Component {
           />
 
           <Route
-            path="/precheckin"
+            path="/mytickets"
             render={(props) => (
-              <PreCheckIn {...props}
+              <MyTickets {...props}
               />
             )}
           />
