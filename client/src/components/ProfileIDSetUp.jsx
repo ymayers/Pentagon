@@ -36,6 +36,7 @@ export default class ProfileIDSetUp extends Component {
         <ProfileIDHeader
           currentUser={this.props.currentUser}
           handleProfileImgUpdate={this.props.handleProfileImgUpdate}
+          history={this.props.history}
         />
         {profile ?
           <ProfileSetUp

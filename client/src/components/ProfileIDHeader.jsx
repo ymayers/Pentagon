@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 
@@ -31,7 +30,7 @@ const ImgInput = styled.input`
   font-weight: 500;
   font-size: 15px;
   color: #ffffff;
-  letter-spacing: 2px;
+  letter-spacing: 2px; 
 
   &::placeholder{
     color: #ffffff
@@ -49,13 +48,15 @@ const Button = styled.button`
   font-size: 15px;
   font-weight: 500;
   cursor: pointer
-
 `
 
 export default class ProfileIdHeader extends Component {
 
+
   constructor(props) {
     super(props)
+
+    this.redirect()
 
     this.state = {
       profile_imgURL: this.props.currentUser.profile_imgURL
@@ -64,19 +65,22 @@ export default class ProfileIdHeader extends Component {
 
   handleChange = (e) => {
     const { name, value } = e.target;
-
     this.setState({
       [name]: value
     });
   }
 
+  redirect = () => {
+    if (this.props.currentUser === null) {
+      this.props.history.push('/signup')
+      window.location.reload()
+    }
+  }
 
   render() {
     const { profile_imgURL } = this.state
 
     console.log(profile_imgURL)
-    // console.log(this.props.currentUser ? this.props.currentUser.id : 'loading...')
-    // console.log(this.state[0].profile_imgURL)
     return (
       <>
         {this.props.currentUser ?
@@ -85,8 +89,6 @@ export default class ProfileIdHeader extends Component {
             {profile_imgURL !== null ?
               <>
                 <ProfileImg src={profile_imgURL} alt="profile-img" />
-                {/* <ProfileImg src={this.props.currentUser.profile_imgURL} alt="profile-img" /> */}
-                {/* <ProfileImg src="https://i.imgur.com/tVIMxPt.png" alt="profile-img" /> */}
               </>
               :
               <svg width="119" height="119" viewBox="0 0 119 119" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -102,7 +104,6 @@ export default class ProfileIdHeader extends Component {
                 this.setState({
                   profile_imgURL: this.props.currentUser.profile_imgURL
                 })
-                window.location.reload()
               }}>
               <ImgInput
                 type="text"
@@ -111,9 +112,9 @@ export default class ProfileIdHeader extends Component {
                 placeholder='image url'
                 onChange={this.handleChange}
               />
-              <Link to="/congrats"><Button type="submit">
+              <Button type="submit">
                 ADD IMAGE
-            </Button></Link>
+              </Button>
             </Form>
           </ImageContainer>
           :

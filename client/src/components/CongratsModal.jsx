@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import styled from 'styled-components'
 
 const CongratsBox = styled.div`
@@ -29,7 +30,10 @@ const Words = styled.p`
   color: #6D6D6D;
   width: 80%
 `
-const OKBtn = styled.button`
+const BrowseLink = styled(Link)`
+  cursor: pointer
+`
+const BrowseBtn = styled.button`
   height: 55px;
   width: 149px;
   margin-top: 30px;
@@ -40,6 +44,12 @@ const OKBtn = styled.button`
   font-size: 18px;
   font-weight: 700;
   line-height: 22px;
+  cursor: pointer
+
+  &:hover{
+    background-color: green;
+    border: 1px solid green;
+  }
 `
 
 export default function CongratsModal({ congrats, hideCongratsModal }) {
@@ -53,7 +63,9 @@ export default function CongratsModal({ congrats, hideCongratsModal }) {
           </svg>
           <Congrats>CONGRATULATIONS!</Congrats>
           <Words>You are now a verified member! Ready to explore nearby events?</Words>
-          <OKBtn onClick={``}>Browse</OKBtn>
+          <BrowseLink to='/events'>
+            <BrowseBtn onClick={hideCongratsModal}>Browse</BrowseBtn>
+          </BrowseLink>
         </CongratsBox>
       </div>
 

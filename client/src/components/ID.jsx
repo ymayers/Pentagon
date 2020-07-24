@@ -65,7 +65,13 @@ const BigButton = styled.button`
   font-weight: 500;
   font-size: 15px;
   color: #FFFFFF;
-  padding-left: 15px
+  padding-left: 15px;
+  cursor: pointer;
+
+  &:hover{
+    background-color: green;
+    border: 1px solid green;
+  }
 `
 const Bold = styled.span`
   font-weight: 900
