@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { withRouter } from "react-router";
 import styled from 'styled-components'
 import { getQR } from '../services/api-helper'
 
@@ -84,10 +83,10 @@ export default class Ticket extends Component {
     const { qr } = this.state
     const { allTickets, currentUser } = this.props
     
-    const ticket = allTickets.map(t => {
+    const ticket = allTickets.map((t,idx) => {
       if (t.id === currentUser.id && t.ticket_id === parseInt(id)) {
         return (
-          <>
+          <React.Fragment key={idx}>
             <Header>GENERAL ADMISSION</Header>
             <h2>#{t.ticket_id}</h2>
             <h3>{t.date}</h3>
@@ -104,7 +103,7 @@ export default class Ticket extends Component {
             <Divider />
             <Button>ADD TO APPLE WALLET</Button>
             <Button>TEXT ME THE TICKET</Button>
-          </>
+          </React.Fragment>
         )
       }
     })

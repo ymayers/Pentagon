@@ -54,7 +54,6 @@ export const updateProfileImg = async (id, userImgParams) => {
 export const getAllEvents = async () => {
   const resp = await api.get('/events');
   const events = resp.data;
-  console.log(events);
   return events;
 };
 
