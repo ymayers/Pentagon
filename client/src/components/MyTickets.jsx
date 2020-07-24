@@ -50,19 +50,33 @@ const GreyOption = styled.p`
   margin: 0 auto
 `
 const Main = styled.main`
+  background: #ffffff;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; 
 `
 const Ticket = styled.div`
-  disply: flex;
-  // flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 20px;
+  background: #ffffff 
 `
 const Image = styled.img`
   height: 88px;
   weight: 106px;
-  
+  border-radius: 20px;
 `
 const Info = styled.div`
+  width: 175px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center
 `
 const EventName = styled.h1`
+  margin: 0;
   font-family: Lato;
   font-weight: 500;
   font-size: 13px;
@@ -71,33 +85,61 @@ const EventName = styled.h1`
   text-transform: uppercase
 `
 const Date = styled.h2`
+  margin-top: 5px;
   font-family: Lato;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 12px; 
   letter-spacing: 2px;
   color: #6D6D6D;
 `
 const Location = styled(Date)`
 `
+const Button = styled.button`
+  height: 30px;
+  width: 78px;
+  align-self: flex-end;
+  margin: 10px 30px;   
+  border-radius: 10px;
+  background-color: #737677;
+  border: 1px solid #737677;
+  color: #ffffff;
+  font-family: Lato;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2px
+`
 const Divider = styled.hr`
   border: 1px solid #D1D9DD;
   width: 80%;
-  margin: 40px auto 0 auto
+  margin: 5px auto
 `
 
 export default function MyTickets({ allTickets, currentUser }) {
 
+
+  // function formatDate(ticket) {
+  //   console.log('-time->', ticket.start_time)
+  //   const milliseconds = Date.parse(typeof ticket.start_time)
+  //   const dateObj = new Date(milliseconds)
+  //   const ticket_datetime = dateObj.toLocaleString("en-US").replace(',', '')
+  //   return ticket_datetime
+  // }
+
   const tickets = allTickets.map((t, id) => {
     if (t.id === currentUser.id) {
       return (
-        <Ticket key={id}>
-          <Image src={t.img_url} alt={t.event_name}/>
-          <Info>
-            <EventName>{t.event_name}</EventName>
-            <Date>{`${t.date} | ${t.start_time}`}</Date>
-            <Location>{t.location}</Location>
-          </Info>
-        </Ticket>
+        <>
+            <Ticket key={id}>
+              <Image src={t.img_url} alt={t.event_name} />
+              <Info>
+                <EventName>{t.event_name}</EventName>
+                <Date>{`${t.date} | ${t.start_time}`}</Date>
+                <Location>{t.location}</Location>
+              </Info>
+            </Ticket>
+            <Button onClick={``}>SELECT</Button>
+          <Divider />
+        </>
       )
     }
   })
@@ -119,7 +161,6 @@ export default function MyTickets({ allTickets, currentUser }) {
       <Main>
         {tickets}
       </Main>
-      <Divider />
     </>
   )
 }
