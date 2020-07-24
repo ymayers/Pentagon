@@ -158,7 +158,7 @@ class App extends Component {
             exact path="/events/:id"
             render={(props) => (
               <EventDetail {...props}
-
+                events={this.state.events}
               />
             )}
           />
