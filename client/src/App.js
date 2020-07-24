@@ -7,6 +7,7 @@ import LogIn from "./components/LogIn";
 import Home from "./components/Home";
 import ProfileIDSetUp from "./components/ProfileIDSetUp";
 import Ticket from "./components/Ticket";
+import PreCheckIn from "./components/PreCheckIn";
 
 import {
   loginUser,
@@ -84,7 +85,7 @@ class App extends Component {
 
   readAllTickets = async () => {
     const tickets = await getUserTickets();
-    this.setState({tickets})
+    this.setState({ tickets })
   }
 
 
@@ -128,6 +129,14 @@ class App extends Component {
               <ProfileIDSetUp {...props}
                 currentUser={this.state.currentUser}
                 handleProfileImgUpdate={this.handleProfileImgUpdate}
+              />
+            )}
+          />
+
+          <Route
+            path="/precheckin"
+            render={(props) => (
+              <PreCheckIn {...props}
               />
             )}
           />

@@ -24630,3 +24630,253 @@ Completed 404 Not Found in 3ms (ActiveRecord: 2.1ms | Allocations: 657)
 ActiveRecord::RecordNotFound (Couldn't find Ticket with 'id'=undefined):
   
 app/controllers/tickets_controller.rb:83:in `set_ticket'
+Started GET "/auth/verify" for ::1 at 2020-07-24 04:10:23 -0400
+Started GET "/events" for ::1 at 2020-07-24 04:10:23 -0400
+Started GET "/users_tickets_events" for ::1 at 2020-07-24 04:10:23 -0400
+Processing by TicketsController#users_tickets_events as HTML
+  [1m[36mUser Load (4.6ms)[0m  [1m[34mSELECT users.id, 
+      users.first_name, 
+      users.last_name, 
+      tickets.id AS ticket_id,
+      tickets.code, 
+      tickets.time_slot,
+      events.id AS event_id,
+      events.event_name,
+      events.capacity,
+      events.gateway,
+      events.ticket_cost,
+      events.start_time,
+      events.end_time,
+      events.date FROM "users" INNER JOIN "tickets" ON "tickets"."user_id" = "users"."id" INNER JOIN "tickets" "tickets_users_join" ON "tickets_users_join"."user_id" = "users"."id" INNER JOIN "events" ON "events"."id" = "tickets_users_join"."event_id"[0m
+  ↳ app/controllers/tickets_controller.rb:77:in `users_tickets_events'
+Completed 200 OK in 30ms (Views: 24.2ms | ActiveRecord: 5.6ms | Allocations: 7559)
+
+
+Processing by EventsController#index as HTML
+Processing by AuthenticationsController#verify as HTML
+  [1m[36mEvent Load (5.9ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:8:in `index'
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 11ms (Views: 4.3ms | ActiveRecord: 5.9ms | Allocations: 1764)
+
+
+  ↳ app/controllers/application_controller.rb:29:in `authorize_request'
+Completed 200 OK in 13ms (Views: 0.9ms | ActiveRecord: 5.0ms | Allocations: 2672)
+
+
+Started POST "/auth/login" for ::1 at 2020-07-24 04:11:36 -0400
+Processing by AuthenticationsController#login as HTML
+  Parameters: {"auth"=>{"email"=>"test@test.com ", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"email"=>"test@test.com ", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.com "], ["LIMIT", 1]]
+  ↳ app/controllers/authentications_controller.rb:7:in `login'
+Completed 500 Internal Server Error in 48ms (ActiveRecord: 3.1ms | Allocations: 1168)
+
+
+  
+NoMethodError (undefined method `authenticate' for nil:NilClass):
+  
+app/controllers/authentications_controller.rb:9:in `login'
+Started GET "/auth/verify" for ::1 at 2020-07-24 04:13:31 -0400
+Processing by AuthenticationsController#verify as HTML
+Started GET "/events" for ::1 at 2020-07-24 04:13:31 -0400
+Processing by EventsController#index as HTML
+  [1m[36mEvent Load (0.8ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:8:in `index'
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.8ms | Allocations: 1380)
+
+
+  [1m[36mUser Load (11.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Started GET "/users_tickets_events" for ::1 at 2020-07-24 04:13:31 -0400
+  ↳ app/controllers/application_controller.rb:29:in `authorize_request'
+Completed 200 OK in 16ms (Views: 0.7ms | ActiveRecord: 11.2ms | Allocations: 3370)
+
+
+Processing by TicketsController#users_tickets_events as HTML
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT users.id, 
+      users.first_name, 
+      users.last_name, 
+      tickets.id AS ticket_id,
+      tickets.code, 
+      tickets.time_slot,
+      events.id AS event_id,
+      events.event_name,
+      events.capacity,
+      events.gateway,
+      events.ticket_cost,
+      events.start_time,
+      events.end_time,
+      events.date FROM "users" INNER JOIN "tickets" ON "tickets"."user_id" = "users"."id" INNER JOIN "tickets" "tickets_users_join" ON "tickets_users_join"."user_id" = "users"."id" INNER JOIN "events" ON "events"."id" = "tickets_users_join"."event_id"[0m
+  ↳ app/controllers/tickets_controller.rb:77:in `users_tickets_events'
+Completed 200 OK in 658ms (Views: 654.2ms | ActiveRecord: 3.3ms | Allocations: 7436)
+
+
+Started GET "/auth/verify" for ::1 at 2020-07-24 04:13:36 -0400
+Started GET "/users_tickets_events" for ::1 at 2020-07-24 04:13:36 -0400
+Started GET "/events" for ::1 at 2020-07-24 04:13:36 -0400
+Processing by EventsController#index as HTML
+Processing by TicketsController#users_tickets_events as HTML
+  [1m[36mEvent Load (3.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:8:in `index'
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT users.id, 
+      users.first_name, 
+      users.last_name, 
+      tickets.id AS ticket_id,
+      tickets.code, 
+      tickets.time_slot,
+      events.id AS event_id,
+      events.event_name,
+      events.capacity,
+      events.gateway,
+      events.ticket_cost,
+      events.start_time,
+      events.end_time,
+      events.date FROM "users" INNER JOIN "tickets" ON "tickets"."user_id" = "users"."id" INNER JOIN "tickets" "tickets_users_join" ON "tickets_users_join"."user_id" = "users"."id" INNER JOIN "events" ON "events"."id" = "tickets_users_join"."event_id"[0m
+Processing by AuthenticationsController#verify as HTML
+Completed 200 OK in 6ms (Views: 3.0ms | ActiveRecord: 3.1ms | Allocations: 2322)
+
+
+  ↳ app/controllers/tickets_controller.rb:77:in `users_tickets_events'
+Completed 200 OK in 646ms (Views: 643.4ms | ActiveRecord: 2.2ms | Allocations: 9538)
+
+
+  [1m[36mUser Load (18.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `authorize_request'
+Completed 200 OK in 42ms (Views: 0.5ms | ActiveRecord: 28.5ms | Allocations: 7738)
+
+
+Started GET "/auth/verify" for ::1 at 2020-07-24 04:13:45 -0400
+Started GET "/events" for ::1 at 2020-07-24 04:13:45 -0400
+Started GET "/users_tickets_events" for ::1 at 2020-07-24 04:13:45 -0400
+Processing by AuthenticationsController#verify as HTML
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `authorize_request'
+Completed 200 OK in 4ms (Views: 0.6ms | ActiveRecord: 1.3ms | Allocations: 1096)
+
+
+Processing by TicketsController#users_tickets_events as HTML
+  [1m[36mEvent Load (3.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT users.id, 
+      users.first_name, 
+      users.last_name, 
+      tickets.id AS ticket_id,
+      tickets.code, 
+      tickets.time_slot,
+      events.id AS event_id,
+      events.event_name,
+      events.capacity,
+      events.gateway,
+      events.ticket_cost,
+      events.start_time,
+      events.end_time,
+      events.date FROM "users" INNER JOIN "tickets" ON "tickets"."user_id" = "users"."id" INNER JOIN "tickets" "tickets_users_join" ON "tickets_users_join"."user_id" = "users"."id" INNER JOIN "events" ON "events"."id" = "tickets_users_join"."event_id"[0m
+  ↳ app/controllers/events_controller.rb:8:in `index'
+  ↳ app/controllers/tickets_controller.rb:77:in `users_tickets_events'
+Completed 200 OK in 516ms (Views: 512.2ms | ActiveRecord: 3.2ms | Allocations: 3626)
+
+
+Completed 200 OK in 521ms (Views: 516.9ms | ActiveRecord: 3.2ms | Allocations: 8695)
+
+
+Started GET "/auth/verify" for ::1 at 2020-07-24 04:14:30 -0400
+Started GET "/events" for ::1 at 2020-07-24 04:14:30 -0400
+Started GET "/users_tickets_events" for ::1 at 2020-07-24 04:14:30 -0400
+Processing by AuthenticationsController#verify as HTML
+Processing by TicketsController#users_tickets_events as HTML
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT users.id, 
+      users.first_name, 
+      users.last_name, 
+      tickets.id AS ticket_id,
+      tickets.code, 
+      tickets.time_slot,
+      events.id AS event_id,
+      events.event_name,
+      events.capacity,
+      events.gateway,
+      events.ticket_cost,
+      events.start_time,
+      events.end_time,
+      events.date FROM "users" INNER JOIN "tickets" ON "tickets"."user_id" = "users"."id" INNER JOIN "tickets" "tickets_users_join" ON "tickets_users_join"."user_id" = "users"."id" INNER JOIN "events" ON "events"."id" = "tickets_users_join"."event_id"[0m
+  ↳ app/controllers/tickets_controller.rb:77:in `users_tickets_events'
+Completed 200 OK in 19ms (Views: 16.4ms | ActiveRecord: 2.2ms | Allocations: 7386)
+
+
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (22.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `authorize_request'
+Completed 200 OK in 393ms (Views: 0.6ms | ActiveRecord: 22.9ms | Allocations: 9543)
+
+
+  [1m[36mEvent Load (62.0ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:8:in `index'
+Completed 200 OK in 65ms (Views: 3.0ms | ActiveRecord: 62.0ms | Allocations: 2392)
+
+
+Started GET "/auth/verify" for ::1 at 2020-07-24 04:15:24 -0400
+Processing by AuthenticationsController#verify as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `authorize_request'
+Completed 200 OK in 3ms (Views: 0.4ms | ActiveRecord: 0.6ms | Allocations: 1002)
+
+
+Started GET "/events" for ::1 at 2020-07-24 04:15:24 -0400
+Started GET "/users_tickets_events" for ::1 at 2020-07-24 04:15:24 -0400
+Processing by EventsController#index as HTML
+Processing by TicketsController#users_tickets_events as HTML
+  [1m[36mEvent Load (19.7ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:8:in `index'
+Completed 200 OK in 22ms (Views: 2.2ms | ActiveRecord: 19.7ms | Allocations: 1856)
+
+
+  [1m[36mUser Load (26.8ms)[0m  [1m[34mSELECT users.id, 
+      users.first_name, 
+      users.last_name, 
+      tickets.id AS ticket_id,
+      tickets.code, 
+      tickets.time_slot,
+      events.id AS event_id,
+      events.event_name,
+      events.capacity,
+      events.gateway,
+      events.ticket_cost,
+      events.start_time,
+      events.end_time,
+      events.date FROM "users" INNER JOIN "tickets" ON "tickets"."user_id" = "users"."id" INNER JOIN "tickets" "tickets_users_join" ON "tickets_users_join"."user_id" = "users"."id" INNER JOIN "events" ON "events"."id" = "tickets_users_join"."event_id"[0m
+  ↳ app/controllers/tickets_controller.rb:77:in `users_tickets_events'
+Completed 200 OK in 350ms (Views: 323.0ms | ActiveRecord: 26.8ms | Allocations: 8907)
+
+
+Started GET "/auth/verify" for ::1 at 2020-07-24 04:23:58 -0400
+Started GET "/events" for ::1 at 2020-07-24 04:23:58 -0400
+Started GET "/users_tickets_events" for ::1 at 2020-07-24 04:23:58 -0400
+Processing by EventsController#index as HTML
+Processing by TicketsController#users_tickets_events as HTML
+  [1m[36mEvent Load (5.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:8:in `index'
+Completed 200 OK in 11ms (Views: 5.8ms | ActiveRecord: 5.1ms | Allocations: 2253)
+
+
+Processing by AuthenticationsController#verify as HTML
+  [1m[36mUser Load (101.5ms)[0m  [1m[34mSELECT users.id, 
+      users.first_name, 
+      users.last_name, 
+      tickets.id AS ticket_id,
+      tickets.code, 
+      tickets.time_slot,
+      events.id AS event_id,
+      events.event_name,
+      events.capacity,
+      events.gateway,
+      events.ticket_cost,
+      events.start_time,
+      events.end_time,
+      events.date FROM "users" INNER JOIN "tickets" ON "tickets"."user_id" = "users"."id" INNER JOIN "tickets" "tickets_users_join" ON "tickets_users_join"."user_id" = "users"."id" INNER JOIN "events" ON "events"."id" = "tickets_users_join"."event_id"[0m
+  [1m[36mUser Load (5.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:77:in `users_tickets_events'
+  ↳ app/controllers/application_controller.rb:29:in `authorize_request'
+Completed 200 OK in 227ms (Views: 120.6ms | ActiveRecord: 106.1ms | Allocations: 10298)
+
+
+Completed 200 OK in 147ms (Views: 0.5ms | ActiveRecord: 31.4ms | Allocations: 8076)
+
+
