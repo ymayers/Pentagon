@@ -67,10 +67,9 @@ export const getOneEvent = async (id) => {
 
 /**********TICKETS************/
 
-export const getUserTickets = async (id) => {
-  const resp = await api.get(`/users/${id}/tickets`);
+export const getUserTickets = async () => {
+  const resp = await api.get(`/users_tickets_events`);
   const tickets = resp.data;
-  console.log(tickets);
   return tickets;
 };
 
