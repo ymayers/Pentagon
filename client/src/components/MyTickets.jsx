@@ -134,14 +134,6 @@ const Bottom = styled.div`
 export default function MyTickets({ allTickets, currentUser }) {
 
 
-  // function formatDate(ticket) {
-  //   console.log('-time->', ticket.start_time)
-  //   const milliseconds = Date.parse(typeof ticket.start_time)
-  //   const dateObj = new Date(milliseconds)
-  //   const ticket_datetime = dateObj.toLocaleString("en-US").replace(',', '')
-  //   return ticket_datetime
-  // }
-
   const tickets = allTickets.map((t, id) => {
     if (t.id === currentUser.id) {
       return (
