@@ -37,6 +37,7 @@ class TicketsController < ApplicationController
     if @ticket.save
       render json: @ticket, status: :created, location: @ticket
     else
+      puts 'kmkknnn-->'
       render json: @ticket.errors, status: :unprocessable_entity
     end
   end

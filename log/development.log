@@ -45949,3 +45949,347 @@ Completed 200 OK in 463ms (Views: 0.7ms | ActiveRecord: 0.6ms | Allocations: 281
 Completed 200 OK in 467ms (Views: 465.0ms | ActiveRecord: 1.4ms | Allocations: 3680)
 
 
+Started GET "/auth/verify" for ::1 at 2020-07-24 08:32:35 -0400
+Processing by AuthenticationsController#verify as HTML
+Started GET "/users_tickets_events" for ::1 at 2020-07-24 08:32:35 -0400
+Started GET "/events" for ::1 at 2020-07-24 08:32:35 -0400
+Processing by EventsController#index as HTML
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:8:in `index'
+Completed 200 OK in 6ms (Views: 4.5ms | ActiveRecord: 0.6ms | Allocations: 1420)
+
+
+  [1m[36mUser Load (11.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `authorize_request'
+Completed 200 OK in 19ms (Views: 0.8ms | ActiveRecord: 11.7ms | Allocations: 3858)
+
+
+Processing by TicketsController#users_tickets_events as HTML
+  [1m[36mUser Load (6.8ms)[0m  [1m[34mSELECT users.id, 
+      users.first_name, 
+      users.last_name, 
+      tickets.id AS ticket_id,
+      tickets.code, 
+      tickets.time_slot,
+      events.id AS event_id,
+      events.event_name,
+      events.capacity,
+      events.gateway,
+      events.ticket_cost,
+      events.start_time,
+      events.end_time,
+      events.date,
+      events.location,
+      events.img_url FROM "users" INNER JOIN "tickets" ON "tickets"."user_id" = "users"."id" INNER JOIN "tickets" "tickets_users_join" ON "tickets_users_join"."user_id" = "users"."id" INNER JOIN "events" ON "events"."id" = "tickets_users_join"."event_id"[0m
+  ↳ app/controllers/tickets_controller.rb:79:in `users_tickets_events'
+Completed 200 OK in 13ms (Views: 5.4ms | ActiveRecord: 6.8ms | Allocations: 1654)
+
+
+Started POST "/users" for ::1 at 2020-07-24 08:33:11 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"first_name"=>"Stefon", "last_name"=>"Simmons", "email"=>"s.j.simmons@spartans.nsu.edu", "mobile_phone"=>"15404981972", "password"=>"[FILTERED]"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:19:in `create'
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "mobile_phone", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Stefon"], ["last_name", "Simmons"], ["email", "s.j.simmons@spartans.nsu.edu"], ["mobile_phone", "15404981972"], ["password_digest", "$2a$12$qzUnHGEP1JKrp7JBzHEY3uif1b7E34grxv6xoDKbbYhRQNgTz4ttq"], ["created_at", "2020-07-24 12:33:12.265775"], ["updated_at", "2020-07-24 12:33:12.265775"]]
+  ↳ app/controllers/users_controller.rb:19:in `create'
+  [1m[35m (3.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:19:in `create'
+Completed 201 Created in 343ms (Views: 1.0ms | ActiveRecord: 4.3ms | Allocations: 3400)
+
+
+Started GET "/users" for ::1 at 2020-07-24 08:33:36 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.4ms | Allocations: 1255)
+
+
+Started PUT "/users/2" for ::1 at 2020-07-24 08:35:12 -0400
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{"profile_imgURL"=>"https://i.imgur.com/tVIMxPt.png"}, "id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:44:in `set_user'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[36mUser Update (0.9ms)[0m  [1m[33mUPDATE "users" SET "profile_imgURL" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["profile_imgURL", "https://i.imgur.com/tVIMxPt.png"], ["updated_at", "2020-07-24 12:35:12.973571"], ["id", 2]]
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[35m (40.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:29:in `update'
+Completed 200 OK in 49ms (Views: 0.5ms | ActiveRecord: 41.8ms | Allocations: 3375)
+
+
+Started GET "/users" for ::1 at 2020-07-24 08:35:32 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.3ms | Allocations: 1263)
+
+
+Started GET "/auth/verify" for ::1 at 2020-07-24 08:36:36 -0400
+Started GET "/events" for ::1 at 2020-07-24 08:36:36 -0400
+Processing by AuthenticationsController#verify as HTML
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Processing by EventsController#index as HTML
+  ↳ app/controllers/application_controller.rb:29:in `authorize_request'
+Started GET "/users_tickets_events" for ::1 at 2020-07-24 08:36:36 -0400
+Completed 200 OK in 19ms (Views: 0.6ms | ActiveRecord: 1.6ms | Allocations: 1908)
+
+
+Processing by TicketsController#users_tickets_events as HTML
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT users.id, 
+      users.first_name, 
+      users.last_name, 
+      tickets.id AS ticket_id,
+      tickets.code, 
+      tickets.time_slot,
+      events.id AS event_id,
+      events.event_name,
+      events.capacity,
+      events.gateway,
+      events.ticket_cost,
+      events.start_time,
+      events.end_time,
+      events.date,
+      events.location,
+      events.img_url FROM "users" INNER JOIN "tickets" ON "tickets"."user_id" = "users"."id" INNER JOIN "tickets" "tickets_users_join" ON "tickets_users_join"."user_id" = "users"."id" INNER JOIN "events" ON "events"."id" = "tickets_users_join"."event_id"[0m
+  [1m[36mEvent Load (16.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/tickets_controller.rb:79:in `users_tickets_events'
+  ↳ app/controllers/events_controller.rb:8:in `index'
+Completed 200 OK in 333ms (Views: 315.9ms | ActiveRecord: 16.3ms | Allocations: 4244)
+
+
+Completed 200 OK in 321ms (Views: 318.7ms | ActiveRecord: 1.5ms | Allocations: 2330)
+
+
+Started POST "/users" for ::1 at 2020-07-24 08:36:38 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"first_name"=>"", "last_name"=>"", "email"=>"", "mobile_phone"=>"", "password"=>"[FILTERED]"}}
+Completed 422 Unprocessable Entity in 32ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 1799)
+
+
+Started POST "/auth/login" for ::1 at 2020-07-24 08:37:13 -0400
+Processing by AuthenticationsController#login as HTML
+  Parameters: {"auth"=>{"email"=>"s.j.simmons@spartans.nsu.edu", "password"=>"[FILTERED]"}, "authentication"=>{"auth"=>{"email"=>"s.j.simmons@spartans.nsu.edu", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "s.j.simmons@spartans.nsu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/authentications_controller.rb:7:in `login'
+Completed 200 OK in 423ms (Views: 0.5ms | ActiveRecord: 2.1ms | Allocations: 1278)
+
+
+Started GET "/tickets" for ::1 at 2020-07-24 08:37:42 -0400
+Processing by TicketsController#index as */*
+  [1m[36mTicket Load (0.3ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets"[0m
+  ↳ app/controllers/tickets_controller.rb:11:in `index'
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.3ms | Allocations: 1013)
+
+
+Started POST "/tickets" for ::1 at 2020-07-24 08:39:56 -0400
+Processing by TicketsController#create as */*
+  Parameters: {"_json"=>[{"ticket"=>{"code"=>"", "time_slot"=>"2000-01-01T09:30:00.000Z", "event_id"=>2, "user_id"=>2}}], "ticket"=>{}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 147)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: ticket):
+  
+app/controllers/tickets_controller.rb:90:in `ticket_params'
+app/controllers/tickets_controller.rb:36:in `create'
+Started POST "/tickets" for ::1 at 2020-07-24 08:42:20 -0400
+Processing by TicketsController#create as */*
+  Parameters: {"_json"=>[{"ticket"=>{"code"=>"", "time_slot"=>"2000-01-01T09:30:00.000Z", "event_id"=>2, "user_id"=>2}}], "ticket"=>{}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 144)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: ticket):
+  
+app/controllers/tickets_controller.rb:90:in `ticket_params'
+app/controllers/tickets_controller.rb:36:in `create'
+Started POST "/tickets" for ::1 at 2020-07-24 08:43:48 -0400
+Processing by TicketsController#create as */*
+  Parameters: {"_json"=>[{"ticket"=>{"code"=>"", "time_slot"=>"2000-01-01T09:30:00.000Z", "event_id"=>2, "user_id"=>2}}], "ticket"=>{}}
+Completed 400 Bad Request in 1ms (ActiveRecord: 83.4ms | Allocations: 182)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: ticket):
+  
+app/controllers/tickets_controller.rb:90:in `ticket_params'
+app/controllers/tickets_controller.rb:36:in `create'
+Started POST "/tickets" for ::1 at 2020-07-24 08:45:56 -0400
+Error occurred while parsing request parameters.
+Contents:
+
+[
+    "ticket" : {
+        "code": "",
+        "time_slot": "2000-01-01T09:30:00.000Z",
+        "event_id": 2,
+        "user_id": 2
+    }
+]
+  
+ActionDispatch::Http::Parameters::ParseError (416: unexpected token at ': {
+        "code": "",
+        "time_slot": "2000-01-01T09:30:00.000Z",
+        "event_id": 2,
+        "user_id": 2
+    }
+]'):
+  
+actionpack (6.0.3.2) lib/action_dispatch/http/parameters.rb:114:in `rescue in parse_formatted_parameters'
+actionpack (6.0.3.2) lib/action_dispatch/http/parameters.rb:110:in `parse_formatted_parameters'
+actionpack (6.0.3.2) lib/action_dispatch/http/request.rb:389:in `block in POST'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch'
+rack (2.2.3) lib/rack/request.rb:69:in `fetch_header'
+actionpack (6.0.3.2) lib/action_dispatch/http/request.rb:388:in `POST'
+actionpack (6.0.3.2) lib/action_dispatch/http/parameters.rb:55:in `parameters'
+actionpack (6.0.3.2) lib/action_controller/metal/params_wrapper.rb:278:in `_wrapper_enabled?'
+actionpack (6.0.3.2) lib/action_controller/metal/params_wrapper.rb:244:in `process_action'
+activerecord (6.0.3.2) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.3.2) lib/abstract_controller/base.rb:136:in `process'
+actionpack (6.0.3.2) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.2) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (6.0.3.2) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Error occurred while parsing request parameters.
+Contents:
+
+[
+    "ticket" : {
+        "code": "",
+        "time_slot": "2000-01-01T09:30:00.000Z",
+        "event_id": 2,
+        "user_id": 2
+    }
+]
+Started POST "/tickets" for ::1 at 2020-07-24 08:46:35 -0400
+Processing by TicketsController#create as */*
+  Parameters: {"_json"=>[{"ticket"=>{"code"=>"", "time_slot"=>"2000-01-01T09:30:00.000Z", "event_id"=>2, "user_id"=>2}}], "ticket"=>{}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 3.0ms | Allocations: 182)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: ticket):
+  
+app/controllers/tickets_controller.rb:90:in `ticket_params'
+app/controllers/tickets_controller.rb:36:in `create'
+Started POST "/tickets" for ::1 at 2020-07-24 08:47:37 -0400
+Processing by TicketsController#create as */*
+  Parameters: {"_json"=>[{"ticket"=>{"code"=>" ", "time_slot"=>"2000-01-01T09:30:00.000Z", "event_id"=>2, "user_id"=>2}}], "ticket"=>{}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms | Allocations: 144)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: ticket):
+  
+app/controllers/tickets_controller.rb:90:in `ticket_params'
+app/controllers/tickets_controller.rb:36:in `create'
+Started POST "/tickets" for ::1 at 2020-07-24 08:48:33 -0400
+Processing by TicketsController#create as */*
+  Parameters: {"_json"=>[{"ticket"=>{"code"=>" ", "time_slot"=>"2000-01-01T09:30:00.000Z", "event_id"=>2, "user_id"=>2}}], "ticket"=>{}}
+Completed 400 Bad Request in 0ms (ActiveRecord: 1.8ms | Allocations: 182)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: ticket):
+  
+app/controllers/tickets_controller.rb:91:in `ticket_params'
+app/controllers/tickets_controller.rb:36:in `create'
+Started POST "/tickets" for ::1 at 2020-07-24 08:49:34 -0400
+Processing by TicketsController#create as */*
+  Parameters: {"ticket"=>{"code"=>" ", "time_slot"=>"2000-01-01T09:30:00.000Z", "event_id"=>2, "user_id"=>2}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tickets_controller.rb:36:in `create'
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:36:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:36:in `create'
+  [1m[36mTicket Create (6.6ms)[0m  [1m[32mINSERT INTO "tickets" ("code", "time_slot", "event_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["code", " "], ["time_slot", "09:30:00"], ["event_id", 2], ["user_id", 2], ["created_at", "2020-07-24 12:49:35.054159"], ["updated_at", "2020-07-24 12:49:35.054159"]]
+  ↳ app/controllers/tickets_controller.rb:36:in `create'
+  [1m[36mTicket Update (0.6ms)[0m  [1m[33mUPDATE "tickets" SET "code" = $1, "updated_at" = $2 WHERE "tickets"."id" = $3[0m  [["code", "1e5a86edbad9d7da771c88b6f46f04c2"], ["updated_at", "2020-07-24 12:49:35.064667"], ["id", 2]]
+  ↳ app/models/ticket.rb:11:in `generate_code'
+  [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tickets_controller.rb:36:in `create'
+Completed 201 Created in 156ms (Views: 0.6ms | ActiveRecord: 66.6ms | Allocations: 30220)
+
+
+Started GET "/auth/verify" for ::1 at 2020-07-24 08:49:52 -0400
+Started GET "/events" for ::1 at 2020-07-24 08:49:52 -0400
+Started GET "/users_tickets_events" for ::1 at 2020-07-24 08:49:52 -0400
+Processing by AuthenticationsController#verify as HTML
+  [1m[36mUser Load (28.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `authorize_request'
+Completed 200 OK in 32ms (Views: 0.8ms | ActiveRecord: 28.1ms | Allocations: 1110)
+
+
+Processing by TicketsController#users_tickets_events as HTML
+Processing by EventsController#index as HTML
+  [1m[36mEvent Load (2.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:8:in `index'
+Completed 200 OK in 8ms (Views: 5.2ms | ActiveRecord: 2.2ms | Allocations: 1890)
+
+
+  [1m[36mUser Load (131.0ms)[0m  [1m[34mSELECT users.id, 
+      users.first_name, 
+      users.last_name, 
+      tickets.id AS ticket_id,
+      tickets.code, 
+      tickets.time_slot,
+      events.id AS event_id,
+      events.event_name,
+      events.capacity,
+      events.gateway,
+      events.ticket_cost,
+      events.start_time,
+      events.end_time,
+      events.date,
+      events.location,
+      events.img_url FROM "users" INNER JOIN "tickets" ON "tickets"."user_id" = "users"."id" INNER JOIN "tickets" "tickets_users_join" ON "tickets_users_join"."user_id" = "users"."id" INNER JOIN "events" ON "events"."id" = "tickets_users_join"."event_id"[0m
+  ↳ app/controllers/tickets_controller.rb:80:in `users_tickets_events'
+Completed 200 OK in 143ms (Views: 9.7ms | ActiveRecord: 132.3ms | Allocations: 4554)
+
+
+Started GET "/qrcode/2" for ::1 at 2020-07-24 08:50:02 -0400
+Processing by TicketsController#showqr as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTicket Load (4.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:86:in `set_ticket'
+Completed 200 OK in 134ms (Views: 0.1ms | ActiveRecord: 9.1ms | Allocations: 25030)
+
+
