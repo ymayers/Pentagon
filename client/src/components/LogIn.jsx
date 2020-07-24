@@ -78,7 +78,7 @@ const LogInButton = styled.button`
   line-height: 22px;
 `;
 
-const AltLogIn = styled.p``;
+// const AltLogIn = styled.p``;
 
 class LogIn extends Component {
   constructor(props) {
