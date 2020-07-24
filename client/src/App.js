@@ -6,6 +6,7 @@ import SignUp from "./components/SignUp";
 import LogIn from "./components/LogIn";
 import Home from "./components/Home";
 import ProfileIDSetUp from "./components/ProfileIDSetUp";
+import CongratsModal from "./components/CongratsModal";
 
 import {
   loginUser,
@@ -105,6 +106,9 @@ class App extends Component {
               />
             )}
           />
+          <Route path="/congrats">
+            <CongratsModal/>
+          </Route>
           
         </Switch>
       </>

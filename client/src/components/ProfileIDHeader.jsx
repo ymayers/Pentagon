@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 
@@ -52,7 +53,7 @@ const Button = styled.button`
 `
 
 export default class ProfileIdHeader extends Component {
-  
+
   constructor(props) {
     super(props)
 
@@ -110,7 +111,7 @@ export default class ProfileIdHeader extends Component {
                 placeholder='image url'
                 onChange={this.handleChange}
               />
-              <Link to="/"><Button type="submit">
+              <Link to="/congrats"><Button type="submit">
                 ADD IMAGE
             </Button></Link>
             </Form>
