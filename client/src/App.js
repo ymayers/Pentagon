@@ -17,7 +17,8 @@ import {
   registerUser,
   getAllEvents,
   updateProfileImg,
-  getUserTickets
+  getUserTickets,
+  postUserTicket
 } from "./services/api-helper";
 
 class App extends Component {
@@ -25,6 +26,7 @@ class App extends Component {
     currentUser: null,
     events: [],
     tickets: [],
+    ticket: null
   };
 
   componentDidMount() {
@@ -89,6 +91,12 @@ class App extends Component {
     this.setState({ tickets })
   }
 
+  createTicket = async (ticketData) => {
+    const newTicket = await postUserTicket(ticketData)
+    this.setState(prevState => (
+      { tickets: [...prevState.tickets, newTicket] }
+    ))
+  }
 
   render() {
     return (
@@ -158,7 +166,9 @@ class App extends Component {
             exact path="/events/:id"
             render={(props) => (
               <EventDetail {...props}
+                currentUser={this.state.currentUser}
                 events={this.state.events}
+                createTicket={this.createTicket}
               />
             )}
           />
