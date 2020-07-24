@@ -11,6 +11,7 @@ import {
   verifyUser,
   removeToken,
   registerUser,
+  getAllEvents,
 } from "./services/api-helper";
 
 class App extends Component {
@@ -22,6 +23,7 @@ class App extends Component {
 
   componentDidMount() {
     this.confirmUser();
+    this.readAllEvents();
   }
 
   //***************************************************************
@@ -39,7 +41,7 @@ class App extends Component {
   };
 
   confirmUser = async () => {
-    const currentUser = await verifyUser(); //where did verifyUser comefrom?
+    const currentUser = await verifyUser(); 
     this.setState({ currentUser });
   };
 
@@ -55,6 +57,11 @@ class App extends Component {
   //*******************************EVENTS**************************
   //***************************************************************
 
+  readAllEvents = async () => {
+    const events = await getAllEvents();
+    this.setState({ events });
+  };
+
   render() {
     return (
       <>
@@ -69,14 +76,15 @@ class App extends Component {
 
           <Route
             path="/login"
-            render={(props) => (  
-            <LogIn {...props} handleLogin={this.handleLogin} /> )}
+            render={(props) => (
+              <LogIn {...props} handleLogin={this.handleLogin} />
+            )}
           />
 
-          <Route path="/home">
-            <Home/>
-            </Route>
-
+          <Route
+            path="/events"
+            render={(props) => <Home {...props} events={this.state.events} />}
+          />
         </Switch>
       </>
     );
