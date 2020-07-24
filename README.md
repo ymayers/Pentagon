@@ -1,24 +1,10 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Pentagon App
 
-Things you may want to cover:
+### "Contactless" Check-In App
 
-* Ruby version
 
-* System dependencies
+## ERD
+<img src="https://i.imgur.com/7X5uSdS.png" alt="ERD" style= "border-radius: 5px; width: 350px"/>
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
