@@ -73,6 +73,7 @@ class TicketsController < ApplicationController
       events.start_time,
       events.end_time,
       events.date,
+      events.location,
       events.img_url"
     )
     render json: @tickets

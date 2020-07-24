@@ -23,6 +23,7 @@ Event.create([{
   capacity: 1000,
   ticket_cost: '$55',
   gateway: 'gate1, gate2',
+  location: 'Brooklyn: Barry Commodore Park',
   start_time: '08:00:00',
   end_time: '11:00:00',
   date: '2021-08-26'
@@ -34,6 +35,7 @@ Event.create([{
   capacity: 1000,
   ticket_cost: '$650',
   gateway: 'gate1, gate2, gate3, gate4, gate5',
+  location: 'California: Deserts',
   start_time: '06:00:00',
   end_time: '23:00:00',
   date: '2021-03-12'

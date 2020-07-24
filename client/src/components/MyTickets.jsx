@@ -52,7 +52,32 @@ const GreyOption = styled.p`
 const Main = styled.main`
 `
 const Ticket = styled.div`
-
+  disply: flex;
+  // flex-direction: row;
+`
+const Image = styled.img`
+  height: 88px;
+  weight: 106px;
+  
+`
+const Info = styled.div`
+`
+const EventName = styled.h1`
+  font-family: Lato;
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: #6D6D6D;
+  text-transform: uppercase
+`
+const Date = styled.h2`
+  font-family: Lato;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #6D6D6D;
+`
+const Location = styled(Date)`
 `
 const Divider = styled.hr`
   border: 1px solid #D1D9DD;
@@ -66,9 +91,12 @@ export default function MyTickets({ allTickets, currentUser }) {
     if (t.id === currentUser.id) {
       return (
         <Ticket key={id}>
-          <h1>{t.event_name}</h1>
-          <h2>{`${t.date} | ${t.start_time}`}</h2>
-          <h3>TBA</h3>
+          <Image src={t.img_url} alt={t.event_name}/>
+          <Info>
+            <EventName>{t.event_name}</EventName>
+            <Date>{`${t.date} | ${t.start_time}`}</Date>
+            <Location>{t.location}</Location>
+          </Info>
         </Ticket>
       )
     }
