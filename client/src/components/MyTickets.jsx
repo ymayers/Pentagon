@@ -37,7 +37,7 @@ const WhiteOption = styled.button`
   border-radius: 8px;
   font-family: Lato;
   font-weight: 900;
-  font-size: 14px;
+  font-size: 12px;
   letter-spacing: 2px;
   color: #6D6D6D;
 `
@@ -49,8 +49,31 @@ const GreyOption = styled.p`
   color: #A7A7A7;
   margin: 0 auto
 `
+const Main = styled.main`
+`
+const Ticket = styled.div`
 
-export default function MyTickets() {
+`
+const Divider = styled.hr`
+  border: 1px solid #D1D9DD;
+  width: 80%;
+  margin: 40px auto 0 auto
+`
+
+export default function MyTickets({ allTickets, currentUser }) {
+
+  const tickets = allTickets.map((t, id) => {
+    if (t.id === currentUser.id) {
+      return (
+        <Ticket key={id}>
+          <h1>{t.event_name}</h1>
+          <h2>{`${t.date} | ${t.start_time}`}</h2>
+          <h3>TBA</h3>
+        </Ticket>
+      )
+    }
+  })
+
   return (
     <>
       <Header>
@@ -61,10 +84,14 @@ export default function MyTickets() {
       </Header>
       <HeaderTwo>
         <GreyBox>
-          <WhiteOption>Upcoming events</WhiteOption>
-          <GreyOption>All Events</GreyOption>
+          <WhiteOption>Active/Non-Active</WhiteOption>
+          <GreyOption>All Tickets</GreyOption>
         </GreyBox>
       </HeaderTwo>
+      <Main>
+        {tickets}
+      </Main>
+      <Divider />
     </>
   )
 }

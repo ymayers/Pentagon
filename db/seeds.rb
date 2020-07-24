@@ -19,7 +19,7 @@
 
 Event.create([{
   event_name: 'Afropunk',
-  imgURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQjnL-DcV7xyNUHeZuLvBcdNuUkm1mSLL6q1g&usqp=CAU.png',
+  img_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQjnL-DcV7xyNUHeZuLvBcdNuUkm1mSLL6q1g&usqp=CAU.png',
   capacity: 1000,
   ticket_cost: '$55',
   gateway: 'gate1, gate2',
@@ -30,7 +30,7 @@ Event.create([{
 },
 {
   event_name: 'Coachella',
-  imgURL: 'https://imgur.com/TjdWMqI.png',
+  img_url: 'https://imgur.com/TjdWMqI.png',
   capacity: 1000,
   ticket_cost: '$650',
   gateway: 'gate1, gate2, gate3, gate4, gate5',

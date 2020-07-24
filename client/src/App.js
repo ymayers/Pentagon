@@ -137,6 +137,8 @@ class App extends Component {
             path="/mytickets"
             render={(props) => (
               <MyTickets {...props}
+              currentUser={this.state.currentUser}
+              allTickets={this.state.tickets}
               />
             )}
           />

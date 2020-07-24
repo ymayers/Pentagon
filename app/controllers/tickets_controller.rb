@@ -72,7 +72,8 @@ class TicketsController < ApplicationController
       events.ticket_cost,
       events.start_time,
       events.end_time,
-      events.date"
+      events.date,
+      events.img_url"
     )
     render json: @tickets
   end

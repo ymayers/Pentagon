@@ -233,7 +233,7 @@ function Home(props) {
               <UpcomingImgHolder key={event.id}>
                 <Link to={`/events/${event.id}`}>
                   <HomeImg
-                    src={event.imgURL}
+                    src={event.img_url}
                     alt="event"
                     height="140"
                     width="165"
@@ -256,7 +256,7 @@ function Home(props) {
               <TrendingImgHolder key={event.id}>
                 <Link to={`/events/${event.id}`}>
                   <HomeImg
-                    src={event.imgURL}
+                    src={event.img_url}
                     alt="event"
                     height="140"
                     width="165"
@@ -279,7 +279,7 @@ function Home(props) {
               <SuggestedImgHolder key={event.id}>
                 <Link to={`/events/${event.id}`}>
                   <HomeImg
-                    src={event.imgURL}
+                    src={event.img_url}
                     alt="event"
                     height="140"
                     width="165"
