@@ -15,7 +15,8 @@ import {
   registerUser,
   getAllEvents,
   updateProfileImg,
-  getQR
+  getQR,
+  getUserTickets
 } from "./services/api-helper";
 
 class App extends Component {
@@ -29,7 +30,8 @@ class App extends Component {
   componentDidMount() {
     this.confirmUser();
     this.readAllEvents();
-    this.readQR(4)
+    this.readQR(4);
+    this.readAllTickets()
   }
 
   //***************************************************************
@@ -80,8 +82,13 @@ class App extends Component {
   };
 
   //***************************************************************
-  //*******************************EVENTS**************************
+  //*******************************TICKETS**************************
   //***************************************************************
+
+  readAllTickets = async () => {
+    const tickets = await getUserTickets();
+    this.setState({tickets})
+  }
 
   readQR = async (ticketId) => {
     const qr = await getQR(ticketId)
@@ -138,7 +145,7 @@ class App extends Component {
               />
             )}
           />
-
+          {console.log(this.state.tickets)}
         </Switch>
 
 
