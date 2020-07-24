@@ -6,6 +6,9 @@ import SignUp from "./components/SignUp";
 import LogIn from "./components/LogIn";
 import Home from "./components/Home";
 import ProfileIDSetUp from "./components/ProfileIDSetUp";
+import Ticket from "./components/Ticket";
+import MyTickets from "./components/MyTickets";
+import EventDetail from "./components/EventDetail";
 
 import {
   loginUser,
@@ -13,7 +16,9 @@ import {
   removeToken,
   registerUser,
   getAllEvents,
-  updateProfileImg
+  updateProfileImg,
+  getUserTickets,
+  postUserTicket
 } from "./services/api-helper";
 
 class App extends Component {
@@ -21,11 +26,13 @@ class App extends Component {
     currentUser: null,
     events: [],
     tickets: [],
+    ticket: null
   };
 
   componentDidMount() {
     this.confirmUser();
     this.readAllEvents();
+    this.readAllTickets()
   }
 
   //***************************************************************
@@ -75,11 +82,28 @@ class App extends Component {
     this.setState({ events });
   };
 
+  //***************************************************************
+  //*******************************TICKETS**************************
+  //***************************************************************
+
+  readAllTickets = async () => {
+    const tickets = await getUserTickets();
+    this.setState({ tickets })
+  }
+
+  createTicket = async (ticketData) => {
+    const newTicket = await postUserTicket(ticketData)
+    this.setState(prevState => (
+      { tickets: [...prevState.tickets, newTicket] }
+    ))
+  }
+
   render() {
     return (
       <>
+
         <Switch>
-          <Route exact path="/"> 
+          <Route exact path="/">
             <Welcome />
           </Route>
 
@@ -98,8 +122,10 @@ class App extends Component {
           />
 
           <Route
-            path="/events"
-            render={(props) => <Home {...props} events={this.state.events} />}
+            exact path="/events"
+            render={(props) => (
+              <Home {...props} events={this.state.events} />
+            )}
           />
 
           <Route path="/home">
@@ -116,10 +142,36 @@ class App extends Component {
             )}
           />
 
-          <Route>
-            
-          </Route>
-          
+          <Route
+            path="/mytickets"
+            render={(props) => (
+              <MyTickets {...props}
+                currentUser={this.state.currentUser}
+                allTickets={this.state.tickets}
+              />
+            )}
+          />
+
+          <Route
+            path="/ticket/:id"
+            render={(props) => (
+              <Ticket {...props}
+                currentUser={this.state.currentUser}
+                allTickets={this.state.tickets}
+              />
+            )}
+          />
+
+          <Route
+            exact path="/events/:id"
+            render={(props) => (
+              <EventDetail {...props}
+                currentUser={this.state.currentUser}
+                events={this.state.events}
+                createTicket={this.createTicket}
+              />
+            )}
+          />
         </Switch>
 
 

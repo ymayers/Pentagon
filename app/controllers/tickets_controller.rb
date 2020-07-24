@@ -8,9 +8,9 @@ class TicketsController < ApplicationController
   # GET /tickets
   def index
     @tickets = Ticket.all
-
     render json: @tickets
   end
+
 
   # GET /tickets/1
   # def show
@@ -37,6 +37,7 @@ class TicketsController < ApplicationController
     if @ticket.save
       render json: @ticket, status: :created, location: @ticket
     else
+      puts 'kmkknnn-->'
       render json: @ticket.errors, status: :unprocessable_entity
     end
   end
@@ -53,6 +54,30 @@ class TicketsController < ApplicationController
   # DELETE /tickets/1
   def destroy
     @ticket.destroy
+  end
+
+  # CUSTOM ACTIONS
+
+  def users_tickets_events
+    @tickets = User.joins(:tickets, :events).select(
+      "users.id, 
+      users.first_name, 
+      users.last_name, 
+      tickets.id AS ticket_id,
+      tickets.code, 
+      tickets.time_slot,
+      events.id AS event_id,
+      events.event_name,
+      events.capacity,
+      events.gateway,
+      events.ticket_cost,
+      events.start_time,
+      events.end_time,
+      events.date,
+      events.location,
+      events.img_url"
+    )
+    render json: @tickets
   end
 
   private

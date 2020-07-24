@@ -42,7 +42,7 @@ export const removeToken = () => {
 
 /*******USER EDIT************/
 
-export const updateProfileImg = async (id ,userImgParams) => {
+export const updateProfileImg = async (id, userImgParams) => {
   const resp = await api.put(`/users/${id}`, { user: userImgParams })
   const updatedImg = resp.data
 
@@ -54,7 +54,6 @@ export const updateProfileImg = async (id ,userImgParams) => {
 export const getAllEvents = async () => {
   const resp = await api.get('/events');
   const events = resp.data;
-  console.log(events);
   return events;
 };
 
@@ -67,10 +66,9 @@ export const getOneEvent = async (id) => {
 
 /**********TICKETS************/
 
-export const getUserTickets = async (id) => {
-  const resp = await api.get(`/users/${id}/tickets`);
+export const getUserTickets = async () => {
+  const resp = await api.get(`/users_tickets_events`);
   const tickets = resp.data;
-  console.log(tickets);
   return tickets;
 };
 
@@ -91,6 +89,13 @@ export const postUserTicket = async (ticketParams) => {
 export const deleteUserTicket = async (id) => {
   const resp = await api.delete(`/tickets/${id}`);
   return resp;
+};
+
+export const getQR = async (ticketId) => {
+  const resp = await api.get(`/qrcode/${ticketId}`);
+  const qr = resp.data;
+  // console.log('QRRR-->',qr);
+  return qr;
 };
 
 /**********CARDS************/
