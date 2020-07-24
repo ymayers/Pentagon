@@ -132,7 +132,7 @@ class LogIn extends Component {
 
             <PasswordInput
               id="password"
-              type="text"
+              type="password"
               name="password"
               placeholder="PASSWORD"
               value={this.state.password}

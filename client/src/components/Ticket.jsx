@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { renderToStaticMarkup } from 'react-dom/server';
+import { getQR } from '../services/api-helper'
 
 const Main = styled.main`
   display: flex;
@@ -59,27 +59,53 @@ const QRCode = styled.div`
   // background-image: url("https://i.imgur.com/chpYvXn.png")
 `
 
-export default function Ticket({ qr }) {
+export default class Ticket extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      qr: null
+    };
+  }
+
+  // componentDidMount() {
+  //   this.readQR()
+  // }
+
+  readQR = async (ticketId) => {
+    const qr = await getQR(ticketId)
+    this.setState({ qr })
+  }
+  render() {
+    const { qr, allTickets, currentUser } = this.props
+    console.log(currentUser)
+    const ticket = allTickets.filter(t => t.id === currentUser.id)
+    console.log(ticket)
+    this.readQR(ticket.ticket_id)
 
 
-  return (
-    <>
-      <Main>
-        <Header>GENERAL ADMISSION</Header>
-        <QRCode style={{ backgroundImage: `url(data:image/svg+xml;base64,${btoa(qr)})`}}>
-        </QRCode>
-        <Divider />
-        <Wrapper>
-          <Label>Where:</Label>
-          <Detail>dsfgsgsg</Detail>
-          <Label>Seat:</Label>
-          <Detail>gfgg</Detail>
-        </Wrapper>
-        <Divider />
-        <Button>ADD TO APPLE WALLET</Button>
-        <Button>TEXT ME THE TICKET</Button>
+    return (
+      <>
+        <Main>
+          <Header>GENERAL ADMISSION</Header>
+          <h2>{ticket.ticket_id}</h2>
+          <h3>{ticket.date}{ticket.start_time}</h3>
+          <QRCode style={{ backgroundImage: `url(data:image/svg+xml;base64,${btoa(qr)})` }}>
+          </QRCode>
+          <Divider />
+          <Wrapper>
+            <Label>Where:</Label>
+            <Detail>{ticket.event_name}</Detail>
+            {/* <Label>Seat:</Label>
+            <Detail>gfgg</Detail> */}
+          </Wrapper>
+          <Divider />
+          <Button>ADD TO APPLE WALLET</Button>
+          <Button>TEXT ME THE TICKET</Button>
 
-      </Main>
-    </>
-  )
+        </Main>
+      </>
+    )
+  }
+
 }

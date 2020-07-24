@@ -15,7 +15,6 @@ import {
   registerUser,
   getAllEvents,
   updateProfileImg,
-  getQR,
   getUserTickets
 } from "./services/api-helper";
 
@@ -24,13 +23,11 @@ class App extends Component {
     currentUser: null,
     events: [],
     tickets: [],
-    qr: null
   };
 
   componentDidMount() {
     this.confirmUser();
     this.readAllEvents();
-    this.readQR(4);
     this.readAllTickets()
   }
 
@@ -90,10 +87,6 @@ class App extends Component {
     this.setState({tickets})
   }
 
-  readQR = async (ticketId) => {
-    const qr = await getQR(ticketId)
-    this.setState({ qr })
-  }
 
   render() {
     return (
@@ -120,7 +113,9 @@ class App extends Component {
 
           <Route
             path="/events"
-            render={(props) => <Home {...props} events={this.state.events} />}
+            render={(props) => (
+              <Home {...props} events={this.state.events} />
+            )}
           />
 
           <Route path="/home">
@@ -141,7 +136,10 @@ class App extends Component {
             path="/ticket"
             render={(props) => (
               <Ticket {...props}
-              qr={this.state.qr}
+                qr={this.state.qr}
+                getQR={this.readQR}
+                currentUser={this.state.currentUser}
+                allTickets={this.state.tickets}
               />
             )}
           />
