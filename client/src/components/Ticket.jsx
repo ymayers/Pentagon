@@ -7,6 +7,8 @@ const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  padding: 20px 0
 `
 const Header = styled.h1`
   font-family: Lato;
@@ -39,6 +41,7 @@ const Detail = styled.p`
   font-family: Lato;
   font-weight: normal;
   font-size: 18px;
+  margin-top: 5px
 `
 const Button = styled.button`
   height: 45px;
@@ -57,7 +60,6 @@ const QRCode = styled.div`
   width: 300px;
   height: 300px;
   background-size: cover;  
-  // background-image: url("https://i.imgur.com/chpYvXn.png")
 `
 
 export default class Ticket extends Component {
@@ -88,14 +90,15 @@ export default class Ticket extends Component {
           <>
             <Header>GENERAL ADMISSION</Header>
             <h2>#{t.ticket_id}</h2>
-            <h3>{t.date}{t.start_time}</h3>
+            <h3>{t.date}</h3>
+            <h3>{t.start_time}</h3>
             <QRCode style={{ backgroundImage: `url(data:image/svg+xml;base64,${btoa(qr)})` }}>
             </QRCode>
             <Divider />
             <Wrapper>
               <Label>Where:</Label>
-              <Detail>{t.event_name}</Detail>
-              {/* <Label>Seat:</Label>
+              <Detail>{t.location}</Detail>
+              {/* <Label>Seat:</Label> 
           <Detail>gfgg</Detail> */}
             </Wrapper>
             <Divider />

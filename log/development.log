@@ -44937,3 +44937,707 @@ Completed 200 OK in 599ms (Views: 571.9ms | ActiveRecord: 26.9ms | Allocations: 
 Completed 200 OK in 669ms (Views: 0.1ms | ActiveRecord: 22.9ms | Allocations: 29856)
 
 
+Started GET "/qrcode/1" for ::1 at 2020-07-24 08:23:39 -0400
+Started GET "/auth/verify" for ::1 at 2020-07-24 08:23:39 -0400
+Started GET "/users_tickets_events" for ::1 at 2020-07-24 08:23:39 -0400
+Started GET "/events" for ::1 at 2020-07-24 08:23:39 -0400
+Processing by TicketsController#showqr as HTML
+  Parameters: {"id"=>"1"}
+Processing by AuthenticationsController#verify as HTML
+Processing by TicketsController#users_tickets_events as HTML
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (7.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `authorize_request'
+Completed 200 OK in 10ms (Views: 0.4ms | ActiveRecord: 7.2ms | Allocations: 2589)
+
+
+  [1m[36mEvent Load (11.0ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  [1m[36mTicket Load (19.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:8:in `index'
+  ↳ app/controllers/tickets_controller.rb:85:in `set_ticket'
+Completed 200 OK in 23ms (Views: 11.9ms | ActiveRecord: 11.0ms | Allocations: 2944)
+
+
+Completed 200 OK in 124ms (Views: 0.2ms | ActiveRecord: 19.4ms | Allocations: 29424)
+
+
+  [1m[36mUser Load (118.0ms)[0m  [1m[34mSELECT users.id, 
+      users.first_name, 
+      users.last_name, 
+      tickets.id AS ticket_id,
+      tickets.code, 
+      tickets.time_slot,
+      events.id AS event_id,
+      events.event_name,
+      events.capacity,
+      events.gateway,
+      events.ticket_cost,
+      events.start_time,
+      events.end_time,
+      events.date,
+      events.location,
+      events.img_url FROM "users" INNER JOIN "tickets" ON "tickets"."user_id" = "users"."id" INNER JOIN "tickets" "tickets_users_join" ON "tickets_users_join"."user_id" = "users"."id" INNER JOIN "events" ON "events"."id" = "tickets_users_join"."event_id"[0m
+  ↳ app/controllers/tickets_controller.rb:79:in `users_tickets_events'
+Completed 200 OK in 130ms (Views: 11.5ms | ActiveRecord: 118.0ms | Allocations: 30104)
+
+
+Started GET "/qrcode/1" for ::1 at 2020-07-24 08:23:47 -0400
+Started GET "/events" for ::1 at 2020-07-24 08:23:47 -0400
+Started GET "/auth/verify" for ::1 at 2020-07-24 08:23:47 -0400
+Processing by TicketsController#showqr as HTML
+  Parameters: {"id"=>"1"}
+Started GET "/users_tickets_events" for ::1 at 2020-07-24 08:23:47 -0400
+Processing by EventsController#index as HTML
+  [1m[36mTicket Load (75.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:85:in `set_ticket'
+Completed 200 OK in 180ms (Views: 0.1ms | ActiveRecord: 75.2ms | Allocations: 25974)
+
+
+Processing by AuthenticationsController#verify as HTML
+Processing by TicketsController#users_tickets_events as HTML
+  [1m[36mEvent Load (175.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:8:in `index'
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT users.id, 
+      users.first_name, 
+      users.last_name, 
+      tickets.id AS ticket_id,
+      tickets.code, 
+      tickets.time_slot,
+      events.id AS event_id,
+      events.event_name,
+      events.capacity,
+      events.gateway,
+      events.ticket_cost,
+      events.start_time,
+      events.end_time,
+      events.date,
+      events.location,
+      events.img_url FROM "users" INNER JOIN "tickets" ON "tickets"."user_id" = "users"."id" INNER JOIN "tickets" "tickets_users_join" ON "tickets_users_join"."user_id" = "users"."id" INNER JOIN "events" ON "events"."id" = "tickets_users_join"."event_id"[0m
+Completed 200 OK in 186ms (Views: 10.2ms | ActiveRecord: 175.1ms | Allocations: 28795)
+
+
+  ↳ app/controllers/tickets_controller.rb:79:in `users_tickets_events'
+  ↳ app/controllers/application_controller.rb:29:in `authorize_request'
+Completed 200 OK in 11ms (Views: 7.6ms | ActiveRecord: 3.2ms | Allocations: 3670)
+
+
+Completed 200 OK in 14ms (Views: 0.7ms | ActiveRecord: 2.8ms | Allocations: 4238)
+
+
+Started GET "/auth/verify" for ::1 at 2020-07-24 08:23:49 -0400
+Started GET "/qrcode/1" for ::1 at 2020-07-24 08:23:49 -0400
+Started GET "/events" for ::1 at 2020-07-24 08:23:49 -0400
+Started GET "/users_tickets_events" for ::1 at 2020-07-24 08:23:49 -0400
+Processing by AuthenticationsController#verify as HTML
+Processing by EventsController#index as HTML
+Processing by TicketsController#showqr as HTML
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (1.6ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Parameters: {"id"=>"1"}
+  ↳ app/controllers/events_controller.rb:8:in `index'
+  ↳ app/controllers/application_controller.rb:29:in `authorize_request'
+Processing by TicketsController#users_tickets_events as HTML
+Completed 200 OK in 7ms (Views: 4.8ms | ActiveRecord: 1.6ms | Allocations: 2152)
+
+
+  [1m[36mTicket Load (8.3ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 11ms (Views: 0.4ms | ActiveRecord: 2.9ms | Allocations: 3005)
+
+
+  ↳ app/controllers/tickets_controller.rb:85:in `set_ticket'
+  [1m[36mUser Load (3.3ms)[0m  [1m[34mSELECT users.id, 
+      users.first_name, 
+      users.last_name, 
+      tickets.id AS ticket_id,
+      tickets.code, 
+      tickets.time_slot,
+      events.id AS event_id,
+      events.event_name,
+      events.capacity,
+      events.gateway,
+      events.ticket_cost,
+      events.start_time,
+      events.end_time,
+      events.date,
+      events.location,
+      events.img_url FROM "users" INNER JOIN "tickets" ON "tickets"."user_id" = "users"."id" INNER JOIN "tickets" "tickets_users_join" ON "tickets_users_join"."user_id" = "users"."id" INNER JOIN "events" ON "events"."id" = "tickets_users_join"."event_id"[0m
+  ↳ app/controllers/tickets_controller.rb:79:in `users_tickets_events'
+Completed 200 OK in 121ms (Views: 116.7ms | ActiveRecord: 3.3ms | Allocations: 21802)
+
+
+Completed 200 OK in 156ms (Views: 0.2ms | ActiveRecord: 8.3ms | Allocations: 28422)
+
+
+Started GET "/qrcode/1" for ::1 at 2020-07-24 08:24:11 -0400
+Started GET "/auth/verify" for ::1 at 2020-07-24 08:24:11 -0400
+Started GET "/users_tickets_events" for ::1 at 2020-07-24 08:24:11 -0400
+Started GET "/events" for ::1 at 2020-07-24 08:24:11 -0400
+Processing by TicketsController#showqr as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTicket Load (0.7ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:85:in `set_ticket'
+Processing by EventsController#index as HTML
+Processing by AuthenticationsController#verify as HTML
+  [1m[36mEvent Load (251.7ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:8:in `index'
+Completed 200 OK in 255ms (Views: 3.1ms | ActiveRecord: 251.7ms | Allocations: 8380)
+
+
+Processing by TicketsController#users_tickets_events as HTML
+Completed 200 OK in 404ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 28175)
+
+
+  [1m[36mUser Load (133.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT users.id, 
+      users.first_name, 
+      users.last_name, 
+      tickets.id AS ticket_id,
+      tickets.code, 
+      tickets.time_slot,
+      events.id AS event_id,
+      events.event_name,
+      events.capacity,
+      events.gateway,
+      events.ticket_cost,
+      events.start_time,
+      events.end_time,
+      events.date,
+      events.location,
+      events.img_url FROM "users" INNER JOIN "tickets" ON "tickets"."user_id" = "users"."id" INNER JOIN "tickets" "tickets_users_join" ON "tickets_users_join"."user_id" = "users"."id" INNER JOIN "events" ON "events"."id" = "tickets_users_join"."event_id"[0m
+  ↳ app/controllers/application_controller.rb:29:in `authorize_request'
+Completed 200 OK in 382ms (Views: 1.9ms | ActiveRecord: 133.7ms | Allocations: 9752)
+
+
+  ↳ app/controllers/tickets_controller.rb:79:in `users_tickets_events'
+Completed 200 OK in 251ms (Views: 248.5ms | ActiveRecord: 1.8ms | Allocations: 2987)
+
+
+Started GET "/qrcode/1" for ::1 at 2020-07-24 08:24:21 -0400
+Started GET "/auth/verify" for ::1 at 2020-07-24 08:24:21 -0400
+Started GET "/events" for ::1 at 2020-07-24 08:24:21 -0400
+Started GET "/users_tickets_events" for ::1 at 2020-07-24 08:24:21 -0400
+Processing by TicketsController#showqr as HTML
+  Parameters: {"id"=>"1"}
+Processing by EventsController#index as HTML
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+Processing by AuthenticationsController#verify as HTML
+  ↳ app/controllers/events_controller.rb:8:in `index'
+Completed 200 OK in 15ms (Views: 14.2ms | ActiveRecord: 0.6ms | Allocations: 2092)
+
+
+Processing by TicketsController#users_tickets_events as HTML
+  [1m[36mTicket Load (35.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:85:in `set_ticket'
+  [1m[36mUser Load (187.5ms)[0m  [1m[34mSELECT users.id, 
+      users.first_name, 
+      users.last_name, 
+      tickets.id AS ticket_id,
+      tickets.code, 
+      tickets.time_slot,
+      events.id AS event_id,
+      events.event_name,
+      events.capacity,
+      events.gateway,
+      events.ticket_cost,
+      events.start_time,
+      events.end_time,
+      events.date,
+      events.location,
+      events.img_url FROM "users" INNER JOIN "tickets" ON "tickets"."user_id" = "users"."id" INNER JOIN "tickets" "tickets_users_join" ON "tickets_users_join"."user_id" = "users"."id" INNER JOIN "events" ON "events"."id" = "tickets_users_join"."event_id"[0m
+  ↳ app/controllers/tickets_controller.rb:79:in `users_tickets_events'
+Completed 200 OK in 232ms (Views: 0.1ms | ActiveRecord: 35.2ms | Allocations: 28905)
+
+
+Completed 200 OK in 474ms (Views: 286.2ms | ActiveRecord: 187.5ms | Allocations: 26703)
+
+
+  [1m[36mUser Load (214.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `authorize_request'
+Completed 200 OK in 862ms (Views: 0.6ms | ActiveRecord: 214.7ms | Allocations: 29534)
+
+
+Started GET "/qrcode/1" for ::1 at 2020-07-24 08:24:29 -0400
+Started GET "/auth/verify" for ::1 at 2020-07-24 08:24:29 -0400
+Started GET "/events" for ::1 at 2020-07-24 08:24:29 -0400
+Processing by TicketsController#showqr as HTML
+Started GET "/users_tickets_events" for ::1 at 2020-07-24 08:24:29 -0400
+  Parameters: {"id"=>"1"}
+Processing by AuthenticationsController#verify as HTML
+Processing by EventsController#index as HTML
+  [1m[36mTicket Load (4.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by TicketsController#users_tickets_events as HTML
+  [1m[36mEvent Load (2.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/tickets_controller.rb:85:in `set_ticket'
+  [1m[36mUser Load (5.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `authorize_request'
+  ↳ app/controllers/events_controller.rb:8:in `index'
+Completed 200 OK in 181ms (Views: 0.6ms | ActiveRecord: 5.1ms | Allocations: 26888)
+
+
+Completed 200 OK in 220ms (Views: 0.2ms | ActiveRecord: 4.4ms | Allocations: 28843)
+
+
+  [1m[36mUser Load (211.0ms)[0m  [1m[34mSELECT users.id, 
+      users.first_name, 
+      users.last_name, 
+      tickets.id AS ticket_id,
+      tickets.code, 
+      tickets.time_slot,
+      events.id AS event_id,
+      events.event_name,
+      events.capacity,
+      events.gateway,
+      events.ticket_cost,
+      events.start_time,
+      events.end_time,
+      events.date,
+      events.location,
+      events.img_url FROM "users" INNER JOIN "tickets" ON "tickets"."user_id" = "users"."id" INNER JOIN "tickets" "tickets_users_join" ON "tickets_users_join"."user_id" = "users"."id" INNER JOIN "events" ON "events"."id" = "tickets_users_join"."event_id"[0m
+Completed 200 OK in 592ms (Views: 589.2ms | ActiveRecord: 2.3ms | Allocations: 28205)
+
+
+  ↳ app/controllers/tickets_controller.rb:79:in `users_tickets_events'
+Completed 200 OK in 766ms (Views: 554.2ms | ActiveRecord: 211.0ms | Allocations: 28991)
+
+
+Started GET "/qrcode/1" for ::1 at 2020-07-24 08:25:23 -0400
+Processing by TicketsController#showqr as HTML
+  Parameters: {"id"=>"1"}
+Started GET "/auth/verify" for ::1 at 2020-07-24 08:25:23 -0400
+  [1m[36mTicket Load (3.5ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:85:in `set_ticket'
+Processing by AuthenticationsController#verify as HTML
+Started GET "/events" for ::1 at 2020-07-24 08:25:23 -0400
+Processing by EventsController#index as HTML
+Completed 200 OK in 148ms (Views: 0.2ms | ActiveRecord: 3.5ms | Allocations: 27077)
+
+
+Started GET "/users_tickets_events" for ::1 at 2020-07-24 08:25:23 -0400
+  [1m[36mUser Load (28.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `authorize_request'
+Completed 200 OK in 33ms (Views: 0.8ms | ActiveRecord: 28.6ms | Allocations: 7396)
+
+
+  [1m[36mEvent Load (19.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+Processing by TicketsController#users_tickets_events as HTML
+  ↳ app/controllers/events_controller.rb:8:in `index'
+Completed 200 OK in 605ms (Views: 585.3ms | ActiveRecord: 19.1ms | Allocations: 3746)
+
+
+  [1m[36mUser Load (23.0ms)[0m  [1m[34mSELECT users.id, 
+      users.first_name, 
+      users.last_name, 
+      tickets.id AS ticket_id,
+      tickets.code, 
+      tickets.time_slot,
+      events.id AS event_id,
+      events.event_name,
+      events.capacity,
+      events.gateway,
+      events.ticket_cost,
+      events.start_time,
+      events.end_time,
+      events.date,
+      events.location,
+      events.img_url FROM "users" INNER JOIN "tickets" ON "tickets"."user_id" = "users"."id" INNER JOIN "tickets" "tickets_users_join" ON "tickets_users_join"."user_id" = "users"."id" INNER JOIN "events" ON "events"."id" = "tickets_users_join"."event_id"[0m
+  ↳ app/controllers/tickets_controller.rb:79:in `users_tickets_events'
+Completed 200 OK in 42ms (Views: 18.1ms | ActiveRecord: 23.0ms | Allocations: 2535)
+
+
+Started GET "/qrcode/1" for ::1 at 2020-07-24 08:25:27 -0400
+Started GET "/auth/verify" for ::1 at 2020-07-24 08:25:27 -0400
+Started GET "/events" for ::1 at 2020-07-24 08:25:27 -0400
+Started GET "/users_tickets_events" for ::1 at 2020-07-24 08:25:27 -0400
+Processing by TicketsController#showqr as HTML
+  Parameters: {"id"=>"1"}
+Processing by AuthenticationsController#verify as HTML
+Processing by TicketsController#users_tickets_events as HTML
+Processing by EventsController#index as HTML
+  [1m[36mTicket Load (19.8ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:85:in `set_ticket'
+  [1m[36mUser Load (19.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (86.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:8:in `index'
+  [1m[36mUser Load (87.4ms)[0m  [1m[34mSELECT users.id, 
+      users.first_name, 
+      users.last_name, 
+      tickets.id AS ticket_id,
+      tickets.code, 
+      tickets.time_slot,
+      events.id AS event_id,
+      events.event_name,
+      events.capacity,
+      events.gateway,
+      events.ticket_cost,
+      events.start_time,
+      events.end_time,
+      events.date,
+      events.location,
+      events.img_url FROM "users" INNER JOIN "tickets" ON "tickets"."user_id" = "users"."id" INNER JOIN "tickets" "tickets_users_join" ON "tickets_users_join"."user_id" = "users"."id" INNER JOIN "events" ON "events"."id" = "tickets_users_join"."event_id"[0m
+  ↳ app/controllers/tickets_controller.rb:79:in `users_tickets_events'
+  ↳ app/controllers/application_controller.rb:29:in `authorize_request'
+Completed 200 OK in 91ms (Views: 0.1ms | ActiveRecord: 19.8ms | Allocations: 26235)
+
+
+Completed 200 OK in 301ms (Views: 213.6ms | ActiveRecord: 87.4ms | Allocations: 28559)
+
+
+Completed 200 OK in 90ms (Views: 2.9ms | ActiveRecord: 86.3ms | Allocations: 26872)
+
+
+Completed 200 OK in 313ms (Views: 9.3ms | ActiveRecord: 19.2ms | Allocations: 29116)
+
+
+Started GET "/qrcode/1" for ::1 at 2020-07-24 08:25:50 -0400
+Started GET "/auth/verify" for ::1 at 2020-07-24 08:25:50 -0400
+Started GET "/events" for ::1 at 2020-07-24 08:25:50 -0400
+Started GET "/users_tickets_events" for ::1 at 2020-07-24 08:25:50 -0400
+Processing by TicketsController#showqr as HTML
+Processing by AuthenticationsController#verify as HTML
+Processing by EventsController#index as HTML
+  Parameters: {"id"=>"1"}
+Processing by TicketsController#users_tickets_events as HTML
+  [1m[36mEvent Load (12.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:8:in `index'
+Completed 200 OK in 16ms (Views: 2.9ms | ActiveRecord: 12.3ms | Allocations: 1961)
+
+
+  [1m[36mUser Load (20.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTicket Load (19.7ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `authorize_request'
+  ↳ app/controllers/tickets_controller.rb:85:in `set_ticket'
+  [1m[36mUser Load (26.2ms)[0m  [1m[34mSELECT users.id, 
+      users.first_name, 
+      users.last_name, 
+      tickets.id AS ticket_id,
+      tickets.code, 
+      tickets.time_slot,
+      events.id AS event_id,
+      events.event_name,
+      events.capacity,
+      events.gateway,
+      events.ticket_cost,
+      events.start_time,
+      events.end_time,
+      events.date,
+      events.location,
+      events.img_url FROM "users" INNER JOIN "tickets" ON "tickets"."user_id" = "users"."id" INNER JOIN "tickets" "tickets_users_join" ON "tickets_users_join"."user_id" = "users"."id" INNER JOIN "events" ON "events"."id" = "tickets_users_join"."event_id"[0m
+Completed 200 OK in 628ms (Views: 0.7ms | ActiveRecord: 20.4ms | Allocations: 3708)
+
+
+Completed 200 OK in 691ms (Views: 0.1ms | ActiveRecord: 19.7ms | Allocations: 27944)
+
+
+  ↳ app/controllers/tickets_controller.rb:79:in `users_tickets_events'
+Completed 200 OK in 696ms (Views: 669.6ms | ActiveRecord: 26.2ms | Allocations: 29436)
+
+
+Started GET "/qrcode/1" for ::1 at 2020-07-24 08:26:12 -0400
+Started GET "/auth/verify" for ::1 at 2020-07-24 08:26:12 -0400
+Started GET "/events" for ::1 at 2020-07-24 08:26:12 -0400
+Started GET "/users_tickets_events" for ::1 at 2020-07-24 08:26:12 -0400
+Processing by TicketsController#showqr as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTicket Load (7.1ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:85:in `set_ticket'
+Processing by AuthenticationsController#verify as HTML
+Processing by EventsController#index as HTML
+Processing by TicketsController#users_tickets_events as HTML
+Completed 200 OK in 183ms (Views: 0.2ms | ActiveRecord: 7.1ms | Allocations: 26043)
+
+
+  [1m[36mEvent Load (149.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:8:in `index'
+Completed 200 OK in 154ms (Views: 4.4ms | ActiveRecord: 149.4ms | Allocations: 2323)
+
+
+  [1m[36mUser Load (152.1ms)[0m  [1m[34mSELECT users.id, 
+      users.first_name, 
+      users.last_name, 
+      tickets.id AS ticket_id,
+      tickets.code, 
+      tickets.time_slot,
+      events.id AS event_id,
+      events.event_name,
+      events.capacity,
+      events.gateway,
+      events.ticket_cost,
+      events.start_time,
+      events.end_time,
+      events.date,
+      events.location,
+      events.img_url FROM "users" INNER JOIN "tickets" ON "tickets"."user_id" = "users"."id" INNER JOIN "tickets" "tickets_users_join" ON "tickets_users_join"."user_id" = "users"."id" INNER JOIN "events" ON "events"."id" = "tickets_users_join"."event_id"[0m
+  ↳ app/controllers/tickets_controller.rb:79:in `users_tickets_events'
+  [1m[36mUser Load (166.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 939ms (Views: 786.1ms | ActiveRecord: 152.1ms | Allocations: 3485)
+
+
+  ↳ app/controllers/application_controller.rb:29:in `authorize_request'
+Completed 200 OK in 1733ms (Views: 0.6ms | ActiveRecord: 166.4ms | Allocations: 5326)
+
+
+Started GET "/auth/verify" for ::1 at 2020-07-24 08:26:24 -0400
+Started GET "/users_tickets_events" for ::1 at 2020-07-24 08:26:24 -0400
+Started GET "/events" for ::1 at 2020-07-24 08:26:24 -0400
+Started GET "/qrcode/1" for ::1 at 2020-07-24 08:26:24 -0400
+Processing by TicketsController#users_tickets_events as HTML
+Processing by AuthenticationsController#verify as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `authorize_request'
+Completed 200 OK in 3ms (Views: 0.5ms | ActiveRecord: 0.6ms | Allocations: 970)
+
+
+Processing by EventsController#index as HTML
+Processing by TicketsController#showqr as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (22.2ms)[0m  [1m[34mSELECT users.id, 
+      users.first_name, 
+      users.last_name, 
+      tickets.id AS ticket_id,
+      tickets.code, 
+      tickets.time_slot,
+      events.id AS event_id,
+      events.event_name,
+      events.capacity,
+      events.gateway,
+      events.ticket_cost,
+      events.start_time,
+      events.end_time,
+      events.date,
+      events.location,
+      events.img_url FROM "users" INNER JOIN "tickets" ON "tickets"."user_id" = "users"."id" INNER JOIN "tickets" "tickets_users_join" ON "tickets_users_join"."user_id" = "users"."id" INNER JOIN "events" ON "events"."id" = "tickets_users_join"."event_id"[0m
+  [1m[36mTicket Load (4.3ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:79:in `users_tickets_events'
+  ↳ app/controllers/tickets_controller.rb:85:in `set_ticket'
+  [1m[36mEvent Load (12.0ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+Completed 200 OK in 613ms (Views: 0.1ms | ActiveRecord: 4.3ms | Allocations: 26256)
+
+
+  ↳ app/controllers/events_controller.rb:8:in `index'
+Completed 200 OK in 627ms (Views: 614.3ms | ActiveRecord: 12.0ms | Allocations: 28399)
+
+
+Completed 200 OK in 556ms (Views: 533.4ms | ActiveRecord: 22.2ms | Allocations: 5158)
+
+
+Started GET "/qrcode/1" for ::1 at 2020-07-24 08:26:27 -0400
+Started GET "/auth/verify" for ::1 at 2020-07-24 08:26:27 -0400
+Processing by TicketsController#showqr as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:85:in `set_ticket'
+Completed 200 OK in 75ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 25343)
+
+
+Processing by AuthenticationsController#verify as HTML
+Started GET "/events" for ::1 at 2020-07-24 08:26:27 -0400
+Started GET "/users_tickets_events" for ::1 at 2020-07-24 08:26:27 -0400
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `authorize_request'
+Completed 200 OK in 6ms (Views: 0.6ms | ActiveRecord: 2.5ms | Allocations: 1024)
+
+
+Processing by EventsController#index as HTML
+Processing by TicketsController#users_tickets_events as HTML
+  [1m[36mEvent Load (1.6ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:8:in `index'
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT users.id, 
+      users.first_name, 
+      users.last_name, 
+      tickets.id AS ticket_id,
+      tickets.code, 
+      tickets.time_slot,
+      events.id AS event_id,
+      events.event_name,
+      events.capacity,
+      events.gateway,
+      events.ticket_cost,
+      events.start_time,
+      events.end_time,
+      events.date,
+      events.location,
+      events.img_url FROM "users" INNER JOIN "tickets" ON "tickets"."user_id" = "users"."id" INNER JOIN "tickets" "tickets_users_join" ON "tickets_users_join"."user_id" = "users"."id" INNER JOIN "events" ON "events"."id" = "tickets_users_join"."event_id"[0m
+Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 1.6ms | Allocations: 1909)
+
+
+  ↳ app/controllers/tickets_controller.rb:79:in `users_tickets_events'
+Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 1.5ms | Allocations: 3139)
+
+
+Started GET "/qrcode/1" for ::1 at 2020-07-24 08:26:32 -0400
+Processing by TicketsController#showqr as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:85:in `set_ticket'
+Completed 200 OK in 90ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 25027)
+
+
+Started GET "/auth/verify" for ::1 at 2020-07-24 08:26:32 -0400
+Started GET "/users_tickets_events" for ::1 at 2020-07-24 08:26:32 -0400
+Started GET "/events" for ::1 at 2020-07-24 08:26:32 -0400
+Processing by AuthenticationsController#verify as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `authorize_request'
+Processing by EventsController#index as HTML
+Processing by TicketsController#users_tickets_events as HTML
+Completed 200 OK in 5ms (Views: 0.6ms | ActiveRecord: 0.4ms | Allocations: 1999)
+
+
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT users.id, 
+      users.first_name, 
+      users.last_name, 
+      tickets.id AS ticket_id,
+      tickets.code, 
+      tickets.time_slot,
+      events.id AS event_id,
+      events.event_name,
+      events.capacity,
+      events.gateway,
+      events.ticket_cost,
+      events.start_time,
+      events.end_time,
+      events.date,
+      events.location,
+      events.img_url FROM "users" INNER JOIN "tickets" ON "tickets"."user_id" = "users"."id" INNER JOIN "tickets" "tickets_users_join" ON "tickets_users_join"."user_id" = "users"."id" INNER JOIN "events" ON "events"."id" = "tickets_users_join"."event_id"[0m
+  [1m[36mEvent Load (2.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/tickets_controller.rb:79:in `users_tickets_events'
+  ↳ app/controllers/events_controller.rb:8:in `index'
+Completed 200 OK in 474ms (Views: 472.0ms | ActiveRecord: 1.4ms | Allocations: 2558)
+
+
+Completed 200 OK in 478ms (Views: 474.9ms | ActiveRecord: 2.3ms | Allocations: 3342)
+
+
+Started GET "/qrcode/1" for ::1 at 2020-07-24 08:27:12 -0400
+Processing by TicketsController#showqr as HTML
+  Parameters: {"id"=>"1"}
+Started GET "/auth/verify" for ::1 at 2020-07-24 08:27:12 -0400
+  [1m[36mTicket Load (1.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:85:in `set_ticket'
+Processing by AuthenticationsController#verify as HTML
+Completed 200 OK in 115ms (Views: 0.2ms | ActiveRecord: 1.2ms | Allocations: 26114)
+
+
+  [1m[36mUser Load (10.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Started GET "/users_tickets_events" for ::1 at 2020-07-24 08:27:12 -0400
+Started GET "/events" for ::1 at 2020-07-24 08:27:12 -0400
+  ↳ app/controllers/application_controller.rb:29:in `authorize_request'
+Completed 200 OK in 15ms (Views: 0.7ms | ActiveRecord: 10.3ms | Allocations: 7022)
+
+
+Processing by TicketsController#users_tickets_events as HTML
+Processing by EventsController#index as HTML
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT users.id, 
+      users.first_name, 
+      users.last_name, 
+      tickets.id AS ticket_id,
+      tickets.code, 
+      tickets.time_slot,
+      events.id AS event_id,
+      events.event_name,
+      events.capacity,
+      events.gateway,
+      events.ticket_cost,
+      events.start_time,
+      events.end_time,
+      events.date,
+      events.location,
+      events.img_url FROM "users" INNER JOIN "tickets" ON "tickets"."user_id" = "users"."id" INNER JOIN "tickets" "tickets_users_join" ON "tickets_users_join"."user_id" = "users"."id" INNER JOIN "events" ON "events"."id" = "tickets_users_join"."event_id"[0m
+  ↳ app/controllers/events_controller.rb:8:in `index'
+  ↳ app/controllers/tickets_controller.rb:79:in `users_tickets_events'
+Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 1.0ms | Allocations: 2060)
+
+
+Completed 200 OK in 11ms (Views: 7.9ms | ActiveRecord: 2.4ms | Allocations: 3088)
+
+
+Started GET "/qrcode/1" for ::1 at 2020-07-24 08:27:21 -0400
+Started GET "/auth/verify" for ::1 at 2020-07-24 08:27:21 -0400
+Started GET "/events" for ::1 at 2020-07-24 08:27:21 -0400
+Started GET "/users_tickets_events" for ::1 at 2020-07-24 08:27:21 -0400
+Processing by TicketsController#users_tickets_events as HTML
+Processing by TicketsController#showqr as HTML
+Processing by EventsController#index as HTML
+Processing by AuthenticationsController#verify as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT users.id, 
+      users.first_name, 
+      users.last_name, 
+      tickets.id AS ticket_id,
+      tickets.code, 
+      tickets.time_slot,
+      events.id AS event_id,
+      events.event_name,
+      events.capacity,
+      events.gateway,
+      events.ticket_cost,
+      events.start_time,
+      events.end_time,
+      events.date,
+      events.location,
+      events.img_url FROM "users" INNER JOIN "tickets" ON "tickets"."user_id" = "users"."id" INNER JOIN "tickets" "tickets_users_join" ON "tickets_users_join"."user_id" = "users"."id" INNER JOIN "events" ON "events"."id" = "tickets_users_join"."event_id"[0m
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (2.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/tickets_controller.rb:79:in `users_tickets_events'
+  ↳ app/controllers/events_controller.rb:8:in `index'
+Completed 200 OK in 732ms (Views: 728.6ms | ActiveRecord: 2.6ms | Allocations: 3402)
+
+
+  ↳ app/controllers/application_controller.rb:29:in `authorize_request'
+Completed 200 OK in 732ms (Views: 0.6ms | ActiveRecord: 1.3ms | Allocations: 3833)
+
+
+Completed 200 OK in 731ms (Views: 728.2ms | ActiveRecord: 2.1ms | Allocations: 3344)
+
+
+  [1m[36mTicket Load (0.9ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tickets_controller.rb:85:in `set_ticket'
+Completed 200 OK in 875ms (Views: 0.8ms | ActiveRecord: 0.9ms | Allocations: 29042)
+
+
+Started GET "/qrcode/1" for ::1 at 2020-07-24 08:27:38 -0400
+Started GET "/auth/verify" for ::1 at 2020-07-24 08:27:38 -0400
+Processing by TicketsController#showqr as HTML
+  Parameters: {"id"=>"1"}
+Started GET "/events" for ::1 at 2020-07-24 08:27:38 -0400
+Started GET "/users_tickets_events" for ::1 at 2020-07-24 08:27:38 -0400
+  [1m[36mTicket Load (1.5ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by AuthenticationsController#verify as HTML
+  ↳ app/controllers/tickets_controller.rb:85:in `set_ticket'
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (118.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `authorize_request'
+Completed 200 OK in 122ms (Views: 0.4ms | ActiveRecord: 118.3ms | Allocations: 23397)
+
+
+  [1m[36mEvent Load (5.7ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/events_controller.rb:8:in `index'
+Completed 200 OK in 9ms (Views: 3.3ms | ActiveRecord: 5.7ms | Allocations: 2428)
+
+
+Completed 200 OK in 167ms (Views: 0.2ms | ActiveRecord: 1.5ms | Allocations: 29201)
+
+
+Processing by TicketsController#users_tickets_events as HTML
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT users.id, 
+      users.first_name, 
+      users.last_name, 
+      tickets.id AS ticket_id,
+      tickets.code, 
+      tickets.time_slot,
+      events.id AS event_id,
+      events.event_name,
+      events.capacity,
+      events.gateway,
+      events.ticket_cost,
+      events.start_time,
+      events.end_time,
+      events.date,
+      events.location,
+      events.img_url FROM "users" INNER JOIN "tickets" ON "tickets"."user_id" = "users"."id" INNER JOIN "tickets" "tickets_users_join" ON "tickets_users_join"."user_id" = "users"."id" INNER JOIN "events" ON "events"."id" = "tickets_users_join"."event_id"[0m
+  ↳ app/controllers/tickets_controller.rb:79:in `users_tickets_events'
+Completed 200 OK in 13ms (Views: 9.1ms | ActiveRecord: 2.0ms | Allocations: 1713)
+
+
