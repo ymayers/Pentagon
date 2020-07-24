@@ -144,11 +144,10 @@ class App extends Component {
           />
 
           <Route
-            path="/ticket"
+            path="/ticket/:id"
             render={(props) => (
               <Ticket {...props}
-                qr={this.state.qr}
-                getQR={this.readQR}
+                // getQR={this.readQR}
                 currentUser={this.state.currentUser}
                 allTickets={this.state.tickets}
               />

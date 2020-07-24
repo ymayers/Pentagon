@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { withRouter } from "react-router";
 import styled from 'styled-components'
 import { getQR } from '../services/api-helper'
 
@@ -67,45 +68,52 @@ export default class Ticket extends Component {
       qr: null
     };
   }
-
-  // componentDidMount() {
-  //   this.readQR()
-  // }
+  componentDidMount() {
+    this.readQR(this.props.match.params.id)
+  }
 
   readQR = async (ticketId) => {
     const qr = await getQR(ticketId)
     this.setState({ qr })
   }
-  render() {
-    const { qr, allTickets, currentUser } = this.props
-    console.log(currentUser)
-    const ticket = allTickets.filter(t => t.id === currentUser.id)
-    console.log(ticket)
-    this.readQR(ticket.ticket_id)
 
+  render() {
+    const { id } = this.props.match.params;
+    const { qr } = this.state
+    const { allTickets, currentUser } = this.props
+    
+    const ticket = allTickets.map(t => {
+      if (t.id === currentUser.id && t.ticket_id === parseInt(id)) {
+        return (
+          <>
+            <Header>GENERAL ADMISSION</Header>
+            <h2>#{t.ticket_id}</h2>
+            <h3>{t.date}{t.start_time}</h3>
+            <QRCode style={{ backgroundImage: `url(data:image/svg+xml;base64,${btoa(qr)})` }}>
+            </QRCode>
+            <Divider />
+            <Wrapper>
+              <Label>Where:</Label>
+              <Detail>{t.event_name}</Detail>
+              {/* <Label>Seat:</Label>
+          <Detail>gfgg</Detail> */}
+            </Wrapper>
+            <Divider />
+            <Button>ADD TO APPLE WALLET</Button>
+            <Button>TEXT ME THE TICKET</Button>
+          </>
+        )
+      }
+    })
 
     return (
       <>
         <Main>
-          <Header>GENERAL ADMISSION</Header>
-          <h2>{ticket.ticket_id}</h2>
-          <h3>{ticket.date}{ticket.start_time}</h3>
-          <QRCode style={{ backgroundImage: `url(data:image/svg+xml;base64,${btoa(qr)})` }}>
-          </QRCode>
-          <Divider />
-          <Wrapper>
-            <Label>Where:</Label>
-            <Detail>{ticket.event_name}</Detail>
-            {/* <Label>Seat:</Label>
-            <Detail>gfgg</Detail> */}
-          </Wrapper>
-          <Divider />
-          <Button>ADD TO APPLE WALLET</Button>
-          <Button>TEXT ME THE TICKET</Button>
-
+          {ticket}
         </Main>
       </>
     )
   }
 
 }
+

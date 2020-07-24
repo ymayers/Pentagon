@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import styled from 'styled-components'
 
 const Header = styled.header`
@@ -97,8 +98,6 @@ const Location = styled(Date)`
 const Button = styled.button`
   height: 30px;
   width: 78px;
-  align-self: flex-end;
-  margin: 10px 30px;   
   border-radius: 10px;
   background-color: #737677;
   border: 1px solid #737677;
@@ -108,11 +107,16 @@ const Button = styled.button`
   font-weight: 500;
   letter-spacing: 2px
 `
+const ButtonLink = styled(Link)`
+  align-self: flex-end;
+  margin: 10px 30px;
+`
 const Divider = styled.hr`
   border: 1px solid #D1D9DD;
   width: 80%;
   margin: 5px auto
 `
+
 
 export default function MyTickets({ allTickets, currentUser }) {
 
@@ -137,10 +141,10 @@ export default function MyTickets({ allTickets, currentUser }) {
                 <Location>{t.location}</Location>
               </Info>
             </Ticket>
-            <Button onClick={``}>SELECT</Button>
+            <ButtonLink to={`/ticket/${t.ticket_id}`}><Button>SELECT</Button></ButtonLink>
           <Divider />
         </>
-      )
+      ) 
     }
   })
 
